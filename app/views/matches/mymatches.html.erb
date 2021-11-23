@@ -18,6 +18,20 @@
       <p>Where? <%= match.venue_id %><p>
       <p>Table <%= match.venue_id %><p>
       <p>Match Capacity: <%= match.capacity %></p>
-      <p>participations: <%= match.participations %></p>
+      <p>Participants: <% match.participations.each do |participation|%>
+        <div class="card-trip">
+          <%= participation.user.user_name %>
+          <%= participation.status %>
+          <%= participation.team %>
+          <% if participation.status == "pending" %>
+  <div class="btn btn-cta"><%= link_to "Accept", participation_accept_path(participation), method: :patch %></div>
+  <div class="btn btn-cta"><%= link_to "Decline", participation_decline_path(participation), method: :patch %></div>
+<% elsif participation.status == "accepted" %>
+  <div class="btn btn-normal"><%= link_to "Decline", participation_decline_path(participation), method: :patch %></div>
+<% else %>
+  <div class="btn btn-normal"><%= link_to "Accept", participation_accept_path(participation), method: :patch %></div>
+<% end %>
+        </div>
+      <% end %></p>
   <% end %>
 </div>
