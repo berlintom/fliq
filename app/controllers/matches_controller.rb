@@ -27,6 +27,7 @@ class MatchesController < ApplicationController
     @participations = Participation.where(user: current_user)
     @matches = Match.where(user: current_user)
   end
+
   private
 
   def params_match
