@@ -8,7 +8,4 @@
 
 
 
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-
-
-
+matches = Match.create!([{ id: 2 }, { capacity: 4}, { user_id: 5}, { venue_id: 10}])
