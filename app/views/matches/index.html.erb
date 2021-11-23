@@ -10,7 +10,7 @@
       <%=link_to match_path(match), class: "card-trip" do %>
         <p>When? <%= match.start_date.strftime("%d.%m.%y") %> - <%= match.end_date.strftime("%d.%m.%y") %><p>
         <p>Where? <%= match.venue.address %><p>
-        <p>Match Capacity: <%= match.capacity %></p>
+        <p>How many Players? <%= match.capacity %></p>
         <% if match.user == current_user %>
           <p><em>You are the host of this match</em></p>
         <% elsif userparticipants.include?(current_user) %>

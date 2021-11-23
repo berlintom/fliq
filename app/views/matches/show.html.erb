@@ -3,14 +3,14 @@
     <% if @userparticipants.include?(current_user)%>
       <p>When? <%= @match.start_date.strftime("%d.%m.%y") %> - <%= @match.end_date.strftime("%d.%m.%y") %><p>
       <p>Where? <%= @match.venue.address %><p>
-      <p>Table: <%= @match.venue.table_type %><p>
-      <p>Match Capacity: <%= @match.capacity %></p>
+      <p>Type of Table? <%= @match.venue.table_type %><p>
+      <p>ow many Players? <%= @match.capacity %></p>
       <div class="btn btn-primary"><%= link_to "Back to all matches", matches_path %></div>
     <% else %>
       <p>When? <%= @match.start_date %> - <%= @match.end_date %><p>
       <p>Where? <%= @match.venue.address %><p>
-      <p>Table: <%= @match.venue.table_type %><p>
-      <p>Match Capacity: <%= @match.capacity %></p>
+      <p>Type of Table? <%= @match.venue.table_type %><p>
+      <p>How many Players? <%= @match.capacity %></p>
       <% if @match.user == current_user %>
         <p><em>You created this match</em></p>
       <% else %>
