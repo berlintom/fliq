@@ -5,6 +5,10 @@
     <p>Where? <%= match.venue_id %><p>
     <p>Table <%= match.venue_id %><p>
     <p>Match Capacity: <%= match.capacity %></p>
+    <%= cl_image_tag("https://source.unsplash.com/random",
+      width: 400, height: 300, crop: :fill) %>
+    <%= cl_image_tag("https://source.unsplash.com/random",
+      width: 150, height: 150, crop: :thumb, gravity: :face) %>
     <% end %>
   <% end %>
 </div>
