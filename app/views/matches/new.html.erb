@@ -3,9 +3,9 @@
     <h2>Create your match</h2>
     <div class="form">
     <%= simple_form_for @match do |f|%>
-    <%= f.input :start_date %>
-    <%= f.input :end_date %>
-    <%= f.input :capacity %>
+    <%= f.input :start_date, label: "Start Time" %>
+    <%= f.input :end_date, label: "End Time" %>
+    <%= f.input :capacity, input_html: {value: 2}%>
     <%= f.input :venue_id, label: 'Value ID' %>
     <div class="btn btn-normal btn-cta"><%= f.button :submit %></div>
     <% end %>
