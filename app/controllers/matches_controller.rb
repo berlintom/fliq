@@ -7,6 +7,11 @@ class MatchesController < ApplicationController
 
   def show
     @match = Match.find(params[:id])
+    @participations = @match.participations
+    @userparticipants = []
+    @participations.each do |participation|
+      @userparticipants << participation.user
+    end
   end
 
   def new
@@ -30,8 +35,10 @@ class MatchesController < ApplicationController
 
   private
 
+
   def params_match
     params.require(:match).permit(:capacity, :start_date, :end_date, :venue_id)
   end
+
 
 end

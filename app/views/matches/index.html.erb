@@ -1,16 +1,26 @@
 <div class="container">
   <h1>Find a match</h1>
   <% @matches.each do |match| %>
+    <% participations = match.participations %>
+    <% userparticipants = [] %>
+    <% participations.each do |participation| %>
+      <% userparticipants << participation.user %>
+    <% end %>
     <div class="card">
       <%=link_to match_path(match), class: "card-trip" do %>
         <p>When? <%= match.start_date %> - <%= match.end_date %><p>
         <p>Where? <%= match.venue.address %><p>
         <p>Match Capacity: <%= match.capacity %></p>
-        <div class="btn btn-primary"><%= link_to "Participate", match_participations_path(match), method: :post %></div>
+        <% if match.user == current_user %>
+          <p><em>You created this match</em></p>
+        <% elsif userparticipants.include?(current_user) %>
+          <p><em>You already requested to play</em></p>
+          <div class="btn btn-primary"><%= link_to "Check status", mymatches_path %></div>
+        <% else %>
+          <div class="btn btn-primary"><%= link_to "Participate", match_participations_path(match), method: :post %></div>
+        <% end %>
       <% end %>
     </div>
   <% end %>
 </div>
-<div>
-  <%= link_to "Create a new match", new_match_path %>
-</div>
+<div><%= link_to "Create a new match", new_match_path %></div>
