@@ -1,0 +1,23 @@
+<h1>My booked matches</h1>
+  <div class="container">
+      <% @participations.each do |participation| %>
+        <%=link_to match_path(participation.match), class: "card-trip" do %>
+          <p>When? <%= participation.match.start_date %> - <%= participation.match.end_date %><p>
+          <p>Where? <%= participation.match.venue_id %><p>
+          <p>Table <%= participation.match.venue_id %><p>
+          <p>Match Capacity: <%= participation.match.capacity %></p>
+          <p>Status: <%= participation.status %><p>
+          <p>Team: <%= participation.team %><p>
+        <% end %>
+      <% end %>
+  </div>
+<h1>My created matches</h1>
+<div class="container">
+    <% @matches.each do |match| %>
+      <p>When? <%= match.start_date %> - <%= match.end_date %><p>
+      <p>Where? <%= match.venue_id %><p>
+      <p>Table <%= match.venue_id %><p>
+      <p>Match Capacity: <%= match.capacity %></p>
+      <p>participations: <%= match.participations %></p>
+  <% end %>
+</div>

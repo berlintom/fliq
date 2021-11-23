@@ -1,4 +1,6 @@
 class MatchesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:home, :index, :show]
+
   def index
     @matches = Match.all.order(created_at: :desc)
   end
@@ -14,8 +16,7 @@ class MatchesController < ApplicationController
   def create
     @match = Match.new(params_match)
     @match.user = current_user
-    @match.save
-    if @match.save
+    if @match.save!
       redirect_to matches_path
     else
       render :new
@@ -25,9 +26,12 @@ class MatchesController < ApplicationController
   private
 
  def params_match
-  params.require(:match).permit(:capacity, :start_date, :end_date)
+  params.require(:match).permit(:capacity, :start_date, :end_date, :venue_id)
   end
-  skip_before_action :authenticate_user!, only: [:home, :index, :show]
 
+  def mymatches
+    @participations = Participation.where(user: current_user)
+    @matches = Match.where(user: current_user)
+  end
 
 end
