@@ -24,13 +24,23 @@
           <%= participation.status %>
           <%= participation.team %>
           <% if participation.status == "pending" %>
-  <div class="btn btn-cta"><%= link_to "Accept", participation_accept_path(participation), method: :patch %></div>
-  <div class="btn btn-cta"><%= link_to "Decline", participation_decline_path(participation), method: :patch %></div>
-<% elsif participation.status == "accepted" %>
-  <div class="btn btn-normal"><%= link_to "Decline", participation_decline_path(participation), method: :patch %></div>
-<% else %>
-  <div class="btn btn-normal"><%= link_to "Accept", participation_accept_path(participation), method: :patch %></div>
-<% end %>
+            <div class="btn btn-cta"><%= link_to "Accept", participation_accept_path(participation), method: :patch %></div>
+            <div class="btn btn-cta"><%= link_to "Decline", participation_decline_path(participation), method: :patch %></div>
+          <% elsif participation.status == "accepted" %>
+            <div class="btn btn-normal"><%= link_to "Decline", participation_decline_path(participation), method: :patch %></div>
+          <% else %>
+            <div class="btn btn-normal"><%= link_to "Accept", participation_accept_path(participation), method: :patch %></div>
+          <% end %>
+
+          <% if participation.team == nil %>
+            <%= link_to "Team 1", participation_team_one_path(participation), method: :patch %>
+            <%= link_to "Team 2", participation_team_two_path(participation), method: :patch %>
+          <% elsif participation.team == 1 %>
+            <%= link_to "Team 2", participation_team_two_path(participation), method: :patch %>
+          <% elsif participation.team == 2 %>
+            <%= link_to "Team 1", participation_team_one_path(participation), method: :patch %>
+          <% end %>
+
         </div>
       <% end %></p>
   <% end %>
