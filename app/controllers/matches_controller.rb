@@ -28,10 +28,12 @@ class MatchesController < ApplicationController
     end
   end
 
+
   def mymatches
     @participations = Participation.where(user: current_user)
     @matches = Match.where(user: current_user)
   end
+
 
   private
 
@@ -39,11 +41,4 @@ def params_match
   params.require(:match).permit(:capacity, :start_date, :end_date, :venue_id)
 end
 
-
-
-  def accept
-  end
-
-  def decline
-  end
 end
