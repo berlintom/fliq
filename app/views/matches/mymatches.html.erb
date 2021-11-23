@@ -1,23 +1,60 @@
-<h1>My booked matches</h1>
-  <div class="container">
-      <% @participations.each do |participation| %>
-        <%=link_to match_path(participation.match), class: "card-trip" do %>
-          <p>When? <%= participation.match.start_date %> - <%= participation.match.end_date %><p>
-          <p>Where? <%= participation.match.venue_id %><p>
-          <p>Table <%= participation.match.venue_id %><p>
-          <p>Match Capacity: <%= participation.match.capacity %></p>
-          <p>Status: <%= participation.status %><p>
-          <p>Team: <%= participation.team %><p>
-        <% end %>
-      <% end %>
-  </div>
-<h1>My created matches</h1>
 <div class="container">
-    <% @matches.each do |match| %>
-      <p>When? <%= match.start_date %> - <%= match.end_date %><p>
-      <p>Where? <%= match.venue_id %><p>
-      <p>Table <%= match.venue_id %><p>
-      <p>Match Capacity: <%= match.capacity %></p>
-      <p>participations: <%= match.participations %></p>
-  <% end %>
+  <h1>My booked matches</h1>
+   <% if @participations == nil %>
+      <p>No requestes participations</p>
+    <% else %>
+      <% @participations.each do |participation| %>
+        <div class="card">
+          <%=link_to match_path(participation.match), class: "card-trip" do %>
+            <p>When? <%= participation.match.start_date %> - <%= participation.match.end_date %><p>
+            <p>Where? <%= participation.match.venue.address %><p>
+            <p>Match Capacity: <%= participation.match.capacity %></p>
+            <p>Status: <%= participation.status %><p>
+            <p>Team: <%= participation.team %><p>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+
+  <h1>My created matches</h1>
+    <% if @matches == nil %>
+      <p>No created matches</p>
+    <% else %>
+      <% @matches.each do |match| %>
+        <div class="card">
+          <p>When? <%= match.start_date %> - <%= match.end_date %><p>
+          <p>Where? <%= match.venue.address %><p>
+          <p>Match Capacity: <%= match.capacity %></p>
+          <% if match.participations == nil %>
+            <p>Participants: No Participations yet</p>
+          <% else %>
+            <p>Participants:</p>
+            <% match.participations.each do |participation|%>
+              <div class="card">
+                <% if participation.status == "pending" %>
+                  <p><%= participation.user.user_name %> is waiting for your answer!</p>
+                  <div class="btn btn-primary"><%= link_to "Accept", participation_accept_path(participation), method: :patch %></div>
+                  <div class="btn btn-primary"><%= link_to "Decline", participation_decline_path(participation), method: :patch %></div>
+                <% elsif participation.status == "accepted" %>
+                  <p>You can look forward to play against <%= participation.user.user_name %>!</p>
+                  <p><%= participation.user.user_name %> is playing in Team <%= participation.team %>
+                  <div class="btn btn-primary"><%= link_to "Decline", participation_decline_path(participation), method: :patch %></div>
+                  <% if participation.team == nil %>
+                    <%= link_to "Team 1", participation_team_one_path(participation), method: :patch, class: "dropdown-item" %>
+                    <%= link_to "Team 2", participation_team_two_path(participation), method: :patch, class: "dropdown-item" %>
+                  <% elsif participation.team == 1 %>
+                    <%= link_to "Team 2", participation_team_two_path(participation), method: :patch, class: "dropdown-item" %>
+                  <% elsif participation.team == 2 %>
+                    <%= link_to "Team 1", participation_team_one_path(participation), method: :patch, class: "dropdown-item" %>
+                  <% end %>
+                <% else %>
+                  <p>You declined <%= participation.user.user_name %>!</p>
+                  <div class="btn btn-primary"><%= link_to "Accept", participation_accept_path(participation), method: :patch %></div>
+                <% end %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
 </div>
