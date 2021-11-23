@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :matches, only: [:index, :show] do
     resources :participations, only: [:new, :create]
   end
+
 end
