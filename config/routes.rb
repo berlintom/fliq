@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :matches, only: [:index, :show] do
     resources :participations, only: [:new, :create]
   end
-
+  patch "/participations/:id/accepted", to: "participations#accept", as: :participation_accept
+  patch "/participations/:id/declined", to: "participations#decline", as: :participation_decline
   get '/mymatches', to: 'matches#mymatches'
-
 end

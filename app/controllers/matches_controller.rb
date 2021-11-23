@@ -14,4 +14,9 @@ class MatchesController < ApplicationController
     @matches = Match.where(user: current_user)
   end
 
+  def accept
+  end
+
+  def decline
+  end
 end

@@ -9,6 +9,20 @@ class ParticipationsController < ApplicationController
     redirect_to mymatches_path
   end
 
+  def accept
+    @participation = Participation.find(params[:id])
+    @participation.status = "accepted"
+    @participation.save
+    redirect_to mymatches_path
+  end
+
+  def decline
+    @participation = Participation.find(params[:id])
+    @participation.status = "declined"
+    @participation.save
+    redirect_to mymatches_path
+  end
+
   private
 
   def params_participation
