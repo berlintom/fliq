@@ -4,6 +4,9 @@ class User < ApplicationRecord
   has_many :matches
   has_many :participations
   has_many :reviews
+
+  validates :first_name, :user_name, :phone_number, :photo, presence: true
+  validates :phone_number, :user_name, uniqueness: true
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
