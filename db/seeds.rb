@@ -5,7 +5,3 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
-
-
-matches = Match.create!([{ id: 2 }, { capacity: 4}, { user_id: 5}, { venue_id: 10}])
