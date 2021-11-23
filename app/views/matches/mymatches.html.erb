@@ -6,7 +6,7 @@
       <% @participations.each do |participation| %>
         <div class="card">
           <%=link_to match_path(participation.match), class: "card-trip" do %>
-            <p>When? <%= participation.match.start_date %> - <%= participation.match.end_date %><p>
+            <p>When? <%= participation.match.start_date.strftime("%d.%m.%y") %> - <%= participation.match.end_date.strftime("%d.%m.%y") %><p>
             <p>Where? <%= participation.match.venue.address %><p>
             <p>How many Players? <%= participation.match.capacity %></p>
             <p>Status: <%= participation.status %><p>
