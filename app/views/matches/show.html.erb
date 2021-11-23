@@ -3,4 +3,5 @@
     <p>Where? <%= @match.venue_id %><p>
     <p>Table: <%= @match.venue_id %><p>
     <p>Match Capacity: <%= @match.capacity %></p>
+    <div class="btn"><%= link_to "Participate", match_participations_path(@match), method: :post %></div>
 </div>
