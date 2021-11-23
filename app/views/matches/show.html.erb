@@ -7,9 +7,11 @@
   <title>Document</title>
 </head>
 <body>
-  Test Rails
-      <h1><%= @match.venue_id %></h1>
-      <p><%= @match.start_date %> - <%= @match.start_date %> </p>
-      <p><%= @match.capacity %></p>
+  <div class="container">
+    <p>When? <%= @match.start_date %> - <%= @match.end_date %><p>
+    <p>Where? <%= @match.venue_id %><p>
+    <p>Table: <%= @match.venue_id %><p>
+    <p>Match Capacity: <%= @match.capacity %></p>
+  </div>
 </body>
 </html>
