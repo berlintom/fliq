@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="form-container">
+    <h2>Create your match</h2>
+    <div class="form">
+    <%= simple_form_for @match do |f|%>
+    <%= f.input :start_date %>
+    <%= f.input :end_date %>
+    <%= f.input :capacity %>
+    <div class="btn btn-normal btn-cta"><%= f.button :submit %></div>
+    <% end %>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,12 @@
 class MatchesController < ApplicationController
+  def index
+    @matches = Match.all.order(created_at: :desc)
+  end
+
+  def show
+    @match = Match.find(params[:id])
+  end
+
   def new
     @match = Match.new
   end
@@ -19,4 +27,7 @@ class MatchesController < ApplicationController
  def params_match
   params.require(:match).permit(:capacity, :start_date, :end_date)
   end
+  skip_before_action :authenticate_user!, only: [:home, :index, :show]
+
+
 end
