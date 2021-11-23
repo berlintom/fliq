@@ -11,14 +11,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 puts "Destroy Everything"
 
-User.destroy_all
-Match.destroy_all
-Participation.destroy_all
-Profile.destroy_all
-Review.destroy_all
-Score.destroy_all
-Venue.destroy_all
-
 puts "Creating Users"
 
 vali = User.new(
@@ -26,7 +18,7 @@ vali = User.new(
   user_name: "ValiF",
   email: "vali@fliq.de",
   password: "123456",
-  phone_number: Faker::PhoneNumber.phone_number
+  phone_number: 111
   )
 vali.save!
 
@@ -35,7 +27,7 @@ tom = User.new(
   user_name: "TomK",
   email: "tom@fliq.de",
   password: "123456",
-  phone_number: Faker::PhoneNumber.phone_number
+  phone_number: 222
   )
 tom.save!
 
@@ -44,7 +36,7 @@ teo = User.new(
   user_name: "TeoF",
   email: "teo@fliq.de",
   password: "123456",
-  phone_number: Faker::PhoneNumber.phone_number
+  phone_number: 333
   )
 teo.save!
 
@@ -53,7 +45,7 @@ egor = User.new(
   user_name: "EgorD",
   email: "egor@fliq.de",
   password: "123456",
-  phone_number: Faker::PhoneNumber.phone_number
+  phone_number: 444
   )
 egor.save!
 
@@ -115,8 +107,8 @@ match1 = Match.new(
   capacity: 2,
   user: tom,
   venue: venue1,
-  start_date: Date.now,
-  end_date: Date.now + 1
+  start_date: Date.today,
+  end_date: Date.today + 1
 )
 match1.save!
 
@@ -124,8 +116,8 @@ match2 = Match.new(
   capacity: 4,
   user: egor,
   venue: venue2,
-  start_date: Date.now + 2,
-  end_date: Date.now + 3
+  start_date: Date.today + 2,
+  end_date: Date.today + 3
 )
 match2.save!
 
