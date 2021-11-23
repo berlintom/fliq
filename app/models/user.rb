@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_one_attached :photo
   has_one :profile
   has_many :matches
   has_many :participations
