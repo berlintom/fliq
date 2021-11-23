@@ -1,9 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+require "open-uri"
 puts "Destroy Everything"
 
 puts "Creating Users"
@@ -15,6 +10,7 @@ vali = User.new(
   password: "123456",
   phone_number: 111
   )
+vali.photo.attach(io: file = URI.open("https://source.unsplash.com/featured/?face"), filename: "profile", content_type: 'image/png')
 vali.save!
 
 tom = User.new(
@@ -24,6 +20,7 @@ tom = User.new(
   password: "123456",
   phone_number: 222
   )
+tom.photo.attach(io: file = URI.open("https://source.unsplash.com/featured/?face"), filename: "profile", content_type: 'image/png')
 tom.save!
 
 teo = User.new(
@@ -33,6 +30,7 @@ teo = User.new(
   password: "123456",
   phone_number: 333
   )
+teo.photo.attach(io: file = URI.open("https://source.unsplash.com/featured/?face"), filename: "profile", content_type: 'image/png')
 teo.save!
 
 egor = User.new(
@@ -42,6 +40,7 @@ egor = User.new(
   password: "123456",
   phone_number: 444
   )
+egor.photo.attach(io: file = URI.open("https://source.unsplash.com/featured/?face"), filename: "profile", content_type: 'image/png')
 egor.save!
 
 puts "Creating Venues"
@@ -52,6 +51,7 @@ venue1 = Venue.new(
   price: 8,
   table_type: "wood",
 )
+venue1.photos.attach(io: file = URI.open("https://source.unsplash.com/featured/?gym"), filename: "venue", content_type: 'image/png')
 venue1.save!
 
 venue2 = Venue.new(
@@ -60,6 +60,7 @@ venue2 = Venue.new(
   price: 0,
   table_type: "stone",
 )
+venue1.photos.attach(io: file = URI.open("https://source.unsplash.com/featured/?gym"), filename: "venue", content_type: 'image/png')
 venue2.save!
 
 puts "Creating Profiles"
@@ -151,6 +152,7 @@ review1 = Review.new(
   user: teo,
   venue: match2.venue
 )
+review1.photo.attach(io: file = URI.open("https://source.unsplash.com/featured/?desk"), filename: "review", content_type: 'image/png')
 review1.save!
 
 review2 = Review.new(
@@ -160,4 +162,7 @@ review2 = Review.new(
   user: vali,
   venue: match1.venue
 )
+review2.photo.attach(io: file = URI.open("https://source.unsplash.com/featured/?desk"), filename: "review", content_type: 'image/png')
 review2.save!
+
+puts "Success!"
