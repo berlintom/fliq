@@ -9,4 +9,29 @@ class MatchesController < ApplicationController
     @match = Match.find(params[:id])
   end
 
+  def new
+    @match = Match.new
+  end
+
+  def create
+    @match = Match.new(params_match)
+    @match.user = current_user
+    if @match.save!
+      redirect_to matches_path
+    else
+      render :new
+    end
+  end
+
+  private
+
+ def params_match
+  params.require(:match).permit(:capacity, :start_date, :end_date, :venue_id)
+  end
+
+  def mymatches
+    @participations = Participation.where(user: current_user)
+    @matches = Match.where(user: current_user)
+  end
+
 end
