@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   patch "/participations/:id/accepted", to: "participations#accept", as: :participation_accept
   patch "/participations/:id/declined", to: "participations#decline", as: :participation_decline
-
+  patch "/participations/:id/team-one", to: "participations#team_one", as: :participation_team_one
+  patch "/participations/:id/team-two", to: "participations#team_two", as: :participation_team_two
   get '/mymatches', to: 'matches#mymatches'
 end
