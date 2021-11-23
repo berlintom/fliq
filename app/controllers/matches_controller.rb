@@ -9,4 +9,9 @@ class MatchesController < ApplicationController
     @match = Match.find(params[:id])
   end
 
+  def mymatches
+    @participations = Participation.where(user: current_user)
+    @matches = Match.where(user: current_user)
+  end
+
 end

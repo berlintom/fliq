@@ -6,4 +6,6 @@ Rails.application.routes.draw do
     resources :participations, only: [:new, :create]
   end
 
+  get '/mymatches', to: 'matches#mymatches'
+
 end
