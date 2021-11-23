@@ -1,36 +1,51 @@
 <div class="container">
   <h1>My booked matches</h1>
-  <% @participations.each do |participation| %>
-    <div class="card">
-      <%=link_to match_path(participation.match), class: "card-trip" do %>
-        <p>When? <%= participation.match.start_date %> - <%= participation.match.end_date %><p>
-        <p>Where? <%= participation.match.venue.address %><p>
-        <p>Match Capacity: <%= participation.match.capacity %></p>
-        <p>Status: <%= participation.status %><p>
-        <p>Team: <%= participation.team %><p>
-      <% end %>
-    </div>
-  <% end %>
-  <h1>My created matches</h1>
-  <% @matches.each do |match| %>
-    <div class="card">
-      <p>When? <%= match.start_date %> - <%= match.end_date %><p>
-      <p>Where? <%= match.venue.address %><p>
-      <p>Match Capacity: <%= match.capacity %></p>
-      <p>Participants: <% match.participations.each do |participation|%>
-        <div class="card-trip">
-          <%= participation.user.user_name %>
-          <%= participation.status %>
-          <%= participation.team %>
-          <% if participation.status == "pending" %>
-  <div class="btn btn-cta"><%= link_to "Accept", participation_accept_path(participation), method: :patch %></div>
-  <div class="btn btn-cta"><%= link_to "Decline", participation_decline_path(participation), method: :patch %></div>
-<% elsif participation.status == "accepted" %>
-  <div class="btn btn-normal"><%= link_to "Decline", participation_decline_path(participation), method: :patch %></div>
-<% else %>
-  <div class="btn btn-normal"><%= link_to "Accept", participation_accept_path(participation), method: :patch %></div>
-<% end %>
+   <% if @participations == nil %>
+      <p>No requestes participations</p>
+    <% else %>
+      <% @participations.each do |participation| %>
+        <div class="card">
+          <%=link_to match_path(participation.match), class: "card-trip" do %>
+            <p>When? <%= participation.match.start_date %> - <%= participation.match.end_date %><p>
+            <p>Where? <%= participation.match.venue.address %><p>
+            <p>Match Capacity: <%= participation.match.capacity %></p>
+            <p>Status: <%= participation.status %><p>
+            <p>Team: <%= participation.team %><p>
+          <% end %>
         </div>
-      <% end %></p>
-  <% end %>
+      <% end %>
+    <% end %>
+
+  <h1>My created matches</h1>
+    <% if @matches == nil %>
+      <p>No created matches</p>
+    <% else %>
+      <% @matches.each do |match| %>
+        <div class="card">
+          <p>When? <%= match.start_date %> - <%= match.end_date %><p>
+          <p>Where? <%= match.venue.address %><p>
+          <p>Match Capacity: <%= match.capacity %></p>
+          <% if match.participations == nil %>
+            <p>Participants: No Participations yet</p>
+          <% else %>
+            <p>Participants:</p>
+            <% match.participations.each do |participation|%>
+              <div class="card">
+                <%= participation.user.user_name %>
+                <%= participation.status %>
+                <%= participation.team %>
+                <% if participation.status == "pending" %>
+                  <div class="btn btn-primary"><%= link_to "Accept", participation_accept_path(participation), method: :patch %></div>
+                  <div class="btn btn-primary"><%= link_to "Decline", participation_decline_path(participation), method: :patch %></div>
+                <% elsif participation.status == "accepted" %>
+                  <div class="btn btn-primary"><%= link_to "Decline", participation_decline_path(participation), method: :patch %></div>
+                <% else %>
+                  <div class="btn btn-primary"><%= link_to "Accept", participation_accept_path(participation), method: :patch %></div>
+                <% end %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+    <% end %>
+    <% end %>
 </div>
