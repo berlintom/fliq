@@ -13,6 +13,7 @@ class ParticipationsController < ApplicationController
     @participation = Participation.find(params[:id])
     @participation.status = "accepted"
     @participation.save
+    @match = @participation.match
     redirect_to mymatches_path
   end
 
