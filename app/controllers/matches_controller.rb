@@ -2,9 +2,8 @@ class MatchesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home, :index, :show]
 
   def index
-    @matches = Match.all.order(created_at: :desc)
-
-     @markers = @matches.map do |match|
+    @matches = Match.where(full: false).order(created_at: :desc)
+    @markers = @matches.map do |match|
       {
         lat: match.venue.latitude,
         lng: match.venue.longitude,
@@ -12,6 +11,7 @@ class MatchesController < ApplicationController
         image_url: helpers.asset_url("ping-pong-marker.png")
       }
     end
+
   end
 
   def show
@@ -50,10 +50,5 @@ class MatchesController < ApplicationController
 
   def params_match
     params.require(:match).permit(:capacity, :start_date, :end_date, :venue_id)
-  end
-
-  def mymatches
-    @participations = Participation.where(user: current_user)
-    @matches = Match.where(user: current_user)
   end
 end
