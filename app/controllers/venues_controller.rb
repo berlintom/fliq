@@ -1,19 +1,14 @@
 class VenuesController < ApplicationController
-
   def index
     @venues = Venue.all
-    # the `geocoded` scope filters only venues with coordinates (latitude & longitude)
-    @markers = @venues.geocoded.map do |venue|
+
+      @markers = @venues.geocoded.map do |venue|
       {
         lat: venue.latitude,
-        lng: venue.longitude
+        lng: venue.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { venue: venue }),
+        image_url: helpers.asset_url("ping-pong-marker.png")
       }
     end
-
   end
-  # to be edited
-  # def venue_params
-  #   params.require(:venue).permit(:title, :body, photos: [])
-  # end
-
 end

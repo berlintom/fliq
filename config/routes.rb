@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :participations, only: [:new, :create]
   end
 
-  resources :venues, only: [:index]
+  resources :venues, only: [:index, :show]
 
   patch "/participations/:id/accepted", to: "participations#accept", as: :participation_accept
   patch "/participations/:id/declined", to: "participations#decline", as: :participation_decline
