@@ -18,9 +18,8 @@ export default class extends Controller {
   }
 }
 
-// app/javascript/controllers/mapbox_controller.js
+// Add markers to the map
 connect() {
-  // [...]
   this._addMarkersToMap();
 }
 
@@ -32,14 +31,13 @@ _addMarkersToMap() {
   });
 }
 
-// app/javascript/controllers/mapbox_controller.js
+// Fit map to markers
 connect() {
   // [...]
   this._addMarkersToMap();
   this._fitMapToMarkers();
 }
 
-// [...]
 _fitMapToMarkers() {
   const bounds = new mapboxgl.LngLatBounds();
   this.markersValue.forEach(marker => bounds.extend([marker.lng, marker.lat]));

@@ -1,3 +1,12 @@
+<div class="container">
+  <h1>Find a venue</h1>
+  <div class="card">
+    <% @venues.each do |venue| %>
+      <p>Address: <%= venue.address %><p>
+    <% end %>
+  </div>
+</div>
+
 <div style="width: 100%; height: 600px;"
   data-controller="mapbox"
   data-mapbox-markers-value="<%= @markers.to_json %>"
