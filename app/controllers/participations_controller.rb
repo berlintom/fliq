@@ -41,7 +41,8 @@ class ParticipationsController < ApplicationController
 
   def update_teams(match)
     @participations = match.participations.where(status: "accepted")
-    @orderedparticipations = @participations.order(point_sum: :desc)
+    @orderedparticipations = @participations.order_by(&:point_sum)
+    binding.pry
     if match.capacity == 4
       @orderedparticipations[0].team = 1
       @orderedparticipations[3].team = 1
