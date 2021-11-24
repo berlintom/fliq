@@ -6,11 +6,22 @@
       <% @participations.each do |participation| %>
         <div class="card">
           <%=link_to match_path(participation.match), class: "card-trip" do %>
+            <% if participation.match.user ==  participation.user %>
+              <p><strong>You created this match</strong></p>
+            <% end %>
             <p>When? <%= participation.match.start_date %> - <%= participation.match.end_date %><p>
             <p>Where? <%= participation.match.venue.address %><p>
             <p>Match Capacity: <%= participation.match.capacity %></p>
             <p>Status: <%= participation.status %><p>
             <p>Team: <%= participation.team %><p>
+            <p>Participants:</p>
+            <ol>
+              <% if participation.match.user ==  participation.user %>
+                <li>You</li>
+              <% else %>
+                <li><%= participation.user.user_name %></li>
+              <% end %>
+            </ol>
           <% end %>
         </div>
       <% end %>
@@ -25,11 +36,22 @@
           <p>When? <%= match.start_date %> - <%= match.end_date %><p>
           <p>Where? <%= match.venue.address %><p>
           <p>Match Capacity: <%= match.capacity %></p>
+          <p>Participants:</p>
+            <ol>
+              <% match.participations.each do |participation|%>
+                <% if  participation.user == match.user %>
+                  <li>You</li>
+                <% else %>
+                  <li><%= participation.user.user_name%></li>
+                <% end %>
+              <% end %>
+            </ol>
           <% if match.participations == nil %>
-            <p>Participants: No Participations yet</p>
+            <p>Participants: No requested participations yet</p>
           <% else %>
-            <p>Participants:</p>
+            <p>requested participations:</p>
             <% match.participations.each do |participation|%>
+             <% if participation.user != match.user %>
               <div class="card">
                 <% if participation.status == "pending" %>
                   <p><%= participation.user.user_name %> is waiting for your answer!</p>
@@ -42,6 +64,7 @@
                   <p>You declined <%= participation.user.user_name %>!</p>
                 <% end %>
               </div>
+              <% end %>
             <% end %>
           <% end %>
         </div>
