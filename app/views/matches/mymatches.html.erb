@@ -9,9 +9,9 @@
             <% if participation.match.user ==  participation.user %>
               <p><strong>You created this match</strong></p>
             <% end %>
-            <p>When? <%= participation.match.start_date %> - <%= participation.match.end_date %><p>
+            <p>When? <%= participation.match.start_date.strftime("%d.%m.%y") %> - <%= participation.match.end_date.strftime("%d.%m.%y") %><p>
             <p>Where? <%= participation.match.venue.address %><p>
-            <p>Match Capacity: <%= participation.match.capacity %></p>
+            <p>How many Players? <%= participation.match.capacity %></p>
             <p>Status: <%= participation.status %><p>
             <p>Team: <%= participation.team %><p>
             <p>Participants:</p>
@@ -33,8 +33,11 @@
     <% else %>
       <% @matches.each do |match| %>
         <div class="card">
-          <p>When? <%= match.start_date %> - <%= match.end_date %><p>
+          <p>When? <%= match.start_date.strftime("%d.%m.%y") %> - <%= match.end_date.strftime("%d.%m.%y") %><p>
           <p>Where? <%= match.venue.address %><p>
+<<<<<<< HEAD
+          <p>How many Players? <%= match.capacity %></p>
+=======
           <p>Match Capacity: <%= match.capacity %></p>
           <p>Participants:</p>
             <ol>
@@ -46,6 +49,7 @@
                 <% end %>
               <% end %>
             </ol>
+>>>>>>> master
           <% if match.participations == nil %>
             <p>Participants: No requested participations yet</p>
           <% else %>

@@ -1,5 +1,10 @@
 <div class="container">
   <h1>Find a match</h1>
+  <div style="width: 100%; height: 600px;"
+    data-controller="mapbox"
+    data-mapbox-markers-value="<%= @markers.to_json %>"
+    data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
   <% @matches.each do |match| %>
   <div class="card-match">
     <% participations = match.participations %>
@@ -7,6 +12,7 @@
     <% participations.each do |participation| %>
       <% userparticipants << participation.user %>
     <% end %>
+
     <%=link_to match_path(match) do %>
       <%= cl_image_tag match.user.photo.key, class: "match-avatar" %>
       <div class="match-info">
@@ -27,8 +33,6 @@
             <div class="btn btn-primary"><%= link_to "Participate", match_participations_path(match), method: :post %></div>
             <p>Match Capacity: <%= match.capacity %></p>
           <% end %>
-
-
         </div>
       </div>
   </div>
