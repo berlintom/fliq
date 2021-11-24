@@ -22,6 +22,10 @@ class MatchesController < ApplicationController
     @match = Match.new(params_match)
     @match.user = current_user
     if @match.save!
+      @participation = Participation.new(status: "accepted", team: nil)
+      @participation.match = @match
+      @participation.user = current_user
+      @participation.save
       redirect_to matches_path
     else
       render :new
