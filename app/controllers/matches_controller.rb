@@ -42,5 +42,4 @@ class MatchesController < ApplicationController
   def params_match
     params.require(:match).permit(:capacity, :start_date, :end_date, :venue_id)
   end
-
 end

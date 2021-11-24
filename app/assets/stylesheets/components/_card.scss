@@ -1,6 +1,6 @@
 .card {
   box-shadow: 0px 0px 4px rgb(170, 169, 169);
-  padding: 10px;
+  padding: 20px;
   margin: 10px;
     &:hover {
     box-shadow: 0px 0px 8px rgb(170, 169, 169);
@@ -9,4 +9,53 @@
 
 .card a {
   color: black;
+}
+
+// Card-Match
+.card-match {
+  display: flex;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  text-align: center;
+  margin: 20px;
+  border-radius: 50px;
+}
+
+.match-avatar {
+  height: 140px;
+  width: 140px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.match-info {
+  display: flex;
+
+}
+
+.card-match-infos {
+  padding: 16px;
+
+}
+
+.card-match h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-match p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.card-match .btn a {
+  color: black;
+}
+
+.card-match .btn {
+  border-radius: 20%;
 }
