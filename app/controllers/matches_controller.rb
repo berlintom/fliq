@@ -42,9 +42,4 @@ class MatchesController < ApplicationController
   def params_match
     params.require(:match).permit(:capacity, :start_date, :end_date, :venue_id)
   end
-
-  def mymatches
-    @participations = Participation.where(user: current_user)
-    @matches = Match.where(user: current_user)
-  end
 end

@@ -35,9 +35,7 @@
         <div class="card">
           <p>When? <%= match.start_date.strftime("%d.%m.%y") %> - <%= match.end_date.strftime("%d.%m.%y") %><p>
           <p>Where? <%= match.venue.address %><p>
-<<<<<<< HEAD
           <p>How many Players? <%= match.capacity %></p>
-=======
           <p>Match Capacity: <%= match.capacity %></p>
           <p>Participants:</p>
             <ol>
@@ -49,7 +47,6 @@
                 <% end %>
               <% end %>
             </ol>
->>>>>>> master
           <% if match.participations == nil %>
             <p>Participants: No requested participations yet</p>
           <% else %>
