@@ -3,6 +3,15 @@ class MatchesController < ApplicationController
 
   def index
     @matches = Match.where(full: false).order(created_at: :desc)
+    @markers = @matches.map do |match|
+      {
+        lat: match.venue.latitude,
+        lng: match.venue.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { venue: match.venue }),
+        image_url: helpers.asset_url("ping-pong-marker.png")
+      }
+    end
+
   end
 
   def show
