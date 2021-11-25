@@ -4,5 +4,4 @@ class Match < ApplicationRecord
   has_many :participations
   has_many :reviews
   validates :capacity, numericality: { only_integer: true }
-
 end

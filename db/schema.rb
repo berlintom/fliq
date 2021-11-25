@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_23_165854) do
+ActiveRecord::Schema.define(version: 2021_11_24_114219) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2021_11_23_165854) do
     t.date "date"
     t.time "start_time"
     t.time "end_time"
+    t.text "comment"
     t.index ["user_id"], name: "index_matches_on_user_id"
     t.index ["venue_id"], name: "index_matches_on_venue_id"
   end

@@ -1,15 +1,32 @@
 <div class="container">
   <div class="form-container">
+<!--
     <h2>Create your match</h2>
     <div class="form">
     <%= simple_form_for @match do |f|%>
-    <%= f.input :date, label: "Choose the day" %>
-    <%= f.input :start_time, label: "Start at" %>
-    <%= f.input :end_time, label: "Finish at" %>
-    <%= f.input :capacity, input_html: {value: 2}%>
-    <%= f.input :venue_id, label: 'Value ID' %>
+    <%= f.input :date, as: :date, html5: true, label: "Choose the day" %>
+    <%= f.input :start_time, label: "Start at", input_html: { id: "scroller" } %>
+    <%= f.input :end_time, label: "Finish by" %>
+    <%= f.input :capacity, collection: [2, 4] %>
+    <%= f.input :venue_id, label: 'Venue ID' %>
+    <%= f.input :comment, label: "Comments" %>
     <div class="btn btn-normal btn-cta"><%= f.button :submit %></div>
     <% end %>
     </div>
+  </div>
+</div>
+-->
+<div class="form-wrapper" style="width: 400px; margin: 0 auto;">
+    <h2>Create your match</h2>
+
+    <%= simple_form_for @match do |f| %>
+      <%= f.input :date, as: :date, required: false, input_html: {class: ""}, html5: true %>
+      <%= f.input :start_time, as: :time, required: false, input_html: {class: "datepicker background-white"}, html5: true %>
+      <%= f.input :end_time, as: :time, required: false, input_html: {class: "datepicker background-white"}, html5: true %>
+      <%= f.input :capacity, collection: [2, 4] %>
+      <%= f.association :venue, collection: Venue.all.map { |venue| venue.address}, label: 'Venue ID' %>
+      <%= f.input :comment, label: "Comments", placeholder: 'Tell us about yourself' %>
+      <%= f.button :submit, "fliQ", class: "btn btn-primary" %>
+    <% end %>
   </div>
 </div>

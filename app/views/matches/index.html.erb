@@ -8,7 +8,7 @@
     <% end %>
     <div class="card">
       <%=link_to match_path(match), class: "card-trip" do %>
-        <p>When? <%= match.start_date %> - <%= match.end_date %><p>
+        <p>When? <%= match.start_time %> - <%= match.end_time %><p>
         <p>Where? <%= match.venue.address %><p>
         <p>Match Capacity: <%= match.capacity %></p>
         <% if match.user == current_user %>
