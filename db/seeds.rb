@@ -108,6 +108,8 @@ match1 = Match.new(
 )
 match1.save!
 
+
+
 match2 = Match.new(
   capacity: 4,
   user: egor,
@@ -123,7 +125,6 @@ participation1 = Participation.new(
   user: vali,
   match: match1,
   status: "pending",
-  team: 1
 )
 participation1.save!
 
@@ -131,7 +132,6 @@ participation2 = Participation.new(
   user: teo,
   match: match2,
   status: "pending",
-  team: 1
 )
 participation2.save!
 
@@ -139,9 +139,22 @@ participation3 = Participation.new(
   user: tom,
   match: match2,
   status: "pending",
-  team: 2
 )
 participation3.save!
+
+participation4 = Participation.new(
+  user: tom,
+  match: match1,
+  status: "accepted",
+)
+participation4.save!
+
+participation5 = Participation.new(
+  user: egor,
+  match: match2,
+  status: "accepted",
+)
+participation5.save!
 
 puts "Creating Reviews"
 

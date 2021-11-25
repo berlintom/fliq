@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :matches
   has_many :participations
   has_many :reviews
+  delegate :point_sum, to: :profile
 
   validates :first_name, :user_name, :phone_number, :photo, presence: true
   validates :phone_number, :user_name, uniqueness: true

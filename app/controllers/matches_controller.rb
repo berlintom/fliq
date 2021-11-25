@@ -2,7 +2,16 @@ class MatchesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home, :index, :show]
 
   def index
-    @matches = Match.all.order(created_at: :desc)
+    @matches = Match.where(full: false).order(created_at: :desc)
+    @markers = @matches.map do |match|
+      {
+        lat: match.venue.latitude,
+        lng: match.venue.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { venue: match.venue }),
+        image_url: helpers.asset_url("ping-pong-marker.png")
+      }
+    end
+
   end
 
   def show
@@ -21,27 +30,25 @@ class MatchesController < ApplicationController
   def create
     @match = Match.new(params_match)
     @match.user = current_user
-    if @match.save
+    if @match.save!
+      @participation = Participation.new(status: "accepted", team: nil)
+      @participation.match = @match
+      @participation.user = current_user
+      @participation.save
       redirect_to matches_path
     else
       render :new
     end
   end
 
-
   def mymatches
     @participations = Participation.where(user: current_user)
     @matches = Match.where(user: current_user)
   end
 
-
   private
-
-
 
   def params_match
     params.require(:match).permit(:capacity, :start_time, :end_time, :venue_id, :date, :comment)
   end
-
-
 end

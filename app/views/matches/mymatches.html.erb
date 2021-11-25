@@ -6,11 +6,26 @@
       <% @participations.each do |participation| %>
         <div class="card">
           <%=link_to match_path(participation.match), class: "card-trip" do %>
-            <p>When? <%= participation.match.start_date %> - <%= participation.match.end_date %><p>
+            <% if participation.match.user ==  participation.user %>
+              <p><strong>You created this match</strong></p>
+            <% end %>
+            <p>When? <%= participation.match.start_date.strftime("%d.%m.%y") %> - <%= participation.match.end_date.strftime("%d.%m.%y") %><p>
             <p>Where? <%= participation.match.venue.address %><p>
-            <p>Match Capacity: <%= participation.match.capacity %></p>
+            <p>Match Capacity: <%= participation.match.capacity %> Full?  <%= participation.match.full %></p>
             <p>Status: <%= participation.status %><p>
             <p>Team: <%= participation.team %><p>
+            <p>Participants:</p>
+            <%match = participation.match%>
+            <%participations = match.participations%>
+            <ol>
+              <% participations.each do |acceptedparticipation| %>
+                <% if acceptedparticipation.match.user ==  acceptedparticipation.user %>
+                  <li>You</li>
+                <% elsif acceptedparticipation.status == "accepted" %>
+                  <li><%= acceptedparticipation.user.user_name %></li>
+                <% end %>
+              <% end %>
+             </ol>
           <% end %>
         </div>
       <% end %>
@@ -22,14 +37,25 @@
     <% else %>
       <% @matches.each do |match| %>
         <div class="card">
-          <p>When? <%= match.start_date %> - <%= match.end_date %><p>
+          <p>When? <%= match.start_date.strftime("%d.%m.%y") %> - <%= match.end_date.strftime("%d.%m.%y") %><p>
           <p>Where? <%= match.venue.address %><p>
           <p>Match Capacity: <%= match.capacity %></p>
+          <p>Participants:</p>
+            <ol>
+              <% match.participations.each do |participation|%>
+                <% if  participation.user == match.user %>
+                  <li>You</li>
+                <% elsif participation.status == "accepted" %>
+                  <li><%= participation.user.user_name %></li>
+                <% end %>
+              <% end %>
+            </ol>
           <% if match.participations == nil %>
-            <p>Participants: No Participations yet</p>
+            <p>Participants: No requested participations yet</p>
           <% else %>
-            <p>Participants:</p>
+            <p>requested participations:</p>
             <% match.participations.each do |participation|%>
+             <% if participation.user != match.user %>
               <div class="card">
                 <% if participation.status == "pending" %>
                   <p><%= participation.user.user_name %> is waiting for your answer!</p>
@@ -38,20 +64,11 @@
                 <% elsif participation.status == "accepted" %>
                   <p>You can look forward to play against <%= participation.user.user_name %>!</p>
                   <p><%= participation.user.user_name %> is playing in Team <%= participation.team %>
-                  <div class="btn btn-primary"><%= link_to "Decline", participation_decline_path(participation), method: :patch %></div>
-                  <% if participation.team == nil %>
-                    <%= link_to "Team 1", participation_team_one_path(participation), method: :patch, class: "dropdown-item" %>
-                    <%= link_to "Team 2", participation_team_two_path(participation), method: :patch, class: "dropdown-item" %>
-                  <% elsif participation.team == 1 %>
-                    <%= link_to "Team 2", participation_team_two_path(participation), method: :patch, class: "dropdown-item" %>
-                  <% elsif participation.team == 2 %>
-                    <%= link_to "Team 1", participation_team_one_path(participation), method: :patch, class: "dropdown-item" %>
-                  <% end %>
                 <% else %>
                   <p>You declined <%= participation.user.user_name %>!</p>
-                  <div class="btn btn-primary"><%= link_to "Accept", participation_accept_path(participation), method: :patch %></div>
                 <% end %>
               </div>
+              <% end %>
             <% end %>
           <% end %>
         </div>

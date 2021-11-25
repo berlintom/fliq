@@ -1,0 +1,9 @@
+<div class="container">
+  <%= cl_image_tag @user.photo.key, width: 180%>
+  <p>Username: <%= @user.user_name %></p>
+  <p>First Name: <%= @user.first_name %></p>
+  <p>Points: <%= @user.profile.point_sum %></p>
+  <p>Home Venue: <%= @user.profile.venue.address %></p>
+  <p>Equipment Status: <%= @user.profile.equipment %></p>
+  <p>Last matches:</p>
+</div>
