@@ -6,38 +6,37 @@
     data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
   <% @matches.each do |match| %>
-  <div class="card-match">
-    <% participations = match.participations %>
-    <% userparticipants = [] %>
-    <% participations.each do |participation| %>
-      <% userparticipants << participation.user %>
-    <% end %>
-
-    <%=link_to match_path(match) do %>
-      <%= cl_image_tag match.user.photo.key, class: "match-avatar" %>
-      <div class="match-info">
-        <div class="card-match-infos">
-          <h2>Who? <%= match.user.user_name %><h2>
-          <p>When? <%= match.start_date %> - <%= match.end_date %><p>
-          <p>Where? <%= match.venue.address %><p>
+      <% participations = match.participations %>
+      <% userparticipants = [] %>
+      <% participations.each do |participation| %>
+        <% userparticipants << participation.user %>
+      <% end %>
+      <div class="card-match">
+        <%=link_to match_path(match) do %>
+        <div class="match-info">
+          <%= cl_image_tag match.user.photo.key, class: "match-avatar" %>
+          <div class="match">
+              <h2><%= match.user.user_name %><h2>
+              <p><%= match.start_date %> - <%= match.end_date %><p>
+              <p><%= match.venue.address %><p>
+              <p>Match Capacity: <%= match.capacity %></p>
+              <% if match.user == current_user %>
+                <div class="status-info">
+                  <p><em>You created this match</em></p>
+                </div>
+              <% elsif userparticipants.include?(current_user) %>
+                <div class="status-info">
+                  <p><em>requested</em></p>
+                </div>
+              <% else %>
+                <div class="status-info">
+                  <p><em>check it out</em></p>
+                </div>
+              <% end %>
+          </div>
         </div>
-        <div class="match-status-info">
-          <% if match.user == current_user %>
-            <p><em>You created this match</em></p>
-            <p>Match Capacity: <%= match.capacity %></p>
-          <% elsif userparticipants.include?(current_user) %>
-            <p><em>You already requested to play</em></p>
-            <div class="btn btn-primary"><%= link_to "Check status", mymatches_path %></div>
-            <p>Match Capacity: <%= match.capacity %></p>
-          <% else %>
-            <div class="btn btn-primary"><%= link_to "Participate", match_participations_path(match), method: :post %></div>
-            <p>Match Capacity: <%= match.capacity %></p>
-          <% end %>
-        </div>
+        <% end %>
       </div>
-  </div>
-    <% end %>
   <% end %>
+  <div><%= link_to "Create a new match", new_match_path %></div>
 </div>
-
-<div><%= link_to "Create a new match", new_match_path %></div>
