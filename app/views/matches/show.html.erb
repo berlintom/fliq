@@ -18,5 +18,6 @@
       <% end %>
       <div class="btn btn-primary"><%= link_to "Back to all matches", matches_path %></div>
     <% end %>
+    <%= link_to "Who is #{@match.user.user_name}", user_path(@match.user) %></div>
   </div>
 </div>
