@@ -1,37 +1,85 @@
 <div class="container">
-  <h1>My booked matches</h1>
+<div id="main_content">
+  <div class="tab-header">
+  <li class="selected" id="booked" onclick="change_tab(this.id);">Booked matches</li>
+  <li class="notselected" id="pending" onclick="change_tab(this.id);">Pending matches</li>
+  <li class="notselected" id="created" onclick="change_tab(this.id);">Created matches</li>
+  </div>
+<div class="hidden_desc" id="booked_desc">
    <% if @participations == nil %>
-      <p>No requestes participations</p>
+      <p>No requested participations</p>
     <% else %>
-      <% @participations.each do |participation| %>
-        <div class="card">
-          <%=link_to match_path(participation.match), class: "card-trip" do %>
-            <% if participation.match.user ==  participation.user %>
-              <p><strong>You created this match</strong></p>
-            <% end %>
-            <p>When? <%= participation.match.start_time.strftime("%d.%m.%y") %> - <%= participation.match.end_time.strftime("%d.%m.%y") %><p>
-            <p>Where? <%= participation.match.venue.address %><p>
-            <p>Match Capacity: <%= participation.match.capacity %> Full?  <%= participation.match.full %></p>
-            <p>Status: <%= participation.status %><p>
-            <p>Team: <%= participation.team %><p>
-            <p>Participants:</p>
-            <%match = participation.match%>
-            <%participations = match.participations%>
-            <ol>
-              <% participations.each do |acceptedparticipation| %>
-                <% if acceptedparticipation.match.user ==  acceptedparticipation.user %>
-                  <li>You</li>
-                <% elsif acceptedparticipation.status == "accepted" %>
-                  <li><%= acceptedparticipation.user.user_name %></li>
+        <% @participations.each do |participation| %>
+          <%if participation.match.full%>
+            <div class="card">
+              <%=link_to match_path(participation.match), class: "card-trip" do %>
+                <% if participation.match.user ==  participation.user %>
+                  <p><strong>You created this match</strong></p>
                 <% end %>
+                <p>When? <%= participation.match.start_time.strftime("%d.%m.%y") %> - <%= participation.match.end_time.strftime("%d.%m.%y") %><p>
+                <p>Where? <%= participation.match.venue.address %><p>
+                <p>Match Capacity: <%= participation.match.capacity %> Full?  <%= participation.match.full %></p>
+                <p>Status: <%= participation.status %><p>
+                <p>Team: <%= participation.team %><p>
+                <p>Participants:</p>
+                <%match = participation.match%>
+                <%participations = match.participations%>
+                <ol>
+                  <% participations.each do |acceptedparticipation| %>
+                    <% if acceptedparticipation.match.user ==  acceptedparticipation.user %>
+                      <li>You</li>
+                    <% elsif acceptedparticipation.status == "accepted" %>
+                      <li><%= acceptedparticipation.user.user_name %></li>
+                    <% end %>
+                  <% end %>
+                </ol>
               <% end %>
-             </ol>
+            </div>
           <% end %>
-        </div>
+        <% end %>
+      <% end %>
+</div>
+
+<div class='hidden_desc' id="pending_desc">
+    <% if @participations == nil %>
+      <p>No requested participations</p>
+    <% else %>
+      <% @matches.each do |match| %>
+        <% if match.full? %>
+          <p>No matches</p>
+        <% else %>
+          <% @participations.each do |participation| %>
+            <div class="card">
+              <%=link_to match_path(participation.match), class: "card-trip" do %>
+                <% if participation.match.user ==  participation.user %>
+                  <p><strong>You created this match</strong></p>
+                <% end %>
+                <p>When? <%= participation.match.start_date.strftime("%d.%m.%y") %> - <%= participation.match.end_date.strftime("%d.%m.%y") %><p>
+                <p>Where? <%= participation.match.venue.address %><p>
+                <p>Match Capacity: <%= participation.match.capacity %> Full?  <%= participation.match.full %></p>
+                <p>Status: <%= participation.status %><p>
+                <p>Team: <%= participation.team %><p>
+                <p>Participants:</p>
+                <%match = participation.match%>
+                <%participations = match.participations%>
+                <ol>
+                  <% participations.each do |acceptedparticipation| %>
+                    <% if acceptedparticipation.match.user ==  acceptedparticipation.user %>
+                      <li>You</li>
+                    <% elsif acceptedparticipation.status == "accepted" %>
+                      <li><%= acceptedparticipation.user.user_name %></li>
+                    <% end %>
+                  <% end %>
+                </ol>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
       <% end %>
     <% end %>
+</div>
 
-  <h1>My created matches</h1>
+<div class='hidden_desc' id="created_desc">
     <% if @matches == nil %>
       <p>No created matches</p>
     <% else %>
@@ -74,4 +122,42 @@
         </div>
       <% end %>
     <% end %>
+</div>
+
+<div id="page_content">
+   <% if @participations == nil %>
+      <p>No requested participations</p>
+    <% else %>
+        <% @participations.each do |participation| %>
+          <%if participation.match.full%>
+            <div class="card">
+              <%=link_to match_path(participation.match), class: "card-trip" do %>
+                <% if participation.match.user ==  participation.user %>
+                  <p><strong>You created this match</strong></p>
+                <% end %>
+                <p>When? <%= participation.match.start_date.strftime("%d.%m.%y") %> - <%= participation.match.end_date.strftime("%d.%m.%y") %><p>
+                <p>Where? <%= participation.match.venue.address %><p>
+                <p>Match Capacity: <%= participation.match.capacity %> Full?  <%= participation.match.full %></p>
+                <p>Status: <%= participation.status %><p>
+                <p>Team: <%= participation.team %><p>
+                <p>Participants:</p>
+                <%match = participation.match%>
+                <%participations = match.participations%>
+                <ol>
+                  <% participations.each do |acceptedparticipation| %>
+                    <% if acceptedparticipation.match.user ==  acceptedparticipation.user %>
+                      <li>You</li>
+                    <% elsif acceptedparticipation.status == "accepted" %>
+                      <li><%= acceptedparticipation.user.user_name %></li>
+                    <% end %>
+                  <% end %>
+                </ol>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+</div>
+
+</div>
 </div>
