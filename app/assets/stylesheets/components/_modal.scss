@@ -1,7 +1,7 @@
-.event-modal {
+.match-modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    z-index: 2; /* Sit on top */
     padding-top: 100px; /* Location of the box */
     left: 0;
     top: 0;
@@ -11,21 +11,21 @@
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
-.event-modal-content {
+.match-modal-content {
     background-color: #FEFEFE;
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
 }
-.event-modal-close {
+.match-modal-close {
     color: #AAAAAA;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
-.event-modal-close:hover,
-.event-modal-close:focus {
+.match-modal-close:hover,
+.match-modal-close:focus {
   color: #000;
   text-decoration: none;
   cursor: pointer;

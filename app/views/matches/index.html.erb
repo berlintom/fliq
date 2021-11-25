@@ -5,14 +5,13 @@
     data-mapbox-markers-value="<%= @markers.to_json %>"
     data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
-  <% @matches.each do |match| %>
+  <% @matches.each_with_index do |match, ind| %>
       <% participations = match.participations %>
       <% userparticipants = [] %>
       <% participations.each do |participation| %>
         <% userparticipants << participation.user %>
       <% end %>
-      <div class="card-match">
-        <%=link_to match_path(match) do %>
+      <div class="card-match" data-matchId="<%= ind %>">
         <div class="match-info">
           <%= cl_image_tag match.user.photo.key, class: "match-avatar" %>
           <div class="match">
@@ -35,8 +34,34 @@
               <% end %>
           </div>
         </div>
-        <% end %>
+      </div>
+
+      <div class="match-modal" id="match-modal-<%= ind %>">
+        <div class="match-modal-content">
+          <p><%= match.user.user_name %></p>
+          <p><%= match.start_date %> - <%= match.end_date %><p>
+          <p><%= match.venue.address %><p>
+          <p>Match Capacity: <%= match.capacity %></p>
+          <span class="match-modal-close" id="match-modal-close-<%= ind %>">&times;</span>
+        </div>
       </div>
   <% end %>
   <div><%= link_to "Create a new match", new_match_path %></div>
 </div>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const matches = document.querySelectorAll(".card-match");
+    const close = document.querySelectorAll(".match-modal-close");
+    matches.forEach(match => {
+      const modal = document.getElementById(`match-modal-${match.dataset.matchid}`)
+      const closeButton = document.getElementById(`match-modal-close-${match.dataset.matchid}`)
+      match.onclick = function(event) {
+        modal.style.display = "block";
+      }
+      closeButton.onclick = function(event) {
+        modal.style.display = "none";
+      }
+    })
+  });
+</script>
