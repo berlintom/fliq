@@ -1,0 +1,28 @@
+<% @venue.events.each_with_index do |event, ind| %>
+    <button class="event-modal-button btn-primary" data-buttonId="<%= ind %>">
+      <%= event.starts_at %> until <%= event.ends_at %>
+    </button>
+    <div class="event-modal" id="event-modal-<%= ind %>">
+      <div class="event-modal-content">
+        <%= event.starts_at %> until <%= event.ends_at %>
+        <span class="event-modal-close" id="event-modal-close-<%= ind %>">&times;</span>
+      </div>
+    </div>
+  <% end %>
+</div>
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const btn = document.querySelectorAll(".event-modal-button");
+    const close = document.querySelectorAll(".event-modal-close");
+    btn.forEach(button => {
+      const modal = document.getElementById(`event-modal-${button.dataset.buttonid}`)
+      const closeButton = document.getElementById(`event-modal-close-${button.dataset.buttonid}`)
+      button.onclick = function(event) {
+        modal.style.display = "block";
+      }
+      closeButton.onclick = function(event) {
+        modal.style.display = "none";
+      }
+    })
+  });
+</script>
