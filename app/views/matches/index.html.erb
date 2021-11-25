@@ -37,11 +37,14 @@
       </div>
       <div class="match-modal" id="match-modal-<%= ind %>">
         <div class="match-modal-content animate-bottom">
-           <p><%= match.user.user_name %></p>
-           <p><%= match.start_date %> - <%= match.end_date %><p>
-           <p><%= match.venue.address %><p>
-           <p>Match Capacity: <%= match.capacity %></p>
+          <%= cl_image_tag match.user.photo.key, class: "match-avatar" %>
+          <p>🏓 <%= match.user.user_name %> is the host</p>
+          <p>🕒 <%= match.start_date.strftime("%d.%m.%y") %> @ 3 P.M. </p>
+          <p><%= link_to "Open Venue in Maps" "https://www.google.com/maps/search/?api=1&query=#{match.venue.longitude}%2-#{match.venue.latitude}" %></p>
+          <p>📍 <%= match.venue.address %><p>
+          <p>👨‍👩‍👧‍👧 <%= match.capacity %> players can join</p>
           <span class="match-modal-close" id="match-modal-close-<%= ind %>">&times;</span>
+          <br>
         </div>
       </div>
   <% end %>

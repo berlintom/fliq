@@ -11,13 +11,13 @@
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
     background: rgba(0,0,0,0.4);
-    // box-shadow: 0px 0px 4px rgb(170, 169, 169);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
 .match-modal p{
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1.4;
-    opacity: .7;
+    opacity: .8;
     margin-bottom: 0;
     margin-top: 8px;
     color: black;
@@ -28,14 +28,14 @@
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    width: 100%;
     margin: 20px;
-    border-radius: 50px;
+    border-top-right-radius: 255px;
 }
 .match-modal-close {
-    color: #AAAAAA;
+    color: #F86175;
     float: right;
-    font-size: 28px;
+    font-size: 35px;
     font-weight: bold;
 }
 .match-modal-close:hover,
@@ -47,7 +47,7 @@
 
 .animate-bottom {
   position: relative;
-  animation: animatebottom 0.4s;
+  animation: animatebottom 0.5s;
 }
 
 @keyframes animatebottom {
