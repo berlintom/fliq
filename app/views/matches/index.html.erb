@@ -35,13 +35,12 @@
           </div>
         </div>
       </div>
-
       <div class="match-modal" id="match-modal-<%= ind %>">
-        <div class="match-modal-content">
-          <p><%= match.user.user_name %></p>
-          <p><%= match.start_date %> - <%= match.end_date %><p>
-          <p><%= match.venue.address %><p>
-          <p>Match Capacity: <%= match.capacity %></p>
+        <div class="match-modal-content animate-bottom">
+           <p><%= match.user.user_name %></p>
+           <p><%= match.start_date %> - <%= match.end_date %><p>
+           <p><%= match.venue.address %><p>
+           <p>Match Capacity: <%= match.capacity %></p>
           <span class="match-modal-close" id="match-modal-close-<%= ind %>">&times;</span>
         </div>
       </div>

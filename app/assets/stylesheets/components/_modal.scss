@@ -10,13 +10,27 @@
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    background: rgba(0,0,0,0.4);
+    // box-shadow: 0px 0px 4px rgb(170, 169, 169);
 }
+
+.match-modal p{
+    font-size: 12px;
+    line-height: 1.4;
+    opacity: .7;
+    margin-bottom: 0;
+    margin-top: 8px;
+    color: black;
+}
+
 .match-modal-content {
     background-color: #FEFEFE;
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
+    margin: 20px;
+    border-radius: 50px;
 }
 .match-modal-close {
     color: #AAAAAA;
@@ -29,4 +43,21 @@
   color: #000;
   text-decoration: none;
   cursor: pointer;
+}
+
+.animate-bottom {
+  position: relative;
+  animation: animatebottom 0.4s;
+}
+
+@keyframes animatebottom {
+  from {
+    bottom: -300px;
+    opacity: 0;
+  }
+
+  to {
+    bottom: 0;
+    opacity: 1;
+  }
 }
