@@ -1,7 +1,7 @@
-.event-modal {
+.match-modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    z-index: 2; /* Sit on top */
     padding-top: 100px; /* Location of the box */
     left: 0;
     top: 0;
@@ -10,23 +10,53 @@
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    background: rgba(0,0,0,0.4);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
-.event-modal-content {
-    background-color: #FEFEFE;
-    margin: auto;
+
+.match-modal p{
+    font-size: 14px;
+    line-height: 1.4;
+    opacity: .8;
+    margin-bottom: 0;
+    margin-top: 8px;
+    color: black;
+}
+
+.match-modal-content {
+    background-color: #DCF2F0;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    width: 100%;
+    margin: auto;
+    border-top-right-radius: 255px;
 }
-.event-modal-close {
-    color: #AAAAAA;
+.match-modal-close {
+    color: #F86175;
     float: right;
-    font-size: 28px;
+    font-size: 35px;
     font-weight: bold;
 }
-.event-modal-close:hover,
-.event-modal-close:focus {
+.match-modal-close:hover,
+.match-modal-close:focus {
   color: #000;
   text-decoration: none;
   cursor: pointer;
+}
+
+.animate-bottom {
+  position: relative;
+  animation: animatebottom 0.5s;
+}
+
+@keyframes animatebottom {
+  from {
+    bottom: -300px;
+    opacity: 0;
+  }
+
+  to {
+    bottom: 0;
+    opacity: 1;
+  }
 }

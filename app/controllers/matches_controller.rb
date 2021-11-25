@@ -8,7 +8,7 @@ class MatchesController < ApplicationController
         lat: match.venue.latitude,
         lng: match.venue.longitude,
         info_window: render_to_string(partial: "info_window", locals: { venue: match.venue }),
-        image_url: helpers.asset_url("ping-pong-marker.png")
+        image_url: helpers.asset_url("map-icon.svg")
       }
     end
 
