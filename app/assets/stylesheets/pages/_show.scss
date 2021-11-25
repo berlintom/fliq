@@ -1,0 +1,11 @@
+.team-display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.team {
+  background-color: $light-blue;
+  padding: 10px;
+  border-radius: 12px;
+}

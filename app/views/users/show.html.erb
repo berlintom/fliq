@@ -24,6 +24,7 @@
   </svg> <%= @user.profile.equipment %></p>
   <p>Last matches:</p>
   <% @lastmatches.each do |match| %>
-  <%= match %>
+    <%= match.score.score_a %>
+    <%= match.score.score_b %>
   <% end %>
 </div>

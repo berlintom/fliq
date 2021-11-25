@@ -1,0 +1,8 @@
+.btn-inactive {
+  background-color: $red;
+  opacity: 30%;
+  &:hover {
+    background-color: $red;
+    opacity: 30%;
+  }
+}
