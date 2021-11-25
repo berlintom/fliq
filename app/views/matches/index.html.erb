@@ -1,5 +1,4 @@
 <div class="container">
-  <h1>Find a match</h1>
   <div style="width: 100%; height: 600px;"
     data-controller="mapbox"
     data-mapbox-markers-value="<%= @markers.to_json %>"
@@ -15,10 +14,10 @@
         <div class="match-info">
           <%= cl_image_tag match.user.photo.key, class: "match-avatar" %>
           <div class="match">
-              <h2><%= match.user.user_name %><h2>
+              <!--p><%= match.user.user_name %></p-->
               <p><%= match.start_date %> - <%= match.end_date %><p>
               <p><%= match.venue.address %><p>
-              <p>Match Capacity: <%= match.capacity %></p>
+              <!--p>Match Capacity: <%= match.capacity %></p-->
               <% if match.user == current_user %>
                 <div class="status-info">
                   <p><em>You created this match</em></p>
@@ -40,7 +39,6 @@
           <%= cl_image_tag match.user.photo.key, class: "match-avatar" %>
           <p>🏓 <%= match.user.user_name %> is the host</p>
           <p>🕒 <%= match.start_date.strftime("%d.%m.%y") %> @ 3 P.M. </p>
-          <p><%= link_to "Open Venue in Maps" "https://www.google.com/maps/search/?api=1&query=#{match.venue.longitude}%2-#{match.venue.latitude}" %></p>
           <p>📍 <%= match.venue.address %><p>
           <p>👨‍👩‍👧‍👧 <%= match.capacity %> players can join</p>
           <span class="match-modal-close" id="match-modal-close-<%= ind %>">&times;</span>
