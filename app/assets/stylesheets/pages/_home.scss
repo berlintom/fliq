@@ -1,1 +1,35 @@
 // Specific CSS for your home-page
+.home-container {
+  background-color: $light-blue;
+  border-bottom-left-radius: 250.5px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 150px;
+  right: 0;
+  overflow: auto;
+  display: flex;
+  align-items: center;
+}
+
+.home-header {
+  margin: 60px;
+  text-align: center;
+}
+
+.home-header h5 {
+  color: $blue;
+}
+
+.home-container a {
+  color: white;
+}
+
+.home-container .btn {
+  margin: 15px;
+  border-radius: 20px;
+}
+
+.home-logo {
+  margin-bottom: 25px;
+}
