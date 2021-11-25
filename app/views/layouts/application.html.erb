@@ -11,11 +11,16 @@
   </head>
 
   <body>
-  <div class="container">
-    <%= render 'shared/navbar' %>
-    <%= render 'shared/flashes' %>
 
-    <%= yield %>
-    </div>
+    <% if params[:action] != "home" %>
+      <div class="container">
+        <%= render 'shared/navbar' %>
+        <%= render 'shared/flashes' %>
+        <%= yield %>
+      </div>
+    <% else %>
+      <%= yield %>
+    <% end %>
+
   </body>
 </html>
