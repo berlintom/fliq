@@ -18,14 +18,13 @@
               <h2><%= match.user.user_name %><h2>
               <p><%= match.start_date %> - <%= match.end_date %><p>
               <p><%= match.venue.address %><p>
+              <p>Match Capacity: <%= match.capacity %></p>
               <% if match.user == current_user %>
-                <p>Match Capacity: <%= match.capacity %></p>
+                <div class="status-info">
+                  <div class="btn btn-primary"><%= link_to "See requests", mymatches_path %></div>
+                  <p><em>You created this match</em></p>
+                </div>
               <% elsif userparticipants.include?(current_user) %>
-                <p>Match Capacity: <%= match.capacity %></p>
-              <% else %>
-                <p>Match Capacity: <%= match.capacity %></p>
-              <% end %>
-              <% if userparticipants.include?(current_user) %>
                 <div class="status-info">
                   <div class="btn btn-primary"><%= link_to "Check status", mymatches_path %></div>
                   <p><em>requested</em></p>
@@ -33,7 +32,6 @@
               <% else %>
                 <div class="status-info">
                   <div class="btn btn-primary"><%= link_to "Participate", match_participations_path(match), method: :post %></div>
-                  <p><em>You created this match</em></p>
                 </div>
               <% end %>
           </div>
