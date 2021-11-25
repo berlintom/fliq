@@ -1,9 +1,13 @@
 <div class="container">
-  <%= cl_image_tag @user.photo.key, width: 180%>
-  <p>Username: <%= @user.user_name %></p>
-  <p>First Name: <%= @user.first_name %></p>
-  <p>Points: <%= @user.profile.point_sum %></p>
-  <p>Home Venue: <%= @user.profile.venue.address %></p>
-  <p>Equipment Status: <%= @user.profile.equipment %></p>
+  <div class="personal-info">
+    <%= cl_image_tag @user.photo.key, class: "avatar-bordered"%>
+    <p><strong><%= @user.user_name %></strong></p>
+    <h3><i class="fas fa-trophy"></i> <%= @user.profile.point_sum %></h3>
+  </div>
+  <p><i class="fas fa-map-marker-alt"></i> <%= @user.profile.venue.address %></p>
+  <p><i class="fas fa-table-tennis"></i> <%= @user.profile.equipment %></p>
   <p>Last matches:</p>
+  <% @lastmatches.each do |match| %>
+  <%= match %>
+  <% end %>
 </div>
