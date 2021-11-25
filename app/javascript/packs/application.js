@@ -33,14 +33,12 @@ application.load(definitionsFromContext(context))
 
 // Internal imports, e.g:
 
-import { initFlatpickr } from "../plugins/flatpickr";
+import { initFlatpickr } from "../components/flatpickr";
 
 initFlatpickr();
 
 import { timePicker } from '../components/timepicker.js';
 
 document.addEventListener('turbolinks:load', () => {
-  console.log("Hello");
   timePicker();
-
 });
