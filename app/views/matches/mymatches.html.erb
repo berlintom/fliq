@@ -44,11 +44,8 @@
     <% if @participations == nil %>
       <p>No requested participations</p>
     <% else %>
-      <% @matches.each do |match| %>
-        <% if match.full? %>
-          <p>No matches</p>
-        <% else %>
-          <% @participations.each do |participation| %>
+      <% @participations.each do |participation| %>
+          <% if participation.status == "pending" || !participation.match.full? && participation.status == "accepted"%>
             <div class="card">
               <%=link_to match_path(participation.match), class: "card-trip" do %>
                 <% if participation.match.user ==  participation.user %>
@@ -74,8 +71,7 @@
               <% end %>
             </div>
           <% end %>
-        <% end %>
-      <% end %>
+          <% end %>
     <% end %>
 </div>
 
