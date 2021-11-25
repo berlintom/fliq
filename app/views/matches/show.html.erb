@@ -1,23 +1,42 @@
 <div class="container">
   <div class="card">
-    <% if @userparticipants.include?(current_user)%>
-      <p>When? <%= @match.start_date.strftime("%d.%m.%y") %> - <%= @match.end_date.strftime("%d.%m.%y") %><p>
-      <p>Where? <%= @match.venue.address %><p>
-      <p>Type of Table? <%= @match.venue.table_type %><p>
-      <p>How many Players? <%= @match.capacity %></p>
-      <div class="btn btn-primary"><%= link_to "Back to all matches", matches_path %></div>
-    <% else %>
-      <p>When? <%= @match.start_date.strftime("%d.%m.%y") %> - <%= @match.end_date.strftime("%d.%m.%y") %><p>
-      <p>Where? <%= @match.venue.address %><p>
-      <p>Type of Table? <%= @match.venue.table_type %><p>
-      <p>How many Players? <%= @match.capacity %></p>
-      <% if @match.user == current_user %>
-        <p><em>You created this match</em></p>
-      <% else %>
-        <div class="btn btn-primary"><%= link_to "Participate", match_participations_path(@match), method: :post %></div>
-      <% end %>
-      <div class="btn btn-primary"><%= link_to "Back to all matches", matches_path %></div>
+    <%=link_to user_path(@match.user) do %>
+      <%= cl_image_tag @match.user.photo.key, class: "avatar-bordered"%>
     <% end %>
-    <%= link_to "Who is #{@match.user.user_name}", user_path(@match.user) %></div>
+    <p>When? <%= @match.start_date.strftime("%d.%m.%y") %> - <%= @match.end_date.strftime("%d.%m.%y") %><p>
+    <p>Where? <%= @match.venue.address %><p>
+    <p>Capacity <%= @match.capacity %></p>
+    <% if @userparticipants.include?(current_user) && @match.user != current_user && !@match.full%>
+      <p>Status: <%= @current_userparticipation.status %></p>
+      <div class="btn btn-inactive"><%= link_to "Participate", "#" %></div>
+    <% elsif !@userparticipants.include?(current_user) && @match.user != current_user %>
+        <div class="btn btn-primary"><%= link_to "Participate", match_participations_path(@match), method: :post %></div>
+    <% end %>
+    <% if @match.full? %>
+      <% if @match.start_date.past?%>
+      <p>Who won?</p>
+      <% end %>
+      <div class="team-display">
+        <div class = "team">
+          <% @team1.each do |user| %>
+            <%= cl_image_tag user.user.photo.key, class: "avatar-bordered-small" %>
+          <% end %>
+        </div>
+        <p> vs. </p>
+        <div class = "team">
+          <% @team2.each do |user| %>
+            <%= cl_image_tag user.user.photo.key, class: "avatar-bordered-small" %>
+          <% end %>
+        </div>
+      </div>
+      <% if @done%>
+      <%= simple_form_for [@match, @score] do |f| %>
+          <%= f.input :score_a %>
+          <%= f.input :score_b %>
+          <%= f.submit class:"btn btn-primary" %>
+        <% end %>
+      <% end %>
+    <% end %>
+    <div class="btn btn-primary"><%= link_to "Back to all matches", matches_path %></div>
   </div>
 </div>
