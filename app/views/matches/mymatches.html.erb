@@ -11,17 +11,21 @@
             <% end %>
             <p>When? <%= participation.match.start_date.strftime("%d.%m.%y") %> - <%= participation.match.end_date.strftime("%d.%m.%y") %><p>
             <p>Where? <%= participation.match.venue.address %><p>
-            <p>How many Players? <%= participation.match.capacity %></p>
+            <p>Match Capacity: <%= participation.match.capacity %> Full?  <%= participation.match.full %></p>
             <p>Status: <%= participation.status %><p>
             <p>Team: <%= participation.team %><p>
             <p>Participants:</p>
+            <%match = participation.match%>
+            <%participations = match.participations%>
             <ol>
-              <% if participation.match.user ==  participation.user %>
-                <li>You</li>
-              <% else %>
-                <li><%= participation.user.user_name %></li>
+              <% participations.each do |acceptedparticipation| %>
+                <% if acceptedparticipation.match.user ==  acceptedparticipation.user %>
+                  <li>You</li>
+                <% elsif acceptedparticipation.status == "accepted" %>
+                  <li><%= acceptedparticipation.user.user_name %></li>
+                <% end %>
               <% end %>
-            </ol>
+             </ol>
           <% end %>
         </div>
       <% end %>
@@ -35,15 +39,14 @@
         <div class="card">
           <p>When? <%= match.start_date.strftime("%d.%m.%y") %> - <%= match.end_date.strftime("%d.%m.%y") %><p>
           <p>Where? <%= match.venue.address %><p>
-          <p>How many Players? <%= match.capacity %></p>
           <p>Match Capacity: <%= match.capacity %></p>
           <p>Participants:</p>
             <ol>
               <% match.participations.each do |participation|%>
                 <% if  participation.user == match.user %>
                   <li>You</li>
-                <% else %>
-                  <li><%= participation.user.user_name%></li>
+                <% elsif participation.status == "accepted" %>
+                  <li><%= participation.user.user_name %></li>
                 <% end %>
               <% end %>
             </ol>
