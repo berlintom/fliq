@@ -13,6 +13,7 @@
       <% end %>
       <div class="card-match">
         <%=link_to match_path(match) do %>
+        <div class="match-info">
           <%= cl_image_tag match.user.photo.key, class: "match-avatar" %>
           <div class="match">
               <h2><%= match.user.user_name %><h2>
@@ -21,20 +22,19 @@
               <p>Match Capacity: <%= match.capacity %></p>
               <% if match.user == current_user %>
                 <div class="status-info">
-                  <div class="btn btn-primary"><%= link_to "See requests", mymatches_path %></div>
                   <p><em>You created this match</em></p>
                 </div>
               <% elsif userparticipants.include?(current_user) %>
                 <div class="status-info">
-                  <div class="btn btn-primary"><%= link_to "Check status", mymatches_path %></div>
                   <p><em>requested</em></p>
                 </div>
               <% else %>
                 <div class="status-info">
-                  <div class="btn btn-primary"><%= link_to "Participate", match_participations_path(match), method: :post %></div>
+                  <p><em>check it out</em></p>
                 </div>
               <% end %>
           </div>
+        </div>
         <% end %>
       </div>
   <% end %>

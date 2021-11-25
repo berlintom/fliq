@@ -21,14 +21,16 @@
 }
 
 .card-match h2 {
-  font-size: 12px;
+  font-size: 15px;
   font-weight: bold;
   margin: 0;
-
 }
 
+.match-info {
+  display: flex;
+}
 .card-match p {
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.4;
   opacity: .7;
   margin-bottom: 0;
