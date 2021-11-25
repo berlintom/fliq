@@ -1,7 +1,7 @@
 <div class="container">
   <div class="card">
     <% if @userparticipants.include?(current_user)%>
-      <p>When? <%= @match.start_date.strftime("%d.%m.%y") %> - <%= @match.end_date.strftime("%d.%m.%y") %><p>
+      <p>When? <%= @match.start_time.strftime("%d.%m.%y") %> - <%= @match.end_time.strftime("%d.%m.%y") %><p>
       <p>Where? <%= @match.venue.address %><p>
       <p>Type of Table? <%= @match.venue.table_type %><p>
       <p>How many Players? <%= @match.capacity %></p>
