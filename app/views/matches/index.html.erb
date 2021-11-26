@@ -44,12 +44,13 @@
           <p>📍 <%= match.venue.address %><p>
           <p>👨‍👩‍👧‍👧 <%= match.capacity %> players can join</p>
           <p>💬 <%= match.comment %><p>
+          <p><div class="btn btn-cta"><%=link_to "Ask to Play", match_path(match) %></div></p>
           <span class="match-modal-close" id="match-modal-close-<%= ind %>">&times;</span>
           <br>
         </div>
       </div>
   <% end %>
-  <div><%= link_to "Create a new match", new_match_path %></div>
+  <p><div class="btn btn-cta"><%= link_to "Create a new match", new_match_path %></div>
 </div>
 
 <script>
