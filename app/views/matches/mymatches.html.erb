@@ -56,7 +56,7 @@
     <% else %>
       <% @matches.each do |match| %>
         <div class="card-match">
-          <%=link_to match_path(match), class: "card-trip" do %>
+          <%=link_to match_path(match)  do %>
             <%= cl_image_tag match.user.photo.key, class: "avatar-bordered"%>
             <div>
             <p>📅 <%= match.date.strftime("%d.%m.%y") %><p>
@@ -70,8 +70,8 @@
                 <% if participation.user != match.user %>
                   <% if participation.status == "pending" %>
                     <p><%= participation.user.user_name %> is waiting for your answer!</p>
-                    <div class="btn-cta"><%= link_to "Accept", participation_accept_path(participation), method: :patch %></div>
-                    <div class="btn-cta"><%= link_to "Decline", participation_decline_path(participation), method: :patch %></div>
+                    <div class="btn btn-primary"><%= link_to "Accept", participation_accept_path(participation), method: :patch %></div>
+                    <div class="btn btn-primary"><%= link_to "Decline", participation_decline_path(participation), method: :patch %></div>
                   <% elsif participation.status == "accepted" %>
                     <p>You can look forward to play against <%= participation.user.user_name %>!</p>
                     <p><%= participation.user.user_name %> is playing in Team <%= participation.team %>
