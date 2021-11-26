@@ -10,13 +10,16 @@ class UsersController < ApplicationController
     @participations.each do |participation|
       @matches << participation.match
     end
+    lastmachtes(@matches)
+  end
 
+  def lastmachtes(matches)
     @lastmatches = []
-
-    @matches.each do |match|
-      if match.end_date.past?
+    matches.each do |match|
+      if match.score
         @lastmatches << match
       end
     end
   end
+
 end

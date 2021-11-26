@@ -8,10 +8,9 @@ class MatchesController < ApplicationController
         lat: match.venue.latitude,
         lng: match.venue.longitude,
         info_window: render_to_string(partial: "info_window", locals: { venue: match.venue }),
-        image_url: helpers.asset_url("ping-pong-marker.png")
+        image_url: helpers.asset_url("map-icon.svg")
       }
     end
-
   end
 
   def show
@@ -21,6 +20,10 @@ class MatchesController < ApplicationController
     @participations.each do |participation|
       @userparticipants << participation.user
     end
+    @current_userparticipation = @participations.find_by(user: current_user)
+    assignteams(@participations)
+    matchdone?(@match)
+    @score = Score.new(match: @match)
   end
 
   def new
@@ -49,6 +52,25 @@ class MatchesController < ApplicationController
   def mymatches
     @participations = Participation.where(user: current_user)
     @matches = Match.where(user: current_user)
+  end
+
+  def assignteams(participations)
+    @team1 = []
+    @team2 = []
+    participations.each do |participation|
+      if participation.team == 1
+        @team1 << participation
+      else
+        @team2 << participation
+      end
+    end
+  end
+
+  def matchdone?(match)
+    @done = false
+    if match.start_date.past? && match.user == current_user && match.score.nil?
+      @done = true
+    end
   end
 
   private

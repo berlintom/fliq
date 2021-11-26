@@ -1,25 +1,24 @@
 <div class="container">
-  <h1>Find a match</h1>
   <div style="width: 100%; height: 600px;"
     data-controller="mapbox"
     data-mapbox-markers-value="<%= @markers.to_json %>"
     data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
-  <% @matches.each do |match| %>
+  <% @matches.each_with_index do |match, ind| %>
       <% participations = match.participations %>
       <% userparticipants = [] %>
       <% participations.each do |participation| %>
         <% userparticipants << participation.user %>
       <% end %>
-      <div class="card-match">
-        <%=link_to match_path(match) do %>
+      <div class="card-match" data-matchId="<%= ind %>">
         <div class="match-info">
           <%= cl_image_tag match.user.photo.key, class: "match-avatar" %>
           <div class="match">
               <h2><%= match.user.user_name %><h2>
-              <p><%= match.date %> - <%= match.date %><p>
+              <p><%= match.date %><p>
+              <p><%= match.start_time.time.to_s(:time) %> - <%= match.end_time.time.to_s(:time) %><p>
               <p><%= match.venue.address %><p>
-              <p>Match Capacity: <%= match.capacity %></p>
+              <!--p>Match Capacity: <%= match.capacity %></p-->
               <% if match.user == current_user %>
                 <div class="status-info">
                   <p><em>You created this match</em></p>
@@ -35,8 +34,37 @@
               <% end %>
           </div>
         </div>
-        <% end %>
+      </div>
+      <div class="match-modal" id="match-modal-<%= ind %>">
+        <div class="match-modal-content animate-bottom">
+          <%= cl_image_tag match.user.photo.key, class: "match-avatar" %>
+          <p>🏓 <%= match.user.user_name %> is the host</p>
+          <p>📅 <%= match.date %><p>
+          <p>🕒 <%= match.start_time.time.to_s(:time) %> - <%= match.end_time.time.to_s(:time)%> </p>
+          <p>📍 <%= match.venue.address %><p>
+          <p>👨‍👩‍👧‍👧 <%= match.capacity %> players can join</p>
+          <p>💬 <%= match.comment %><p>
+          <span class="match-modal-close" id="match-modal-close-<%= ind %>">&times;</span>
+          <br>
+        </div>
       </div>
   <% end %>
   <div><%= link_to "Create a new match", new_match_path %></div>
 </div>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const matches = document.querySelectorAll(".card-match");
+    const close = document.querySelectorAll(".match-modal-close");
+    matches.forEach(match => {
+      const modal = document.getElementById(`match-modal-${match.dataset.matchid}`)
+      const closeButton = document.getElementById(`match-modal-close-${match.dataset.matchid}`)
+      match.onclick = function(event) {
+        modal.style.display = "block";
+      }
+      closeButton.onclick = function(event) {
+        modal.style.display = "none";
+      }
+    })
+  });
+</script>
