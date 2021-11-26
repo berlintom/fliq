@@ -1,0 +1,25 @@
+.form-control {
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgb(153, 152, 152);
+}
+
+.form-container {
+  display: flex;
+  align-items: center;
+  color: $blue;
+  font-weight: bolder;
+	padding: 50px 50px 20px 20px;
+	background: $white;
+	margin: 50px auto;
+	box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+  border-top-right-radius: 250.5px;
+}
+
+.form h2 {
+  color: $red;
+}
+
+.form-control {
+  border-radius: 0px 20px;
+  box-shadow: 0px 0px 5px $blue;
+}
