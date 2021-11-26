@@ -23,8 +23,20 @@
     <path d="M25.7163 82.9147C23.2713 72.4567 26.6997 60.7714 24.8652 61.1725C23.0307 61.5736 19.4523 71.5233 20.9526 82.2152C22.4529 92.9072 31.885 99.4455 33.7195 99.0444C35.554 98.6433 28.1613 93.3728 25.7163 82.9147Z" fill="white"/>
   </svg> <%= @user.profile.equipment %></p>
   <p>Last matches:</p>
-  <% @lastmatches.each do |match| %>
-    <%= match.score.score_a %>
-    <%= match.score.score_b %>
-  <% end %>
+  <div class="last-matches">
+    <% @lastparticipations.each do |participation| %>
+      <% if participation.outcome == "won" %>
+      <div class="last-match won">
+        <p><%= participation.match.score.score_a %> : <%= participation.match.score.score_b %></p>
+        <i class="fas fa-medal"></i>
+
+      </div>
+      <% elsif participation.outcome == "lost" %>
+        <div class="last-match lost">
+          <p><%= participation.match.score.score_a %> : <%= participation.match.score.score_b %></p>
+          <i class="fas fa-sad-cry"></i>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 </div>

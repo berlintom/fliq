@@ -5,21 +5,16 @@ class UsersController < ApplicationController
   # end
   def show
     @user = User.find(params[:id])
-    @participations = @user.participations.where(status: "accepted")
-    @matches = []
-    @participations.each do |participation|
-      @matches << participation.match
-    end
-    lastmachtes(@matches)
+    lastparticipations(@user)
   end
 
-  def lastmachtes(matches)
-    @lastmatches = []
-    matches.each do |match|
-      if match.score
-        @lastmatches << match
+  def lastparticipations(user)
+    participations = user.participations
+    @lastparticipations = []
+    participations.each do |participation|
+      if participation.outcome != "unplayed"
+        @lastparticipations << participation
       end
     end
   end
-
 end
