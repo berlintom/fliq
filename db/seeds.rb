@@ -10,7 +10,7 @@ vali = User.new(
   password: "123456",
   phone_number: 111
   )
-vali.photo.attach(io: file = URI.open("https://source.unsplash.com/featured/?face"), filename: "profile", content_type: 'image/png')
+vali.photo.attach(io: file = URI.open("https://ca.slack-edge.com/T02NE0241-U02FW5W7TRD-a3c876362075-512"), filename: "profile", content_type: 'image/png')
 vali.save!
 
 tom = User.new(
@@ -20,7 +20,7 @@ tom = User.new(
   password: "123456",
   phone_number: 222
   )
-tom.photo.attach(io: file = URI.open("https://source.unsplash.com/featured/?face"), filename: "profile", content_type: 'image/png')
+tom.photo.attach(io: file = URI.open("https://ca.slack-edge.com/T02NE0241-U02G2SZ57LZ-ced9b30f9aac-512"), filename: "profile", content_type: 'image/png')
 tom.save!
 
 teo = User.new(
@@ -30,7 +30,7 @@ teo = User.new(
   password: "123456",
   phone_number: 333
   )
-teo.photo.attach(io: file = URI.open("https://source.unsplash.com/featured/?face"), filename: "profile", content_type: 'image/png')
+teo.photo.attach(io: file = URI.open("https://ca.slack-edge.com/T02NE0241-U02G44HAY7Q-a48f6e4ce7aa-512"), filename: "profile", content_type: 'image/png')
 teo.save!
 
 egor = User.new(
@@ -40,7 +40,7 @@ egor = User.new(
   password: "123456",
   phone_number: 444
   )
-egor.photo.attach(io: file = URI.open("https://source.unsplash.com/featured/?face"), filename: "profile", content_type: 'image/png')
+egor.photo.attach(io: file = URI.open("https://ca.slack-edge.com/T02NE0241-U02F9JKQJEB-28c9a45cef49-512"), filename: "profile", content_type: 'image/png')
 egor.save!
 
 puts "Creating Venues"
