@@ -1,14 +1,22 @@
-.card {
+// Show-card
+
+.show-card {
   box-shadow: 0px 0px 4px rgb(170, 169, 169);
   padding: 20px;
+  background-color: white;
   margin: 10px;
     &:hover {
     box-shadow: 0px 0px 8px rgb(170, 169, 169);
   }
+  border-radius:  15px 70px 15px 15px;
 }
 
-.card a {
+.show-card a {
   color: black;
+}
+
+.host-img {
+  text-align: center;
 }
 
 
