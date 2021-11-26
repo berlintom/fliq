@@ -25,6 +25,7 @@ require("channels")
 import "bootstrap";
 import { Application } from "@hotwired/stimulus"
 import { definitionsFromContext } from "@hotwired/stimulus-webpack-helpers"
+import "./popup"
 
 const application = Application.start()
 const context = require.context("../controllers", true, /\.js$/)
