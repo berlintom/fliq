@@ -5,42 +5,42 @@ puts "Creating Users"
 
 vali = User.new(
   first_name: "Vali",
-  user_name: "ValiF",
+  user_name: "validator",
   email: "vali@fliq.de",
   password: "123456",
   phone_number: 111
   )
-vali.photo.attach(io: file = URI.open("https://source.unsplash.com/featured/?face"), filename: "profile", content_type: 'image/png')
+vali.photo.attach(io: file = URI.open("https://ca.slack-edge.com/T02NE0241-U02FW5W7TRD-a3c876362075-512"), filename: "profile", content_type: 'image/png')
 vali.save!
 
 tom = User.new(
   first_name: "Tom",
-  user_name: "TomK",
+  user_name: "topspin667",
   email: "tom@fliq.de",
   password: "123456",
   phone_number: 222
   )
-tom.photo.attach(io: file = URI.open("https://source.unsplash.com/featured/?face"), filename: "profile", content_type: 'image/png')
+tom.photo.attach(io: file = URI.open("https://ca.slack-edge.com/T02NE0241-U02G2SZ57LZ-ced9b30f9aac-512"), filename: "profile", content_type: 'image/png')
 tom.save!
 
 teo = User.new(
   first_name: "Teo",
-  user_name: "TeoF",
+  user_name: "turboteo",
   email: "teo@fliq.de",
   password: "123456",
   phone_number: 333
   )
-teo.photo.attach(io: file = URI.open("https://source.unsplash.com/featured/?face"), filename: "profile", content_type: 'image/png')
+teo.photo.attach(io: file = URI.open("https://ca.slack-edge.com/T02NE0241-U02G44HAY7Q-a48f6e4ce7aa-512"), filename: "profile", content_type: 'image/png')
 teo.save!
 
 egor = User.new(
   first_name: "Egor",
-  user_name: "EgorD",
+  user_name: "egorlito",
   email: "egor@fliq.de",
   password: "123456",
   phone_number: 444
   )
-egor.photo.attach(io: file = URI.open("https://source.unsplash.com/featured/?face"), filename: "profile", content_type: 'image/png')
+egor.photo.attach(io: file = URI.open("https://ca.slack-edge.com/T02NE0241-U02F9JKQJEB-28c9a45cef49-512"), filename: "profile", content_type: 'image/png')
 egor.save!
 
 puts "Creating Venues"
@@ -77,7 +77,7 @@ tprofile = Profile.new(
   point_sum: 130,
   venue: venue2,
   user: teo,
-  equipment: "3 equipments"
+  equipment: "+2 🏓"
 )
 tprofile.save!
 
@@ -85,7 +85,7 @@ toprofile = Profile.new(
   point_sum: 180,
   venue: venue1,
   user: tom,
-  equipment: "5 equipments"
+  equipment: "+1 🏓"
 )
 toprofile.save!
 
@@ -93,7 +93,7 @@ eprofile = Profile.new(
   point_sum: 250,
   venue: venue2,
   user: egor,
-  equipment: "1 equipment"
+  equipment: "+3 🏓"
 )
 eprofile.save!
 
@@ -106,7 +106,7 @@ match1 = Match.new(
   date: Date.today,
   start_time: Time.new(3),
   end_time: Time.new(5),
-  comment: "lets practice! i can provide a 2nd bat",
+  comment: "lets practice! i can bring a 2nd bat",
 )
 match1.save!
 

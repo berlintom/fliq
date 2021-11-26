@@ -14,24 +14,10 @@
         <div class="match-info">
           <%= cl_image_tag match.user.photo.key, class: "match-avatar" %>
           <div class="match">
-              <h2><%= match.user.user_name %><h2>
-              <p><%= match.date %><p>
-              <p><%= match.start_time.time.to_s(:time) %> - <%= match.end_time.time.to_s(:time) %><p>
-              <p><%= match.venue.address %><p>
-              <!--p>Match Capacity: <%= match.capacity %></p-->
-              <% if match.user == current_user %>
-                <div class="status-info">
-                  <p><em>You created this match</em></p>
-                </div>
-              <% elsif userparticipants.include?(current_user) %>
-                <div class="status-info">
-                  <p><em>requested</em></p>
-                </div>
-              <% else %>
-                <div class="status-info">
-                  <p><em>check it out</em></p>
-                </div>
-              <% end %>
+              <h2><%= match.user.user_name %></h2>
+              <p>📅 <%= match.date.strftime("%d.%m.%y") %><p>
+              <p>🕒 <%= match.start_time.time.to_s(:time) %> - <%= match.end_time.time.to_s(:time) %><p>
+              <p>📍 <%= match.venue.address %><p>
           </div>
         </div>
       </div>
@@ -39,32 +25,16 @@
         <div class="match-modal-content animate-bottom">
           <%= cl_image_tag match.user.photo.key, class: "match-avatar" %>
           <p>🏓 <%= match.user.user_name %> is the host</p>
-          <p>📅 <%= match.date %><p>
+          <p>📅 <%= match.date.strftime("%d.%m.%y") %><p>
           <p>🕒 <%= match.start_time.time.to_s(:time) %> - <%= match.end_time.time.to_s(:time)%> </p>
           <p>📍 <%= match.venue.address %><p>
           <p>👨‍👩‍👧‍👧 <%= match.capacity %> players can join</p>
           <p>💬 <%= match.comment %><p>
+          <p><div class="btn btn-cta"><%=link_to "Ask to Play", match_path(match) %></div></p>
           <span class="match-modal-close" id="match-modal-close-<%= ind %>">&times;</span>
           <br>
         </div>
       </div>
   <% end %>
-  <div><%= link_to "Create a new match", new_match_path %></div>
+  <p><div class="btn btn-cta"><%= link_to "Create a new match", new_match_path %></div>
 </div>
-
-<script>
-  window.addEventListener('DOMContentLoaded', () => {
-    const matches = document.querySelectorAll(".card-match");
-    const close = document.querySelectorAll(".match-modal-close");
-    matches.forEach(match => {
-      const modal = document.getElementById(`match-modal-${match.dataset.matchid}`)
-      const closeButton = document.getElementById(`match-modal-close-${match.dataset.matchid}`)
-      match.onclick = function(event) {
-        modal.style.display = "block";
-      }
-      closeButton.onclick = function(event) {
-        modal.style.display = "none";
-      }
-    })
-  });
-</script>
