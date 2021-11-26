@@ -68,7 +68,7 @@ class MatchesController < ApplicationController
 
   def matchdone?(match)
     @done = false
-    if match.start_date.past? && match.user == current_user && match.score.nil?
+    if match.start_time.past? && match.user == current_user && match.score.nil?
       @done = true
     end
   end
