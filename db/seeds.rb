@@ -182,7 +182,6 @@ match1 = Match.new(
 )
 match1.save!
 
-
 match2 = Match.new(
   capacity: 4,
   user: egor,
