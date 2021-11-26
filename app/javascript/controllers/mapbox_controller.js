@@ -1,5 +1,6 @@
 // app/javascript/controllers/mapbox_controller.js
 import { Controller } from "@hotwired/stimulus";
+
 import mapboxgl from 'mapbox-gl';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 

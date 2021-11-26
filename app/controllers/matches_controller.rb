@@ -33,13 +33,18 @@ class MatchesController < ApplicationController
   def create
     @match = Match.new(params_match)
     @match.user = current_user
-    if @match.save!
+
+    venue = Venue.find_by(address: params[:match]["venue_id"])
+    @match.venue = venue
+    if @match.save
+    puts "save success"
       @participation = Participation.new(status: "accepted", team: nil)
       @participation.match = @match
       @participation.user = current_user
       @participation.save
       redirect_to matches_path
     else
+    puts "save failed"
       render :new
     end
   end
@@ -71,6 +76,6 @@ class MatchesController < ApplicationController
   private
 
   def params_match
-    params.require(:match).permit(:capacity, :start_date, :end_date, :venue_id)
+    params.require(:match).permit(:capacity, :start_time, :end_time, :venue_id, :date, :comment)
   end
 end
