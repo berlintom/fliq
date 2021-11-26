@@ -65,13 +65,13 @@ venue2.save!
 
 puts "Creating Profiles"
 
-# vprofile = Profile.new(
-#   point_sum: 90,
-#   venue: venue1,
-#   user: vali,
-#   equipment: "no equipment"
-# )
-# vprofile.save!
+vprofile = Profile.new(
+  point_sum: 90,
+  venue: venue1,
+  user: vali,
+  equipment: "no equipment"
+)
+  vprofile.save!
 
 tprofile = Profile.new(
   point_sum: 130,
