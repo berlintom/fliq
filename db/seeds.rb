@@ -103,17 +103,22 @@ match1 = Match.new(
   capacity: 2,
   user: tom,
   venue: venue1,
-  date: Date.today
+  date: Date.today,
+  start_time: Time.new(3),
+  end_time: Time.new(5),
+  comment: "lets practice! i can provide a 2nd bat",
 )
 match1.save!
-
 
 
 match2 = Match.new(
   capacity: 4,
   user: egor,
   venue: venue2,
-  date: Date.today + 2
+  date: Date.today + 2,
+  start_time: Time.new(11),
+  end_time: Time.new(12),
+  comment: "Just a relaxed lunch break round",
 )
 match2.save!
 
