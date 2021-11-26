@@ -14,18 +14,40 @@ class ScoresController < ApplicationController
   def update_points(match, score)
     participations = match.participations
     if score.score_a > score.score_b
-      participations.where(team: 1).each do |participation|
-        user = participation.user.profile
-        user.point_sum += 20
-        user.save
+      participations.each do |participation|
+        if participation.team == 1
+          change_outcome_to_won(participation)
+          increase_points(participation)
+        else
+          change_outcome_to_lost(participation)
+        end
       end
     else
-      participations.where(team: 2).each do |participation|
-        user = participation.user.profile
-        user.point_sum += 20
-        user.save
+      participations.each do |participation|
+        if participation.team == 2
+          change_outcome_to_won(participation)
+          increase_points(participation)
+        else
+          change_outcome_to_lost(participation)
+        end
       end
     end
+  end
+
+  def change_outcome_to_won(participation)
+    participation.outcome = "won"
+    participation.save
+  end
+
+  def change_outcome_to_lost(participation)
+    participation.outcome = "lost"
+    participation.save
+  end
+
+  def increase_points(participation)
+    user = participation.user.profile
+    user.point_sum += 20
+    user.save
   end
 
   private

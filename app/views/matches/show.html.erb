@@ -14,7 +14,7 @@
         <div class="btn btn-primary"><%= link_to "Participate", match_participations_path(@match), method: :post %></div>
     <% end %>
     <% if @match.full? %>
-      <% if @match.start_date.past?%>
+      <% if @match.start_time.past?%>
       <p>Who won?</p>
       <% end %>
       <div class="team-display">
