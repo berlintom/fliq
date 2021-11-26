@@ -35,7 +35,7 @@ teo.save!
 
 egor = User.new(
   first_name: "Egor",
-  user_name: "egorlito",
+  user_name: "Egorlito",
   email: "egor@fliq.de",
   password: "123456",
   phone_number: 444
@@ -49,7 +49,7 @@ venue1 = Venue.new(
   address: "Rathausstraße 5, 10178 Berlin, Deutschland",
   outdoor: false,
   price: 8,
-  table_type: "wood",
+  table_type: "Professional",
 )
 venue1.photos.attach(io: file = URI.open("https://source.unsplash.com/featured/?gym"), filename: "venue", content_type: 'image/png')
 venue1.save!
@@ -58,10 +58,82 @@ venue2 = Venue.new(
   address: "Kurstraße 48, 10117 Berlin, Deutschland",
   outdoor: true,
   price: 0,
-  table_type: "stone",
+  table_type: "Classic Stone",
 )
 venue2.photos.attach(io: file = URI.open("https://source.unsplash.com/featured/?gym"), filename: "venue", content_type: 'image/png')
 venue2.save!
+
+venue3 = Venue.new(
+  address: "Hönower Straße, 12623 Berlin, Deutschland",
+  outdoor: true,
+  price: 0,
+  table_type: "Stone",
+)
+venue3.photos.attach(io: file = URI.open("https://source.unsplash.com/featured/?gym"), filename: "venue", content_type: 'image/png')
+venue3.save!
+
+venue4 = Venue.new(
+  address: "Reglinstraße, 12105 Berlin, Berlin, Deutschland",
+  outdoor: true,
+  price: 0,
+  table_type: "Professional",
+)
+venue4.photos.attach(io: file = URI.open("https://source.unsplash.com/featured/?gym"), filename: "venue", content_type: 'image/png')
+venue4.save!
+
+venue5 = Venue.new(
+  address: "Dickhardtstraße 19, 12161 Berlin, Deutschland",
+  outdoor: true,
+  price: 0,
+  table_type: "Classic Stone",
+)
+venue5.photos.attach(io: file = URI.open("https://source.unsplash.com/featured/?gym"), filename: "venue", content_type: 'image/png')
+venue5.save!
+
+venue6 = Venue.new(
+  address: "Frobenstraße, 12249 Berlin, Germany",
+  outdoor: true,
+  price: 0,
+  table_type: "Classic Stone",
+)
+venue6.photos.attach(io: file = URI.open("https://source.unsplash.com/featured/?gym"), filename: "venue", content_type: 'image/png')
+venue6.save!
+
+venue7 = Venue.new(
+  address: "Waitzstraße, 10629 Berlin, Berlin, Deutschland",
+  outdoor: true,
+  price: 0,
+  table_type: "Classic Stone",
+)
+venue7.photos.attach(io: file = URI.open("https://source.unsplash.com/featured/?gym"), filename: "venue", content_type: 'image/png')
+venue7.save!
+
+venue8 = Venue.new(
+  address: "Schützenstraße, 13127 Berlin, Berlin, Deutschland",
+  outdoor: true,
+  price: 0,
+  table_type: "Classic Stone",
+)
+venue8.photos.attach(io: file = URI.open("https://source.unsplash.com/featured/?gym"), filename: "venue", content_type: 'image/png')
+venue8.save!
+
+venue9 = Venue.new(
+  address: "Marzahner Chaussee, 10315 Berlin, Germany",
+  outdoor: true,
+  price: 0,
+  table_type: "Classic Stone",
+)
+venue9.photos.attach(io: file = URI.open("https://source.unsplash.com/featured/?gym"), filename: "venue", content_type: 'image/png')
+venue9.save!
+
+venue10 = Venue.new(
+  address: "Trusetaler Str. 39, 12687 Berlin, Deutschland",
+  outdoor: false,
+  price: 10,
+  table_type: "Professional",
+)
+venue10.photos.attach(io: file = URI.open("https://source.unsplash.com/featured/?gym"), filename: "venue", content_type: 'image/png')
+venue10.save!
 
 puts "Creating Profiles"
 
@@ -77,7 +149,7 @@ tprofile = Profile.new(
   point_sum: 130,
   venue: venue2,
   user: teo,
-  equipment: "+2 🏓"
+  equipment: "+1 🏓"
 )
 tprofile.save!
 
@@ -93,7 +165,7 @@ eprofile = Profile.new(
   point_sum: 250,
   venue: venue2,
   user: egor,
-  equipment: "+3 🏓"
+  equipment: "+2 🏓"
 )
 eprofile.save!
 
@@ -106,7 +178,7 @@ match1 = Match.new(
   date: Date.today,
   start_time: Time.new(3),
   end_time: Time.new(5),
-  comment: "lets practice! i can bring a 2nd bat",
+  comment: "lets practice! I can bring a 2nd bat",
 )
 match1.save!
 
@@ -118,7 +190,7 @@ match2 = Match.new(
   date: Date.today + 2,
   start_time: Time.new(11),
   end_time: Time.new(12),
-  comment: "Just a relaxed lunch break round",
+  comment: "Just a relaxed lunch break match",
 )
 match2.save!
 
