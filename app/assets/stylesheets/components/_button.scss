@@ -6,3 +6,17 @@
     opacity: 30%;
   }
 }
+
+.btn-cta {
+  border-radius: 18px;
+  transition-duration: 0.4s;
+  padding: 5px 15px;
+  font-size: 16px;
+  border: 1px solid #F86175;
+  background-color: #F86175;
+
+  a {
+    color:#F4F4F4;
+    font-weight: 700px;
+  }
+}
