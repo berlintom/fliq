@@ -38,20 +38,3 @@
   <% end %>
   <p><div class="btn btn-cta"><%= link_to "Create a new match", new_match_path %></div>
 </div>
-
-<script>
-  window.addEventListener('DOMContentLoaded', () => {
-    const matches = document.querySelectorAll(".card-match");
-    const close = document.querySelectorAll(".match-modal-close");
-    matches.forEach(match => {
-      const modal = document.getElementById(`match-modal-${match.dataset.matchid}`)
-      const closeButton = document.getElementById(`match-modal-close-${match.dataset.matchid}`)
-      match.onclick = function(event) {
-        modal.style.display = "block";
-      }
-      closeButton.onclick = function(event) {
-        modal.style.display = "none";
-      }
-    })
-  });
-</script>
