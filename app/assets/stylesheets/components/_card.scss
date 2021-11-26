@@ -29,6 +29,7 @@
   border-radius: 50px;
 }
 
+
 .card-match h2 {
   font-size: 15px;
   font-weight: bold;
@@ -68,4 +69,14 @@
 .card-match .btn {
   border-radius: 10px;
   padding: 2px;
+}
+
+
+
+.card-trip {
+  margin: 20px;
+}
+
+.whole-card {
+  display:flex;
 }
