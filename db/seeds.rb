@@ -60,7 +60,7 @@ venue2 = Venue.new(
   price: 0,
   table_type: "stone",
 )
-venue1.photos.attach(io: file = URI.open("https://source.unsplash.com/featured/?gym"), filename: "venue", content_type: 'image/png')
+venue2.photos.attach(io: file = URI.open("https://source.unsplash.com/featured/?gym"), filename: "venue", content_type: 'image/png')
 venue2.save!
 
 puts "Creating Profiles"
@@ -71,7 +71,7 @@ vprofile = Profile.new(
   user: vali,
   equipment: "no equipment"
 )
-vprofile.save!
+  vprofile.save!
 
 tprofile = Profile.new(
   point_sum: 130,
@@ -103,8 +103,7 @@ match1 = Match.new(
   capacity: 2,
   user: tom,
   venue: venue1,
-  start_date: Date.today,
-  end_date: Date.today + 1
+  date: Date.today
 )
 match1.save!
 
@@ -114,8 +113,7 @@ match2 = Match.new(
   capacity: 4,
   user: egor,
   venue: venue2,
-  start_date: Date.today + 2,
-  end_date: Date.today + 3
+  date: Date.today + 2
 )
 match2.save!
 

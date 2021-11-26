@@ -3,7 +3,8 @@
     <%=link_to user_path(@match.user) do %>
       <%= cl_image_tag @match.user.photo.key, class: "avatar-bordered"%>
     <% end %>
-    <p>When? <%= @match.start_date.strftime("%d.%m.%y") %> - <%= @match.end_date.strftime("%d.%m.%y") %><p>
+    <p>Date? <%= @match.date.strftime("%d.%m.%y") %><p>
+    <p>Time? <%= @match.start_time.time.to_s(:time) %> - <%= @match.end_time.time.to_s(:time) %><p>
     <p>Where? <%= @match.venue.address %><p>
     <p>Capacity <%= @match.capacity %></p>
     <% if @userparticipants.include?(current_user) && @match.user != current_user && !@match.full%>
