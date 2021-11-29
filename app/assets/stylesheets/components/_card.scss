@@ -80,3 +80,21 @@
 .whole-card {
   display:flex;
 }
+
+
+// Score-Card
+.score-profile {
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  margin: 20px;
+  border-radius: 50px;
+}
+
+.score-info {
+  display: flex;
+}
+
+.stats {
+  margin: 10px;
+}
