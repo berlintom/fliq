@@ -1,0 +1,10 @@
+<form class="form-inline my-2 my-lg-0">
+  <input class="form-control mr-sm-2" type="text" placeholder="Search for matches" aria-label="Search">
+  <button class="btn btn-primary my-2 my-sm-0" type="submit">Let's fliQ!</button>
+  <form class="form-inline my-2 my-lg 0" action="/matches/">
+</form>
+
+<%= simple_form_for :match do |f| %>
+  <%= f.input :date, as: :date, placeholder: 'Choose the date!', html5: true, label: 'When?' %>
+  <%= f.button :submit, "fliQ", class: "btn btn-primary my-2 my-sm-0" %>
+<% end %>
