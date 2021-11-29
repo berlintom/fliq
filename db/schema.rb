@@ -48,11 +48,11 @@ ActiveRecord::Schema.define(version: 2021_11_29_092526) do
     t.bigint "venue_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "full", default: false
     t.date "date"
     t.time "start_time"
     t.time "end_time"
     t.text "comment"
+    t.boolean "full", default: false
     t.index ["user_id"], name: "index_matches_on_user_id"
     t.index ["venue_id"], name: "index_matches_on_venue_id"
   end
