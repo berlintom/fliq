@@ -1,13 +1,14 @@
 class MatchesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home, :index, :show]
 
-    def index
+  def index
     @matches = Match.where(full: false).order(created_at: :desc)
     @search = params["search"]
       if @search.present?
         @address = @search["address"]
+        @date = @search["date"]
         # precise query match
-        @matches = Match.joins(:venue).where("address ILIKE ?", "%#{@address}%")
+        @matches = Match.joins(:venue).where("address ILIKE ?", "%#{@address}%").where(date: @date)
         @markers = @matches.map do |match|
         {
           lat: match.venue.latitude,
@@ -15,9 +16,9 @@ class MatchesController < ApplicationController
           info_window: render_to_string(partial: "info_window", locals: { venue: match.venue }),
           image_url: helpers.asset_url("map-icon.svg")
         }
-        end
       end
     end
+  end
 
   def show
     @match = Match.find(params[:id])
