@@ -3,6 +3,11 @@ class UsersController < ApplicationController
   # def user_params
   #   params.require(:user).permit(:username, :homevenue, :photo)
   # end
+
+  def index
+    @profiles = Profile.order(point_sum: :desc).first(3)
+  end
+
   def show
     @user = User.find(params[:id])
     lastparticipations(@user)
