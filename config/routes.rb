@@ -17,4 +17,6 @@ Rails.application.routes.draw do
   get '/mymatches', to: 'matches#mymatches'
 
   resources :users, only: [:show]
+
+  resources :chatrooms, only: :show
 end
