@@ -17,10 +17,7 @@
   border: $red 5px solid;
 }
 
-.card-match .avatar-bordered {
-  height: 50px;
-  width: 50px;
-}
+
 
 .avatar-bordered-small {
   height: 40px;
@@ -30,6 +27,17 @@
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.507);
   border: $red 3px solid;
 }
+
+.avatar-bordered-medium {
+  height: 80px;
+  width: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.507);
+  border: $red 4px solid;
+}
+
+
 
 .avatar-square {
   width: 40px;
