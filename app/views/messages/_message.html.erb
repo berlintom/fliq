@@ -1,7 +1,7 @@
-<div class="message-<%= message.id %>">
-  <small>
+<div id="message-<%= message.id %>" class="<%= message.user == current_user ? 'right-message' : '' %>">
+  <div class="message-info-container">
     <strong><%= message.user.user_name %></strong>
     <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
-  </small>
-  <p><%= message.content %></p>
+  </div>
+    <p><%= message.content %></p>
 </div>

@@ -4,6 +4,7 @@
   data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
     <% @chatroom.messages.each do |message| %>
       <%= render "messages/message", message: message %>
+      <hr>
     <% end %>
   </div>
 </div>

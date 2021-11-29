@@ -28,3 +28,11 @@
     }
   }
 }
+
+.right-message {
+  display: flex;
+  flex-direction: column;
+  .message-info-container, p {
+    align-self: flex-end;
+  }
+}
