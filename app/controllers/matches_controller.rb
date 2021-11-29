@@ -7,7 +7,6 @@ class MatchesController < ApplicationController
       if @search.present?
         @address = @search["address"]
         @date = @search["date"]
-        # precise query match
         @matches = Match.joins(:venue).where("address ILIKE ?", "%#{@address}%").where(date: @date)
         @markers = @matches.map do |match|
         {
