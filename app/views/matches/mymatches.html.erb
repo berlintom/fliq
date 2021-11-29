@@ -73,7 +73,7 @@
                     <div class="btn btn-primary"><%= link_to "Accept", participation_accept_path(participation), method: :patch %></div>
                     <div class="btn btn-primary"><%= link_to "Decline", participation_decline_path(participation), method: :patch %></div>
                   <% elsif participation.status == "accepted" %>
-                    <p>You can look forward to play against <%= participation.user.user_name %>!</p>
+                    <p>You can looking forward to playing against <%= participation.user.user_name %>!</p>
                     <p><%= participation.user.user_name %> is playing in Team <%= participation.team %>
                   <% else %>
                     <p>You declined <%= participation.user.user_name %>!</p>
