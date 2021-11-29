@@ -22,6 +22,5 @@ export default class extends Controller {
 
     _clearInputValue() {
       this.addressTarget.value = "";
-    }
   }
 }

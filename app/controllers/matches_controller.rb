@@ -3,21 +3,13 @@ class MatchesController < ApplicationController
 
   def index
     @matches = Match.where(full: false).order(created_at: :desc)
-    @search = params["search"]
-        if @search.present?
-          @address = @search["address"]
-          # precise query match
-          @matches = Match.joins(:venue).where("address ILIKE ?", "%#{@address}%")
-          @markers = @matches.map do |match|
-          {
-            lat: match.venue.latitude,
-            lng: match.venue.longitude,
-            info_window: render_to_string(partial: "info_window", locals: { venue: match.venue }),
-            image_url: helpers.asset_url("map-icon.svg")
-          }
-        else
-
-      end
+    @markers = @matches.map do |match|
+      {
+        lat: match.venue.latitude,
+        lng: match.venue.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { venue: match.venue }),
+        image_url: helpers.asset_url("map-icon.svg")
+      }
     end
   end
 
