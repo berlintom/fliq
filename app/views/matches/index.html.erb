@@ -24,7 +24,7 @@
           <p>📅 <%= match.date.strftime("%d.%m.%y") %><p>
           <p>🕒 <%= match.start_time.time.to_s(:time) %> - <%= match.end_time.time.to_s(:time)%> </p>
           <p>📍 <%= match.venue.address %><p>
-          <p>👨‍👩‍👧‍👧 <%= match.capacity %> players can join</p>
+          <p>👨‍👩‍👧‍👧 <%= match.capacity %> / <%= userparticipants.length %> <%=match.capacity - userparticipants.length%> <%= "player".pluralize(match.capacity - userparticipants.length)%> can join</p>
           <p>💬 <%= match.comment %><p>
           <p><div class="btn btn-cta"><%=link_to "Ask to Play", match_path(match) %></div></p>
           <span class="match-modal-close" id="match-modal-close-<%= ind %>">&times;</span>
