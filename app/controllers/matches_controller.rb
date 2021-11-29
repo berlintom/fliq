@@ -24,7 +24,7 @@ class MatchesController < ApplicationController
     assignteams(@participations)
     matchdone?(@match)
     @score = Score.new(match: @match)
-
+    @message = Message.new
   end
 
   def new
