@@ -7,7 +7,7 @@ class MatchesController < ApplicationController
       if @search.present?
         @address = @search["address"]
         # precise query match
-        @matches = Venue.joins(:matches).where("address ILIKE ?", "%#{@address}%")
+        @matches = Match.joins(:venue).where("address ILIKE ?", "%#{@address}%")
         @markers = @matches.map do |match|
         {
           lat: match.venue.latitude,
