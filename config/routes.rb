@@ -16,5 +16,12 @@ Rails.application.routes.draw do
   patch "/participations/:id/team-two", to: "participations#team_two", as: :participation_team_two
   get '/mymatches', to: 'matches#mymatches'
 
+
+
+  resources :chatrooms, only: [:show, :new, :create]  do
+    resources :messages, only: :create
+  end
+
   resources :users, only: [:show, :index]
+
 end
