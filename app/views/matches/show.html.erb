@@ -63,6 +63,13 @@
       <% end %>
     <% end %>
     <br>
+    <% @match.reviews.each do |review|  %>
+      <p><%= review.comment %> </p>
+      <p><%= review.rating %> </p>
+      <%= link_to "Delete", review_path(review), method: :delete, data: { confirm: "You really want to delete the review?"}  %>
+      <hr>
+    <% end %>
+
     <div class="btn btn-cta"><%= link_to 'Back to all matches', matches_path %></div>
     <%# <div class="btn btn-cta"><%= link_to "let´s chat!", chatroom_path</div> %>
     <div class="btn btn-cta"><%= link_to 'Leave match review', new_match_review_path(@match) %></div>
