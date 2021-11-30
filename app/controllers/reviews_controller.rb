@@ -7,7 +7,9 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
+    @review.user = current_user
     @review.match = @match
+    @review.venue = @review.match.venue
     if @review.save
       redirect_to match_path(@match), notice: '🙌 Thanks for your review! 💯'
     else
