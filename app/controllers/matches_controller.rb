@@ -66,15 +66,14 @@ class MatchesController < ApplicationController
     venue = Venue.find_by(address: params[:match]["venue_id"])
     @match.venue = venue
     if @match.save
-    puts "save success"
       @participation = Participation.new(status: "accepted", team: nil)
       @participation.match = @match
       @participation.user = current_user
       @participation.save
-      redirect_to matches_path
+      redirect_to matches_path, notice: '💯 Yeah - that worked! 🙌'
     else
-    puts "save failed"
-      render :new
+    puts "Starting a match didn't work, try again"
+      render :new, alert: 'Ooops 🙄- that didnt work - try again'
     end
   end
 
@@ -83,7 +82,7 @@ class MatchesController < ApplicationController
     @pendings = []
     @booked = []
     @participations.each do |participation|
-      if participation.status == "pending" || !participation.match.full? && participation.status == "accepted"
+      if (participation.status == "pending") || (!participation.match.full? && participation.status == "accepted")
         @pendings << participation
       elsif participation.match.full
         @booked << participation
