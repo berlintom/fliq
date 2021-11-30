@@ -4,10 +4,10 @@ class ScoresController < ApplicationController
     @match = Match.find(params[:match_id])
     @score.match = @match
     if @score.save
-      redirect_to user_path(current_user)
+      redirect_to user_path(current_user), notice: 'Score submitted - Good match 🙌!'
       update_points(@match, @score)
     else
-      render :new
+      render :new, alert: 'Ooops, I couldnt submit the score 🙄, please try again'
     end
   end
 

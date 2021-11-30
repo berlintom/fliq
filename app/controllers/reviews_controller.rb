@@ -5,12 +5,11 @@ class ReviewsController < ApplicationController
     @review = Review.new
   end
 
-   def create
-    @review = Review.new(review_params)
-    raise
+  def create
+  @review = Review.new(review_params)
     @review.match = @match
     if @review.save
-      redirect_to match_path(@match)
+      redirect_to match_path(@match), notice: '🙌 Thanks for your review! 💯'
     else
       render :new
     end
@@ -20,7 +19,7 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @match = @review.match
     @review.destroy
-    redirect_to match_path(@match)
+    redirect_to match_path(@match), notice: '💯 Done - Review deleted!👌'
   end
 
   private
