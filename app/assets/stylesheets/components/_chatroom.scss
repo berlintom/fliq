@@ -1,7 +1,7 @@
 .chatroom {
   background: white;
-  margin-top: 9px;
-  height: calc(100vh - 75px);
+  margin-top: 8px;
+  height: calc(100vh - 72px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -36,4 +36,20 @@
   .message-info-container, p {
     align-self: flex-end;
   }
+}
+
+#chat-form {
+  position: absolute;
+  top: 65px;
+  left: 39px;
+  border-radius: 15px 150px 15px 15px;
+  box-shadow: 0px 0px 4px #aaa9a9;
+  padding: 27px;
+}
+
+#clickme {
+  position: absolute;
+  top: 87px;
+  right: 2px;
+  border-radius: 50%;
 }
