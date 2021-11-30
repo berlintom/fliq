@@ -99,6 +99,7 @@
       <% end %>
     <% end %>
     <br>
+
     <% @match.reviews.each do |review|  %>
       <% case %>
       <% when review.rating === 1 %>
@@ -108,21 +109,19 @@
       <% when review.rating === 3 %>
         <p>Rating ⭐⭐⭐☆☆</p>
       <% when review.rating === 4 %>
-       <p>Rating ⭐⭐⭐⭐☆ </p>
+        <p>Rating ⭐⭐⭐⭐☆ </p>
       <% when review.rating === 5 %>
-       <p>Amazing match! ⭐⭐⭐⭐⭐ 5/5 </p>
+        <p>Rating ⭐⭐⭐⭐⭐ </p>
       <hr>
       <% end %>
-      <div class="btn btn-cta"><%= link_to 'Back to all matches', matches_path %></div>
-      <% if review.present? %>
-        <div class="btn btn-cta"><%= link_to "Delete Review", review_path(review), method: :delete, data: { confirm: "You really want to delete the review?"}  %></div>
-      <% else %>
+      <% if @done && review.present? == false %>
         <div class="btn btn-cta"><%= link_to 'Leave match review', new_match_review_path(@match) %></div>
+      <% else %>
+        <div class="btn btn-cta"><%= link_to "Delete Review", review_path(review), method: :delete, data: { confirm: "You really want to delete the review?"}  %></div>
       <% end %>
     <% end %>
-    <%# <div class="btn btn-cta"><%= link_to "let´s chat!", chatroom_path</div> %>
+    <div class="btn btn-cta"><%= link_to 'Back to all matches', matches_path %></div>
   </div>
-
   <div class="container chatroom">
     <div class="messages" data-controller="chatroom-subscription"
     data-chatroom-subscription-match-id-value="<%= @match.id %>">
@@ -135,5 +134,4 @@
       <%= f.input :content, label: false, placeholder: "type something" %>
     <% end %>
   </div>
-
 </div>
