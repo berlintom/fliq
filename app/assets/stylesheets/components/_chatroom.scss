@@ -36,6 +36,9 @@
   .message-info-container, p {
     align-self: flex-end;
   }
+  .speech-bubble, p{
+    align-self: flex-end;
+  }
 }
 
 #chat-form {
@@ -58,37 +61,26 @@
 
 .speech-bubble {
   background: $light-blue;
-  border-radius: 100%;
+  border-radius: 10%;
   color: $blue;
   display: inline-block;
   padding: .5em .8em;
   position: relative;
 }
 
-.speech-bubble:before {
-  background: $light-blue;
-  border-radius: 100%;
-  content: '';
-  width: 3.5em;
-  height: 1em;
-  position: absolute;
-  left: 8%;
-  bottom: 6px;
-  margin-left: -.5em;
-  -webkit-transform: rotate(-35deg);
-  // .speech-bubble:before .right-message {
-  //   background: $light-blue;
-  //   border-radius: 100%;
-  //   content: '';
-  //   width: 3.5em;
-  //   height: 1em;
-  //   position: absolute;
-  //   left: 92%;
-  //   bottom: 6px;
-  //   margin-left: -.5em;
-  //   -webkit-transform: rotate(-35deg);
-  // }
-}
+// .speech-bubble:before {
+//   background: $light-blue;
+//   border-radius: 100%;
+//   content: '';
+//   width: 3.5em;
+//   height: 1em;
+//   position: absolute;
+//   left: 8%;
+//   bottom: 6px;
+//   margin-left: -.5em;
+//   -webkit-transform: rotate(-35deg);
+// }
+
 
 .message-info-container {
   color: grey;

@@ -133,7 +133,7 @@
           <div class="messages" data-controller="chatroom-subscription"
           data-chatroom-subscription-match-id-value="<%= @match.id %>">
             <% @match.messages.each do |message| %>
-              <p data-chlickable-chatroom-target="item" class="hidden mt-4"><%= render "messages/message", message: message %></p>
+              <p data-clickable-chatroom-target="item" class="hidden mt-4"><%= render "messages/message", message: message %></p>
 
             <% end %>
           </div>

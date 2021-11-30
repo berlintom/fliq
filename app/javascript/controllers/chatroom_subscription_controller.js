@@ -10,6 +10,8 @@ export default class extends Controller {
       { received: data => this.element.insertAdjacentHTML("beforeend", data) }
       )
     console.log(`Subscribed to the chatroom with the id ${this.matchIdValue}.`);
+    // const chatbutton = document.getElementById("chat-form");
+    // chatbutton.classList.toggle("d-none");
   }
 
   disconnect() {
