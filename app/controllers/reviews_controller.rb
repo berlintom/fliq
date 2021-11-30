@@ -1,12 +1,12 @@
 class ReviewsController < ApplicationController
-  before_action :set_match
+  before_action :set_match, except: [:destroy]
 
   def new
     @review = Review.new
   end
 
   def create
-  @review = Review.new(review_params)
+    @review = Review.new(review_params)
     @review.match = @match
     if @review.save
       redirect_to match_path(@match), notice: '🙌 Thanks for your review! 💯'
