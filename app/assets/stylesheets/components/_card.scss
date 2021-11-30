@@ -4,6 +4,7 @@
   box-shadow: 0px 0px 4px rgb(170, 169, 169);
   padding: 20px;
   background-color: white;
+  position: relative;
   margin: 10px;
     &:hover {
     box-shadow: 0px 0px 8px rgb(170, 169, 169);
@@ -28,8 +29,16 @@
   border-radius: 50px;
   align-items: center;
   margin: 20px 0px;
+  position: relative;
+  border: 2px solid $light-blue;
+
 }
 
+.host-sign {
+  position: absolute;
+  right: 6px;
+  top: -13px;
+}
 
 .card-match h2 {
   font-size: 15px;
@@ -84,28 +93,22 @@
   padding: 2px;
 }
 
-
-.card-trip {
-  margin: 20px;
-}
-
-.whole-card {
-  display:flex;
-}
-
 .requests {
   background-color: $light-blue;
   border-radius: 24px;
-  padding: 10px;
+  padding: 5px;
+  margin-bottom: 4px;
+  position: relative;
 }
 
 .request {
   background-color: $white;
-  border-radius: 8px;
+  border-radius: 20px;
   padding: 5px;
   margin: 5px 0px;
   display: flex;
   justify-content: space-between;
+  width: 220px;
 }
 
 .request-buttons {
@@ -113,6 +116,12 @@
   flex-direction: column;
   justify-content: space-around;
   align-self: center
+}
+
+.match-status {
+  position: absolute;
+  bottom: 65px;
+  right: 15px;
 }
 
 // Score-Card

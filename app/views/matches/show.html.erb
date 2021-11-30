@@ -5,23 +5,59 @@
         <%= cl_image_tag @match.user.photo.key, class: "avatar-bordered"%>
       <% end %>
     </div>
+    <div class="click-me">
+      <%= render"./shared/clickme.html.erb"%>
+    </div>
     <br>
     <div class="show-texts">
       <div class="show-text">
-        <div class="show-name"><p><strong>Date:</strong><p></div>
+        <div class="show-name">
+          <%= render"./shared/calender.html.erb"%>
+        </div>
         <p><%= @match.date.strftime("%d.%m.%y")%></p>
       </div>
       <div class="show-text">
-        <div class="show-name"><p><strong>Time:</strong><p></div>
+        <div class="show-name">
+          <%= render"./shared/time.html.erb"%>
+        </div>
         <p><%= @match.start_time.time.to_s(:time) %> - <%= @match.end_time.time.to_s(:time) %></p>
       </div>
       <div class="show-text">
-        <div class="show-name"><p><strong>Address:</strong><p></div>
+        <div class="show-name">
+          <%= render"./shared/location.html.erb"%>
+        </div>
         <p><%= @match.venue.address %></p>
       </div>
       <div class="show-text">
-        <div class="show-name"><p><strong>Capacity:</strong></p></div>
-        <p><%= @match.capacity %></p>
+        <% actualparticipants = [] %>
+          <% @match.participations.each do |participation| %>
+            <% if participation.status == "accepted" %>
+              <% actualparticipants << participation.user.user_name %>
+            <% end %>
+          <% end %>
+        <div class="show-name">
+          <% if @match.capacity == 4 %>
+            <% if actualparticipants.length == 1 %>
+              <%= render"./shared/cap41.html.erb"%>
+            <% elsif actualparticipants.length == 2 %>
+              <%= render"./shared/cap42.html.erb"%>
+            <% elsif actualparticipants.length == 3 %>
+              <%= render"./shared/cap43.html.erb"%>
+            <% elsif actualparticipants.length == 4 %>
+              <%= render"./shared/capacity4.html.erb"%>
+            <% end %>
+          <% else %>
+            <% if actualparticipants.length == 1 %>
+              <%= render"./shared/cap21.html.erb"%>
+            <% elsif actualparticipants.length == 2 %>
+              <%= render"./shared/capacity2.html.erb"%>
+            <% end %>
+          <% end %>
+        </div>
+        <p><%= @match.capacity%> Players: <% actualparticipants.each do |u| %>
+            <strong><%= u %></strong>
+        <% end %></p>
+        <p><%= @match.capacity -  actualparticipants.length%> can join!</p>
       </div>
       <% if @userparticipants.include?(current_user) && @match.user != current_user && !@match.full%>
         <div class="show-text">
