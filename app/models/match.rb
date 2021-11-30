@@ -4,4 +4,5 @@ class Match < ApplicationRecord
   has_many :participations
   has_many :reviews
   has_one :score
+  has_many :messages
 end

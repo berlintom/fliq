@@ -1,114 +1,199 @@
 <div class="container">
-<div id="main_content">
-  <div class="tab-header">
-  <li class="selected" id="booked" onclick="change_tab(this.id);">Booked matches</li>
-  <li class="notselected" id="pending" onclick="change_tab(this.id);">Pending matches</li>
-  <li class="notselected" id="created" onclick="change_tab(this.id);">Created matches</li>
+  <div id="main_content">
+    <div class="tab-header">
+    <li class="selected" id="booked" onclick="change_tab(this.id);">Booked matches</li>
+    <li class="notselected" id="pending" onclick="change_tab(this.id);">Pending matches</li>
+    <li class="notselected" id="created" onclick="change_tab(this.id);">Created matches</li>
   </div>
 
-<div class="hidden_desc" id="booked_desc">
-   <% if @participations == nil %>
-      <p>No requested participations</p>
-    <% else %>
-        <% @participations.each do |participation| %>
-          <%if participation.match.full%>
+  <div class="hidden_desc" id="booked_desc">
+    <% if @booked.length == 0 %>
+        <p>No requested participations</p>
+      <% else %>
+        <% @booked.each do |participation| %>
+          <%=link_to match_path(participation.match) do %>
             <div class="card-match">
-              <%=link_to match_path(participation.match), class: "card-trip" do %>
-                  <%= cl_image_tag participation.match.user.photo.key, class: "avatar-bordered"%>
-                  <div>
-                  <p>📅 <%= participation.match.date.strftime("%d.%m.%y") %><p>
-                  <p>🕒 <%= participation.match.start_time.time.to_s(:time) %> - <%= participation.match.end_time.time.to_s(:time)%><p>
-                  <p>📍 <%= participation.match.venue.address %><p>
-                  <p>Status: <%= participation.status %><p>
+              <div class="match-host">
+                <%= cl_image_tag participation.match.user.photo.key, class: "avatar-bordered-medium"%>
+              </div>
+              <div class="match">
+                <div class="index-info">
+                  <div class="index-svg">
+                    <%= render"./shared/calender.html.erb"%>
                   </div>
-              <% end %>
-            </div>
-          <% end %>
-        <% end %>
-    <% end %>
-</div>
-
-<div class='hidden_desc' id="pending_desc">
-    <% if @participations == nil %>
-      <p>No requested participations</p>
-    <% else %>
-      <% @participations.each do |participation| %>
-          <% if participation.status == "pending" || !participation.match.full? && participation.status == "accepted"%>
-            <div class="card-match">
-              <%=link_to match_path(participation.match), class: "card-trip" do %>
-                <%= cl_image_tag participation.match.user.photo.key, class: "avatar-bordered"%>
-                <div>
-                <p>📅 <%= participation.match.date.strftime("%d.%m.%y") %><p>
-                <p>🕒 <%= participation.match.start_time.time.to_s(:time) %> - <%= participation.match.end_time.time.to_s(:time)%><p>
-                <p>📍 <%= participation.match.venue.address %><p>
-                <p>Status: <%= participation.status %><p>
+                  <div class="index-text">
+                    <p><%= participation.match.date.strftime("%d.%m.%y") %></p>
+                  </div>
                 </div>
-              <% end %>
+                <div class="index-info">
+                  <div class="index-svg">
+                    <%= render"./shared/time.html.erb"%>
+                  </div>
+                  <div class="index-text">
+                    <p><%= participation.match.start_time.time.to_s(:time) %> - <%= participation.match.end_time.time.to_s(:time)%></p>
+                  </div>
+                </div>
+                <div class="index-info">
+                  <div class="index-svg">
+                    <%= render"./shared/location.html.erb"%>
+                  </div>
+                  <div class="index-text">
+                    <p><%= participation.match.venue.address %></p>
+                  </div>
+                </div>
+                <p>Status: <%= participation.status %><p>
+              </div>
             </div>
           <% end %>
         <% end %>
-    <% end %>
-</div>
+      <% end %>
+  </div>
 
-<div class='hidden_desc' id="created_desc">
-    <% if @matches == nil %>
+  <div class='hidden_desc' id="pending_desc">
+      <% if @pendings.length == 0 %>
+        <p>No requested participations</p>
+      <% else %>
+        <% @pendings.each do |participation| %>
+          <%=link_to match_path(participation.match) do %>
+            <div class="card-match">
+              <div class="match-host">
+                <%= cl_image_tag participation.match.user.photo.key, class: "avatar-bordered-medium"%>
+              </div>
+              <div class="match">
+                <div class="index-info">
+                  <div class="index-svg">
+                    <%= render"./shared/calender.html.erb"%>
+                  </div>
+                  <div class="index-text">
+                    <p><%= participation.match.date.strftime("%d.%m.%y") %></p>
+                  </div>
+                </div>
+                <div class="index-info">
+                  <div class="index-svg">
+                    <%= render"./shared/time.html.erb"%>
+                  </div>
+                  <div class="index-text">
+                    <p><%= participation.match.start_time.time.to_s(:time) %> - <%= participation.match.end_time.time.to_s(:time)%></p>
+                  </div>
+                </div>
+                <div class="index-info">
+                  <div class="index-svg">
+                    <%= render"./shared/location.html.erb"%>
+                  </div>
+                  <div class="index-text">
+                    <p><%= participation.match.venue.address %></p>
+                  </div>
+                </div>
+                <p>Status: <%= participation.status %><p>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+  </div>
+
+  <div class='hidden_desc' id="created_desc">
+    <% if @matches.length == 0 %>
       <p>No created matches</p>
     <% else %>
       <% @matches.each do |match| %>
-        <div class="card-match">
-          <%=link_to match_path(match)  do %>
-            <%= cl_image_tag match.user.photo.key, class: "avatar-bordered"%>
-            <div>
-            <p>📅 <%= match.date.strftime("%d.%m.%y") %><p>
-            <p>🕒 <%= match.start_time.time.to_s(:time) %> - <%= match.end_time.time.to_s(:time)%><p>
-            <p>📍 <%= match.venue.address %><p>
+        <%=link_to match_path(match) do %>
+          <div class="card-match" id="createdmatched">
+            <div class="match-host">
+              <%= cl_image_tag match.user.photo.key, class: "avatar-bordered-medium"%>
+            </div>
+            <div class="match">
+              <div class="index-info">
+                <div class="index-svg">
+                  <%= render"./shared/calender.html.erb"%>
+                </div>
+                <div class="index-text">
+                  <p><%= match.date.strftime("%d.%m.%y") %></p>
+                </div>
+              </div>
+              <div class="index-info">
+                <div class="index-svg">
+                  <%= render"./shared/time.html.erb"%>
+                </div>
+                <div class="index-text">
+                  <p><%= match.start_time.time.to_s(:time) %> - <%= match.end_time.time.to_s(:time)%></p>
+                </div>
+              </div>
+              <div class="index-info">
+                <div class="index-svg">
+                  <%= render"./shared/location.html.erb"%>
+                </div>
+                <div class="index-text">
+                  <p><%= match.venue.address %></p>
+                </div>
+              </div>
+              <div class="index-info">
+                <div class="index-svg">
+                  <%= render"./shared/capacity4.html.erb"%>
+                </div>
+                <div class="index-text">
+                  <p>They want to join your Match:</p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+          <div class="requests">
             <% if match.participations == nil %>
-              <p>Participants: No requested participations yet</p>
+              <p>No one wants to join yet</p>
             <% else %>
-              <p>requested participations:</p>
               <% match.participations.each do |participation|%>
                 <% if participation.user != match.user %>
                   <% if participation.status == "pending" %>
-                    <p><%= participation.user.user_name %> is waiting for your answer!</p>
-                    <div class="btn btn-primary"><%= link_to "Accept", participation_accept_path(participation), method: :patch %></div>
-                    <div class="btn btn-primary"><%= link_to "Decline", participation_decline_path(participation), method: :patch %></div>
+                    <div class="request">
+                      <p><%= cl_image_tag participation.user.photo.key, class: "avatar-bordered-small" %> wants to play with you!</p>
+                      <div class="request-buttons">
+                        <%=link_to participation_accept_path(participation), method: :patch do %>
+                          <%= render"./shared/time.html.erb"%>
+                        <% end %>
+                        <%= link_to participation_decline_path(participation), method: :patch do %>
+                          <%= render"./shared/location.html.erb"%>
+                        <% end %>
+                      </div>
+                    </div>
                   <% elsif participation.status == "accepted" %>
-                    <p>You can looking forward to playing against <%= participation.user.user_name %>!</p>
-                    <p><%= participation.user.user_name %> is playing in Team <%= participation.team %>
+                    <div class="request">
+                      <p>You can look forward to play against <%= cl_image_tag participation.user.photo.key, class: "avatar-bordered-small" %>!</p>
+                    </div>
                   <% else %>
-                    <p>You declined <%= participation.user.user_name %>!</p>
+                    <div class="request">
+                      <p>You declined <%= participation.user.user_name %>!</p>
+                    </div>
                   <% end %>
                 <% end %>
               <% end %>
             <% end %>
-            </div>
-          <% end %>
+          </div>
         </div>
       <% end %>
     <% end %>
-</div>
+  </div>
 
-<div id="page_content">
-   <% if @participations == nil %>
-      <p>No requested participations</p>
-    <% else %>
-        <% @participations.each do |participation| %>
-          <%if participation.match.full%>
-            <div class="card-match">
-              <%=link_to match_path(participation.match), class: "card-trip" do %>
-                <%= cl_image_tag participation.match.user.photo.key, class: "avatar-bordered"%>
-                  <div>
-                  <p>📅 <%= participation.match.date.strftime("%d.%m.%y") %><p>
-                  <p>🕒 <%= participation.match.start_time.time.to_s(:time) %> - <%= participation.match.end_time.time.to_s(:time)%><p>
-                  <p>📍 <%= participation.match.venue.address %><p>
-                  <p>Status: <%= participation.status %><p>
-                  </div>
-              <% end %>
-            </div>
+  <div id="page_content">
+    <% if @participations == nil %>
+        <p>No requested participations</p>
+      <% else %>
+          <% @participations.each do |participation| %>
+            <%if participation.match.full%>
+              <div class="card-match">
+                <%=link_to match_path(participation.match) do %>
+                  <%= cl_image_tag participation.match.user.photo.key, class: "avatar-bordered"%>
+                    <div>
+                    <p>📅 <%= participation.match.date.strftime("%d.%m.%y") %><p>
+                    <p>🕒 <%= participation.match.start_time.time.to_s(:time) %> - <%= participation.match.end_time.time.to_s(:time)%><p>
+                    <p>📍 <%= participation.match.venue.address %><p>
+                    <p>Status: <%= participation.status %><p>
+                    </div>
+                <% end %>
+              </div>
+            <% end %>
           <% end %>
         <% end %>
-      <% end %>
-</div>
+  </div>
 
-</div>
+  </div>
 </div>

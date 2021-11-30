@@ -8,7 +8,7 @@
     &:hover {
     box-shadow: 0px 0px 8px rgb(170, 169, 169);
   }
-  border-radius:  15px 70px 15px 15px;
+  border-radius:  15px 150px 15px 15px;
 }
 
 .show-card a {
@@ -25,8 +25,9 @@
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
-  margin: 20px;
   border-radius: 50px;
+  align-items: center;
+  margin: 20px 0px;
 }
 
 
@@ -39,18 +40,30 @@
 .card-match p {
   font-size: 12px;
   line-height: 1.4;
-  opacity: .7;
   margin-bottom: 0;
   margin-top: 8px;
   color: black;
 }
 
-.match-info {
-  display: flex;
+#createdmatched {
+  flex-direction: column;
+  .match {
+    padding: 0px 49px 24px 0px;
+  }
+  .match-host {
+    padding-top: 6px;
+    margin: 0 auto;
+  }
+}
+
+.match-host {
+  width: 85px;
+  text-align: center;
+  padding: 0px 8px;
 }
 
 .match {
-  margin: 10px;
+  padding: 10px;
 }
 
 .match-avatar {
@@ -72,7 +85,6 @@
 }
 
 
-
 .card-trip {
   margin: 20px;
 }
@@ -81,6 +93,27 @@
   display:flex;
 }
 
+.requests {
+  background-color: $light-blue;
+  border-radius: 24px;
+  padding: 10px;
+}
+
+.request {
+  background-color: $white;
+  border-radius: 8px;
+  padding: 5px;
+  margin: 5px 0px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.request-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-self: center
+}
 
 // Score-Card
 .score-profile {
