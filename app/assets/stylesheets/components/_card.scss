@@ -71,8 +71,6 @@
   padding: 2px;
 }
 
-
-
 .card-trip {
   margin: 20px;
 }
@@ -81,20 +79,111 @@
   display:flex;
 }
 
-
 // Score-Card
+// Top-3
+
+.top-3 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  position: relative;
+  align-items: center;
+}
+
+.top-3 > div:nth-child(1) {
+  position: absolute;
+  top: -30px;
+}
+
+.top-3 > div:nth-child(2) {
+ margin-right: 50px;
+}
+
+.top-3 > div:nth-child(3) {
+ margin-left: 45px;
+ margin-top: 20px;
+}
+
+.rank-top-3 {
+  flex-direction: column;
+  margin: 10px;
+  text-align: center;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.rank-top-3 > p {
+  margin-top: 10px;
+  margin-bottom: 0px;
+}
+
+.stats {
+  flex-direction: column;
+  text-align: center;
+}
+
+.stats > p {
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 5px;
+  margin-bottom: 0px;
+}
+
+.match-avatar-top-3 {
+  height: 120px;
+  width: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+#img-profile {
+  border: 5px solid red;
+}
+
+// Others
+.rest-players {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-stats {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 10px;
+}
+
+.profile-stats > p {
+  margin: 0px;
+}
+
 .score-profile {
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
-  margin: 20px;
-  border-radius: 50px;
-}
-
-.score-info {
-  display: flex;
-}
-
-.stats {
   margin: 10px;
+  border-radius: 50px;
+  flex-direction: row;
+  align-items: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+}
+
+.others-rank {
+  display: flex;
+  margin: 10px;
+  margin-left: 20px;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.others-rank > p {
+  font-size: 60px;
+  margin-bottom: 0px;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-align: center;
 }
