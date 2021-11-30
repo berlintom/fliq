@@ -3,4 +3,5 @@ class Review < ApplicationRecord
   belongs_to :match
   belongs_to :user
   belongs_to :venue
+  validates :rating, presence: true
 end

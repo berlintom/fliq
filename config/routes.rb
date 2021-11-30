@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :participations, only: [:new, :create]
     resources :scores, only: :create
     resources :messages, only: :create
+    resources :reviews, only: [:new, :create]
   end
 
   resources :venues, only: [:index, :show]
@@ -19,5 +20,5 @@ Rails.application.routes.draw do
 
 
   resources :users, only: [:show, :index]
-
+  resources :reviews, only: [:destroy]
 end
