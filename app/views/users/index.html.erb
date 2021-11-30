@@ -1,35 +1,121 @@
-<h1>Ranking</h1>
+<%# <h1>Ranking</h1>
 
-<h3>Top 3</h2>
-
-
+<h3>Top 3</h2> %>
 
 <div class="top-3">
 <% @profiles.first(3).each_with_index do |profile, index| %>
   <div>
       <div class="score-info">
-        <div class="rank-top-3"><p><%= index + 1  %></p></div>
-        <%= cl_image_tag profile.user.photo.key, class: "match-avatar-top-3", id: "img-profile" %>
-        <div class="stats">
+        <div class="rank-top-3">
+          <p><%= index + 1  %></p>
+        </div>
+        <% if index == 0 %>
+          <%= cl_image_tag profile.user.photo.key, class: "avatar-bordered", id: "avatar-won" %>
+        <% else %>
+         <%= cl_image_tag profile.user.photo.key, class: "avatar-bordered" %>
+        <% end %>
+        <div class="stats-egor">
             <p><strong><%= profile.user.user_name %></strong></p>
-            <p><strong>Points: </strong><%= profile.point_sum %></p>
+            <p><svg width="30" height="20" viewBox="0 0 93 108" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="46.5" y1="54" x2="46.5" y2="85" stroke="#F5455C" stroke-width="7"/>
+            <path d="M12 0H81L74.1 40.2735C74.1 40.2735 74.1 62 46.5 62C18.9 62 18.9 40.2735 18.9 40.2735L12 0Z" fill="#F5455C"/>
+            <ellipse cx="46.5" cy="85" rx="11.5" ry="8" fill="#50B0A7"/>
+            <ellipse cx="46.5" cy="96.5" rx="19.5" ry="11.5" fill="#50B0A7"/>
+            <rect x="19" y="100" width="55" height="8" fill="#50B0A7"/>
+            <path d="M66 8C66 8 89 19.875 89 27C89 34.125 66 46 66 46" stroke="#F5455C" stroke-width="7"/>
+            <path d="M27 46C27 46 4 34.125 4 27C4 19.875 27 8 27 8" stroke="#F5455C" stroke-width="7"/>
+            <path d="M26.7714 31.0329C24.3233 18.8694 26.9978 5.74048 25.3984 6.0624C23.7989 6.38431 20.9427 17.5138 22.5679 29.8744C24.1931 42.235 32.6642 50.4321 34.2637 50.1101C35.8631 49.7882 29.2195 43.1963 26.7714 31.0329Z" fill="white"/>
+            <path d="M31.9194 95.7003C32.4318 92.9427 35.0277 90.5871 34.3747 90.4657C33.7218 90.3444 31.2949 92.2725 30.4428 94.974C29.5907 97.6756 31.8661 100.33 32.5191 100.452C33.172 100.573 31.407 98.4578 31.9194 95.7003Z" fill="white"/>
+            <path d="M39.3762 82.8356C39.7128 81.0239 41.6145 79.5127 41.1241 79.4215C40.6337 79.3304 38.8512 80.5622 38.2595 82.3312C37.6678 84.1002 39.4145 85.8912 39.9049 85.9823C40.3954 86.0735 39.0395 84.6473 39.3762 82.8356Z" fill="white"/>
+            </svg><%= profile.point_sum %></p>
         </div>
       </div>
     </div>
 <% end %>
 </div>
+<%#
+<h3>Others</h2> %>
 
-<h3>Others</h2>
-
-<div class="rest-players">
 <% @profiles.each_with_index do |profile, index| %>
-    <div class="score-profile">
-      <div class="others-rank"><p><%= index + 1 %></p></div>
-      <div> <%= cl_image_tag profile.user.photo.key, class: "match-avatar-top-3", id: "img-profile" %> </div>
-      <div class="profile-stats">
+    <% if index == 0 %>
+      <div class="card-match" id="first">
+        <div class="others-rank"><p><%= index + 1 %></p></div>
+        <div> <%= cl_image_tag profile.user.photo.key, class: "avatar-bordered-medium" %> </div>
+        <div class="match">
+            <p><strong>Name: </strong><%= profile.user.user_name %></p>
+            <p><svg width="30" height="20" viewBox="0 0 93 108" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <line x1="46.5" y1="54" x2="46.5" y2="85" stroke="#F5455C" stroke-width="7"/>
+              <path d="M12 0H81L74.1 40.2735C74.1 40.2735 74.1 62 46.5 62C18.9 62 18.9 40.2735 18.9 40.2735L12 0Z" fill="#F5455C"/>
+              <ellipse cx="46.5" cy="85" rx="11.5" ry="8" fill="#50B0A7"/>
+              <ellipse cx="46.5" cy="96.5" rx="19.5" ry="11.5" fill="#50B0A7"/>
+              <rect x="19" y="100" width="55" height="8" fill="#50B0A7"/>
+              <path d="M66 8C66 8 89 19.875 89 27C89 34.125 66 46 66 46" stroke="#F5455C" stroke-width="7"/>
+              <path d="M27 46C27 46 4 34.125 4 27C4 19.875 27 8 27 8" stroke="#F5455C" stroke-width="7"/>
+              <path d="M26.7714 31.0329C24.3233 18.8694 26.9978 5.74048 25.3984 6.0624C23.7989 6.38431 20.9427 17.5138 22.5679 29.8744C24.1931 42.235 32.6642 50.4321 34.2637 50.1101C35.8631 49.7882 29.2195 43.1963 26.7714 31.0329Z" fill="white"/>
+              <path d="M31.9194 95.7003C32.4318 92.9427 35.0277 90.5871 34.3747 90.4657C33.7218 90.3444 31.2949 92.2725 30.4428 94.974C29.5907 97.6756 31.8661 100.33 32.5191 100.452C33.172 100.573 31.407 98.4578 31.9194 95.7003Z" fill="white"/>
+              <path d="M39.3762 82.8356C39.7128 81.0239 41.6145 79.5127 41.1241 79.4215C40.6337 79.3304 38.8512 80.5622 38.2595 82.3312C37.6678 84.1002 39.4145 85.8912 39.9049 85.9823C40.3954 86.0735 39.0395 84.6473 39.3762 82.8356Z" fill="white"/>
+              </svg><%= profile.point_sum %></p>
+            <p><strong>Games played: </strong> <%= profile.user.participations.where(status: 'accepted').size %></p></div>
+      </div>
+    <% elsif index == 1 %>
+      <div class="card-match" id="second">
+        <div class="others-rank"><p><%= index + 1 %></p></div>
+        <div> <%= cl_image_tag profile.user.photo.key, class: "avatar-bordered-medium" %> </div>
+        <div class="match">
           <p><strong>Name: </strong><%= profile.user.user_name %></p>
-          <p><strong>Points: </strong><%= profile.point_sum %></p>
+          <p><svg width="30" height="20" viewBox="0 0 93 108" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="46.5" y1="54" x2="46.5" y2="85" stroke="#F5455C" stroke-width="7"/>
+            <path d="M12 0H81L74.1 40.2735C74.1 40.2735 74.1 62 46.5 62C18.9 62 18.9 40.2735 18.9 40.2735L12 0Z" fill="#F5455C"/>
+            <ellipse cx="46.5" cy="85" rx="11.5" ry="8" fill="#50B0A7"/>
+            <ellipse cx="46.5" cy="96.5" rx="19.5" ry="11.5" fill="#50B0A7"/>
+            <rect x="19" y="100" width="55" height="8" fill="#50B0A7"/>
+            <path d="M66 8C66 8 89 19.875 89 27C89 34.125 66 46 66 46" stroke="#F5455C" stroke-width="7"/>
+            <path d="M27 46C27 46 4 34.125 4 27C4 19.875 27 8 27 8" stroke="#F5455C" stroke-width="7"/>
+            <path d="M26.7714 31.0329C24.3233 18.8694 26.9978 5.74048 25.3984 6.0624C23.7989 6.38431 20.9427 17.5138 22.5679 29.8744C24.1931 42.235 32.6642 50.4321 34.2637 50.1101C35.8631 49.7882 29.2195 43.1963 26.7714 31.0329Z" fill="white"/>
+            <path d="M31.9194 95.7003C32.4318 92.9427 35.0277 90.5871 34.3747 90.4657C33.7218 90.3444 31.2949 92.2725 30.4428 94.974C29.5907 97.6756 31.8661 100.33 32.5191 100.452C33.172 100.573 31.407 98.4578 31.9194 95.7003Z" fill="white"/>
+            <path d="M39.3762 82.8356C39.7128 81.0239 41.6145 79.5127 41.1241 79.4215C40.6337 79.3304 38.8512 80.5622 38.2595 82.3312C37.6678 84.1002 39.4145 85.8912 39.9049 85.9823C40.3954 86.0735 39.0395 84.6473 39.3762 82.8356Z" fill="white"/>
+            </svg><%= profile.point_sum %></p>
           <p><strong>Games played: </strong> <%= profile.user.participations.where(status: 'accepted').size %></p></div>
-    </div>
+        </div>
+    <% elsif index == 2 %>
+      <div class="card-match" id="third">
+        <div class="others-rank"><p><%= index + 1 %></p></div>
+        <div> <%= cl_image_tag profile.user.photo.key, class: "avatar-bordered-medium" %> </div>
+        <div class="match">
+          <p><strong>Name: </strong><%= profile.user.user_name %></p>
+          <p><svg width="30" height="20" viewBox="0 0 93 108" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="46.5" y1="54" x2="46.5" y2="85" stroke="#F5455C" stroke-width="7"/>
+            <path d="M12 0H81L74.1 40.2735C74.1 40.2735 74.1 62 46.5 62C18.9 62 18.9 40.2735 18.9 40.2735L12 0Z" fill="#F5455C"/>
+            <ellipse cx="46.5" cy="85" rx="11.5" ry="8" fill="#50B0A7"/>
+            <ellipse cx="46.5" cy="96.5" rx="19.5" ry="11.5" fill="#50B0A7"/>
+            <rect x="19" y="100" width="55" height="8" fill="#50B0A7"/>
+            <path d="M66 8C66 8 89 19.875 89 27C89 34.125 66 46 66 46" stroke="#F5455C" stroke-width="7"/>
+            <path d="M27 46C27 46 4 34.125 4 27C4 19.875 27 8 27 8" stroke="#F5455C" stroke-width="7"/>
+            <path d="M26.7714 31.0329C24.3233 18.8694 26.9978 5.74048 25.3984 6.0624C23.7989 6.38431 20.9427 17.5138 22.5679 29.8744C24.1931 42.235 32.6642 50.4321 34.2637 50.1101C35.8631 49.7882 29.2195 43.1963 26.7714 31.0329Z" fill="white"/>
+            <path d="M31.9194 95.7003C32.4318 92.9427 35.0277 90.5871 34.3747 90.4657C33.7218 90.3444 31.2949 92.2725 30.4428 94.974C29.5907 97.6756 31.8661 100.33 32.5191 100.452C33.172 100.573 31.407 98.4578 31.9194 95.7003Z" fill="white"/>
+            <path d="M39.3762 82.8356C39.7128 81.0239 41.6145 79.5127 41.1241 79.4215C40.6337 79.3304 38.8512 80.5622 38.2595 82.3312C37.6678 84.1002 39.4145 85.8912 39.9049 85.9823C40.3954 86.0735 39.0395 84.6473 39.3762 82.8356Z" fill="white"/>
+            </svg><%= profile.point_sum %></p>
+          <p><strong>Games played: </strong> <%= profile.user.participations.where(status: 'accepted').size %></p></div>
+      </div>
+    <% else %>
+      <div class="card-match">
+      <div class="others-rank"><p><%= index + 1 %></p></div>
+      <div> <%= cl_image_tag profile.user.photo.key, class: "avatar-bordered-medium" %> </div>
+      <div class="match">
+        <p><strong>Name: </strong><%= profile.user.user_name %></p>
+        <p><svg width="30" height="20" viewBox="0 0 93 108" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="46.5" y1="54" x2="46.5" y2="85" stroke="#F5455C" stroke-width="7"/>
+          <path d="M12 0H81L74.1 40.2735C74.1 40.2735 74.1 62 46.5 62C18.9 62 18.9 40.2735 18.9 40.2735L12 0Z" fill="#F5455C"/>
+          <ellipse cx="46.5" cy="85" rx="11.5" ry="8" fill="#50B0A7"/>
+          <ellipse cx="46.5" cy="96.5" rx="19.5" ry="11.5" fill="#50B0A7"/>
+          <rect x="19" y="100" width="55" height="8" fill="#50B0A7"/>
+          <path d="M66 8C66 8 89 19.875 89 27C89 34.125 66 46 66 46" stroke="#F5455C" stroke-width="7"/>
+          <path d="M27 46C27 46 4 34.125 4 27C4 19.875 27 8 27 8" stroke="#F5455C" stroke-width="7"/>
+          <path d="M26.7714 31.0329C24.3233 18.8694 26.9978 5.74048 25.3984 6.0624C23.7989 6.38431 20.9427 17.5138 22.5679 29.8744C24.1931 42.235 32.6642 50.4321 34.2637 50.1101C35.8631 49.7882 29.2195 43.1963 26.7714 31.0329Z" fill="white"/>
+          <path d="M31.9194 95.7003C32.4318 92.9427 35.0277 90.5871 34.3747 90.4657C33.7218 90.3444 31.2949 92.2725 30.4428 94.974C29.5907 97.6756 31.8661 100.33 32.5191 100.452C33.172 100.573 31.407 98.4578 31.9194 95.7003Z" fill="white"/>
+          <path d="M39.3762 82.8356C39.7128 81.0239 41.6145 79.5127 41.1241 79.4215C40.6337 79.3304 38.8512 80.5622 38.2595 82.3312C37.6678 84.1002 39.4145 85.8912 39.9049 85.9823C40.3954 86.0735 39.0395 84.6473 39.3762 82.8356Z" fill="white"/>
+          </svg><%= profile.point_sum %></p>
+        <p><strong>Games played: </strong> <%= profile.user.participations.where(status: 'accepted').size %></p></div>
+      </div>
+    <% end %>
 <% end %>
-</div>
