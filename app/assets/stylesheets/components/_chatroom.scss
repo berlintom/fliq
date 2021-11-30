@@ -42,9 +42,10 @@
   position: absolute;
   top: 65px;
   left: 39px;
+  right: 39px;
   border-radius: 15px 150px 15px 15px;
   box-shadow: 0px 0px 4px #aaa9a9;
-  padding: 27px;
+  padding: 13px;
 }
 
 #clickme {
@@ -52,4 +53,43 @@
   top: 87px;
   right: 2px;
   border-radius: 50%;
+}
+
+
+.speech-bubble {
+  background: $light-blue;
+  border-radius: 100%;
+  color: $blue;
+  display: inline-block;
+  padding: .5em .8em;
+  position: relative;
+}
+
+.speech-bubble:before {
+  background: $light-blue;
+  border-radius: 100%;
+  content: '';
+  width: 3.5em;
+  height: 1em;
+  position: absolute;
+  left: 8%;
+  bottom: 6px;
+  margin-left: -.5em;
+  -webkit-transform: rotate(-35deg);
+  // .speech-bubble:before .right-message {
+  //   background: $light-blue;
+  //   border-radius: 100%;
+  //   content: '';
+  //   width: 3.5em;
+  //   height: 1em;
+  //   position: absolute;
+  //   left: 92%;
+  //   bottom: 6px;
+  //   margin-left: -.5em;
+  //   -webkit-transform: rotate(-35deg);
+  // }
+}
+
+.message-info-container {
+  color: grey;
 }

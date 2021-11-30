@@ -1,7 +1,12 @@
-<div id="message-<%= message.id %>" class="<%= message.user == current_user ? 'right-message' : '' %>">
-  <div class="message-info-container">
-    <strong><%= message.user.user_name %></strong>
-    <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+
+  <div class="speech-bubble">
+    <div id="message-<%= message.id %>" class="<%= message.user == current_user ? 'right-message' : '' %>">
+        <p><%= message.content %></p>
+    </div>
   </div>
-    <p><%= message.content %></p>
-</div>
+  <div class="message-info-container">
+    <small>
+      <strong><%= message.user.user_name %></strong>
+      <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+    </small>
+  </div>
