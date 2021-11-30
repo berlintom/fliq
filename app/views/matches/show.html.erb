@@ -75,13 +75,16 @@
        <p>Rating ⭐⭐⭐⭐☆ </p>
       <% when review.rating === 5 %>
        <p>Amazing match! ⭐⭐⭐⭐⭐ 5/5 </p>
-      <%= link_to "Delete", review_path(review), method: :delete, data: { confirm: "You really want to delete the review?"}  %>
       <hr>
       <% end %>
+      <div class="btn btn-cta"><%= link_to 'Back to all matches', matches_path %></div>
+      <% if review.present? %>
+        <div class="btn btn-cta"><%= link_to "Delete Review", review_path(review), method: :delete, data: { confirm: "You really want to delete the review?"}  %></div>
+      <% else %>
+        <div class="btn btn-cta"><%= link_to 'Leave match review', new_match_review_path(@match) %></div>
+      <% end %>
     <% end %>
-    <div class="btn btn-cta"><%= link_to 'Back to all matches', matches_path %></div>
     <%# <div class="btn btn-cta"><%= link_to "let´s chat!", chatroom_path</div> %>
-    <div class="btn btn-cta"><%= link_to 'Leave match review', new_match_review_path(@match) %></div>
   </div>
 
   <div class="container chatroom">
