@@ -8,7 +8,9 @@
       <% participations = match.participations %>
       <% userparticipants = [] %>
       <% participations.each do |participation| %>
-        <% userparticipants << participation.user %>
+        <% if participation.status == "accepted" %>
+          <% userparticipants << participation.user %>
+        <% end %>
       <% end %>
       <div class="card-match" data-matchId="<%= ind %>">
         <div class="match-host">
@@ -47,6 +49,9 @@
           <%=link_to user_path(match.user) do %>
               <%= cl_image_tag match.user.photo.key, class: "avatar-bordered"%>
           <% end %>
+          <div class="modalclickme">
+            <%= render"./shared/clickme.html.erb"%>
+          </div>
           <div class="index-info">
             <div class="index-svg">
               <%= render"./shared/location.html.erb"%>

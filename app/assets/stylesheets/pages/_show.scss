@@ -12,10 +12,17 @@
 }
 
 .show-name {
-  width: 65px;
+  width: 30px;
   flex-shrink: 0;
   font-weight: bold;
   color: $red;
+}
+
+.click-me {
+    position: absolute;
+    top: 84px;
+    right: 99px;
+    transform: rotate(-27deg);
 }
 
 
