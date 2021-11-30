@@ -1,2 +1,48 @@
+<!--
+ToDos
+# list the list of users horizontally
+# order the list by the highest score
+
+# implement the logic of separation of the first highest-ranked players and others
+-->
+
 <h1>Ranking</h1>
 
+<h3>Top 3</h2>
+
+
+<ol>
+<% @profiles.first(3).each do |profile| %>
+  <li>
+ <div class="score-profile">
+    <div class="score-info">
+      <%= cl_image_tag profile.user.photo.key, class: "match-avatar" %>
+      <div class="stats">
+          <p><strong>Nickname: </strong><%= profile.user.user_name %></p>
+          <p><strong>Points: </strong><%= profile.point_sum %></p>
+          <p><strong>Games played: </strong> <%= profile.user.participations.where(status: 'accepted').size %></p>
+      </div>
+    </div>
+  </div>
+  </li>
+<% end %>
+</ol>
+
+<h3>Others</h2>
+
+   <ol>
+<% @profiles.each do |profile| %>
+    <li>
+       <div class="score-profile">
+        <div class="score-info">
+          <%= cl_image_tag profile.user.photo.key, class: "match-avatar" %>
+          <div class="stats">
+              <p><strong>Nickname: </strong><%= profile.user.user_name %></p>
+              <p><strong>Points: </strong><%= profile.point_sum %></p>
+              <p><strong>Games played: </strong> <%= profile.user.participations.where(status: 'accepted').size %></p>
+          </div>
+        </div>
+  </div>
+    </li>
+<% end %>
+</ol>

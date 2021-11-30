@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   # end
 
   def index
-    @profiles = Profile.order(point_sum: :desc).first(3)
+    @profiles = Profile.order(point_sum: :desc).all
   end
 
   def show
