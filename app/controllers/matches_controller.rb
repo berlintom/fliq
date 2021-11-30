@@ -54,7 +54,7 @@ class MatchesController < ApplicationController
     @pendings = []
     @booked = []
     @participations.each do |participation|
-      if participation.status == "pending" || !participation.match.full? && participation.status == "accepted"
+      if (participation.status == "pending") || (!participation.match.full? && participation.status == "accepted")
         @pendings << participation
       elsif participation.match.full
         @booked << participation
