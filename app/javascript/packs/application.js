@@ -38,7 +38,6 @@ import { initFlatpickr } from "../components/flatpickr";
 
 initFlatpickr();
 
-
 // import { timePicker } from '../components/timepicker.js';
 
 
