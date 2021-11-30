@@ -52,6 +52,15 @@ class MatchesController < ApplicationController
 
   def mymatches
     @participations = Participation.where(user: current_user)
+    @pendings = []
+    @booked = []
+    @participations.each do |participation|
+      if participation.status == "pending" || !participation.match.full? && participation.status == "accepted"
+        @pendings << participation
+      elsif participation.match.full
+        @booked << participation
+      end
+    end
     @matches = Match.where(user: current_user)
   end
 
