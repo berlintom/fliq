@@ -33,18 +33,33 @@
 .match-modal-content {
     background-color: #DCF2F0;
     padding: 20px;
-    border: 1px solid #888;
     width: 100%;
     margin: auto;
     border-top-right-radius: 255px;
     position: absolute;
     bottom: 0;
+    text-align: right;
+    .modalclickme svg {
+      position: absolute;
+      left: 124px;
+      bottom: -103px;
+    transform: rotate(95deg);
+    }
+    .btn {
+      position: absolute;
+      right: 30px;
+      bottom: 26px;
+    }
 }
+
 .match-modal-close {
     color: #F86175;
-    float: right;
     font-size: 35px;
     font-weight: bold;
+    float: left;
+    // position: absolute;
+    // bottom: 282px;
+    // left: 19px;
 }
 .match-modal-close:hover,
 .match-modal-close:focus {
@@ -67,4 +82,26 @@
     bottom: 0;
     opacity: 1;
   }
+}
+
+.modal-information {
+  line-height: 225%;
+  padding: 10px
+}
+
+.index-info-modal {
+  box-shadow: 0px 0px 4px rgb(170, 169, 169);
+  background-color: white;
+  margin: 10px;
+  border-radius:  20px;
+  display: flex;
+  align-items: center;
+}
+
+.modal-name {
+  text-align: center;
+  color: $red;
+  position: relative;
+  bottom: 36px;
+  right: 51px;
 }

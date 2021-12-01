@@ -40,8 +40,6 @@ class MatchesController < ApplicationController
 
   end
 
-
-
   def show
     @match = Match.find(params[:id])
     @participations = @match.participations
@@ -73,8 +71,7 @@ class MatchesController < ApplicationController
       @participation.save
       redirect_to matches_path, notice: '💯 Yeah - that worked! 🙌'
     else
-    puts "Starting a match didn't work, try again"
-      render :new, alert: 'Ooops 🙄- that didnt work - try again'
+      render :new, alert: 'Ooops 🙄 - that didnt work - try again'
     end
   end
 
@@ -83,7 +80,7 @@ class MatchesController < ApplicationController
     @match.reviews.delete_all
     @match.participations.delete_all
     @match.delete
-    redirect_to mymatches_path
+    redirect_to mymatches_path, notice: "Alright - match cancelled ✅"
   end
 
   def mymatches

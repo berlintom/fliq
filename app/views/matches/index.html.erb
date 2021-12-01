@@ -48,63 +48,68 @@
           <div class="modalclickme">
             <%= render"./shared/clickme.html.erb"%>
           </div>
-          <div class="index-info">
-            <div class="index-svg">
-              <%= render"./shared/location.html.erb"%>
+          <div class="modal-name">
+            <h2><%= match.user.user_name %></h2>
+          </div>
+          <div class="modal-information">
+            <div class="index-info-modal">
+              <div class="index-svg">
+                <%= render"./shared/calender.html.erb"%>
+              </div>
+              <div class="index-text">
+                <p><%= match.date.strftime("%d.%m.%y") %><p>
+              </div>
             </div>
-            <div class="index-text">
-              <p><%= match.user.user_name %> is the host</p>
+            <div class="index-info-modal">
+              <div class="index-svg">
+                <%= render"./shared/time.html.erb"%>
+              </div>
+              <div class="index-text">
+                <p><%= match.start_time.time.to_s(:time) %> - <%= match.end_time.time.to_s(:time)%> </p>
+              </div>
+            </div>
+            <div class="index-info-modal">
+              <div class="index-svg">
+                <%= render"./shared/location.html.erb"%>
+              </div>
+              <div class="index-text">
+                <p><%= match.venue.address %><p>
+              </div>
+            </div>
+            <div class="index-info-modal">
+              <div class="index-svg">
+                <% if match.capacity == 4 %>
+                  <%= render"./shared/capacity4.html.erb"%>
+                <% else %>
+                  <%= render"./shared/capacity2.html.erb"%>
+                <% end %>
+              </div>
+              <div class="index-text">
+                <p><%= match.capacity %>/<%= userparticipants.length %>: <%=match.capacity - userparticipants.length%> <%= "player".pluralize(match.capacity - userparticipants.length)%> can join</p>
+              </div>
+            </div>
+            <div class="index-info-modal">
+              <div class="index-svg">
+                <%= render"./shared/speaker.html.erb"%>
+              </div>
+              <div class="index-text">
+                <p><%= match.comment %><p>
+              </div>
             </div>
           </div>
-          <div class="index-info">
-            <div class="index-svg">
-              <%= render"./shared/calender.html.erb"%>
-            </div>
-            <div class="index-text">
-              <p><%= match.date.strftime("%d.%m.%y") %><p>
-            </div>
-          </div>
-          <div class="index-info">
-            <div class="index-svg">
-              <%= render"./shared/time.html.erb"%>
-            </div>
-            <div class="index-text">
-              <p><%= match.start_time.time.to_s(:time) %> - <%= match.end_time.time.to_s(:time)%> </p>
-            </div>
-          </div>
-          <div class="index-info">
-            <div class="index-svg">
-              <%= render"./shared/location.html.erb"%>
-            </div>
-            <div class="index-text">
-              <p><%= match.venue.address %><p>
-            </div>
-          </div>
-          <div class="index-info">
-            <div class="index-svg">
-              <% if match.capacity == 4 %>
-                <%= render"./shared/capacity4.html.erb"%>
-              <% else %>
-                <%= render"./shared/capacity2.html.erb"%>
-              <% end %>
-            </div>
-            <div class="index-text">
-              <p><%= match.capacity %>/<%= userparticipants.length %>: <%=match.capacity - userparticipants.length%> <%= "player".pluralize(match.capacity - userparticipants.length)%> can join</p>
-            </div>
-          </div>
-          <div class="index-info">
-            <div class="index-svg">
-              <%= render"./shared/speaker.html.erb"%>
-            </div>
-            <div class="index-text">
-              <p><%= match.comment %><p>
-            </div>
-          </div>
-          <p><div class="btn btn-cta"><%=link_to "Ask to Play", match_path(match) %></div></p>
+          <p>
+          <% if match.user = current_user %>
+            <div class="btn btn-inactive"><%= link_to "Its your match", "#" %></div>
+          <% elsif match.user != current_user && match.full = true %>
+            <div class="btn btn-inactive"><%= link_to "Match is full", "#" %></div>
+          <% elsif match.user != current_user && match.full = true && match.start_time.past? %>
+            <div class="btn btn-cta"><%=link_to "Ask to Play", match_path(match) %></div></p>
+          <% elsif match.user != current_user && match.full = true && !match.start_time.past? %>
+            <div class="btn btn-inactive"><%= link_to "Match date in the past", "#" %></div>
+          <% end %>
           <span class="match-modal-close" id="match-modal-close-<%= ind %>">&times;</span>
           <br>
         </div>
       </div>
   <% end %>
-  <p><div class="btn btn-cta"><%= link_to "Create a new match", new_match_path %></div>
 </div>
