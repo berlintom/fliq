@@ -27,6 +27,30 @@ class ParticipationsController < ApplicationController
     redirect_to mymatches_path
   end
 
+  def destroy
+    @participation = Participation.find(params[:id])
+    @participation.destroy
+    if @participation.status == "accepted"
+      change_full_to_false(@participation)
+    end
+    redirect_to mymatches_path
+  end
+
+  def change_full_to_false(participation)
+    @match = participation.match
+    @match.full = false
+    @match.save
+    set_teams_to_nil(@match)
+  end
+
+  def set_teams_to_nil(match)
+    @participations = match.participations.where(status: "accepted")
+    @participations.each do |participation|
+      participation.team = nil
+      participation.save
+    end
+  end
+
   def update_full(participation)
     @match = participation.match
     if @match.participations.where(status: "accepted").count < @match.capacity
