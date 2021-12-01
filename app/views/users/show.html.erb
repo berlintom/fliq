@@ -1,9 +1,8 @@
 <div class="container">
   <div class="personal-info">
     <%= cl_image_tag @user.photo.key, class: "avatar-bordered"%>
-    <p><strong><%= @user.user_name %></strong></p>
+    <h3><strong><%= @user.user_name %></strong></h3>
     <%= render"./shared/point_sum"%>
-    <p><strong><%= @user.user_name %></strong></p>
   </div>
   <div class="user-infos">
     <div class="user-info">
