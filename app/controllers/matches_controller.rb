@@ -78,6 +78,14 @@ class MatchesController < ApplicationController
     end
   end
 
+  def destroy
+    @match = Match.find(params[:id])
+    @match.reviews.delete_all
+    @match.participations.delete_all
+    @match.delete
+    redirect_to mymatches_path
+  end
+
   def mymatches
     @participations = Participation.where(user: current_user)
     @pendings = []
@@ -106,7 +114,7 @@ class MatchesController < ApplicationController
 
   def matchdone?(match)
     @done = false
-    if match.start_time.past? && match.user == current_user && match.score.nil?
+    if match.start_time.past? && match.date.past? && (match.user == current_user) && match.score.nil?
       @done = true
     end
   end

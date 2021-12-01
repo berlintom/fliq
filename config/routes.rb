@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resources :matches, only: [:index, :show, :new, :create] do
+  resources :matches, only: [:index, :show, :new, :create, :destroy] do
     resources :participations, only: [:new, :create]
     resources :scores, only: :create
     resources :messages, only: :create
@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   resources :venues, only: [:index, :show]
 
+  resources :participations, only: [:destroy]
   patch "/participations/:id/accepted", to: "participations#accept", as: :participation_accept
   patch "/participations/:id/declined", to: "participations#decline", as: :participation_decline
   patch "/participations/:id/team-one", to: "participations#team_one", as: :participation_team_one

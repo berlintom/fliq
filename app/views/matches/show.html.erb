@@ -71,6 +71,11 @@
     <% elsif !@userparticipants.include?(current_user) && @match.user != current_user %>
         <div class="btn btn-cta"><%= link_to "Participate", match_participations_path(@match), method: :post %></div>
     <% end %>
+    <% if @userparticipants.include?(current_user) && @match.user != current_user%>
+        <div class="btn btn-cta"><%= link_to "Can't make it", participation_path(@current_userparticipation), method: :delete %></div>
+    <% elsif @match.user == current_user%>
+        <div class="btn btn-cta"><%= link_to "Cancel Match", match_path(@match), method: :delete %></div>
+    <% end %>
     <% if @match.full? %>
       <% if @match.start_time.past? && @match.score.nil?%>
       <p>Enter your score!</p>
