@@ -19,7 +19,7 @@ class MessagesController < ApplicationController
         @match,
         render_to_string(partial: "message", locals: { message: @message })
       )
-      redirect_to match_path(@match, anchor: "message-#{@message.id}")
+      redirect_to match_path(@match, anchor: "message-#{@message.id}", message_created: true)
     else
       render "matches/show"
     end
