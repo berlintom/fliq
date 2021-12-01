@@ -15,3 +15,7 @@
   box-shadow: none;
   border-top-right-radius: 250.5px;
 }
+
+.mapboxgl-canvas {
+  overflow: hidden;
+}
