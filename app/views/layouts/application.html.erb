@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-  
+
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,700&display=swap" rel="stylesheet">
 
     <%= favicon_link_tag %>
@@ -30,6 +30,7 @@
         <%= render 'shared/navbar' %>
         <%= render 'shared/flashes' %>
         <%= yield %>
+        <%= render 'shared/bottomnav' %>
       </div>
     <% else %>
       <%= yield %>
