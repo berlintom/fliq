@@ -124,7 +124,7 @@
         <% elsif @userparticipants.include?(current_user || match.user) && @match.start_time.past? && review.present? == true %>
           <div class="btn btn-cta"><%= link_to "Delete Review", review_path(review), method: :delete, data: { confirm: "You really want to delete the review?"}  %></div>
         <% else %>
-          <div class="btn btn-inactive"><%= link_to "", "#" %></div>
+          <div class="btn btn-inactive"><%= link_to "Leave a review", "#" %></div>
         <% end %>
       <% end %>
     <div class="btn btn-cta"><%= link_to 'Back to all matches', matches_path %></div>
