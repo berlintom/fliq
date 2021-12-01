@@ -1,7 +1,3 @@
-<%# <h1>Ranking</h1>
-
-<h3>Top 3</h2> %>
-
 <div class="top-3">
 <% @profiles.first(3).each_with_index do |profile, index| %>
   <div>
@@ -10,9 +6,13 @@
           <p><%= index + 1  %></p>
         </div>
         <% if index == 0 %>
+          <%= link_to user_path(profile.user) do %>
           <%= cl_image_tag profile.user.photo.key, class: "avatar-bordered", id: "avatar-won" %>
+          <% end %>
         <% else %>
-         <%= cl_image_tag profile.user.photo.key, class: "avatar-bordered" %>
+          <%= link_to user_path(profile.user) do %>
+          <%= cl_image_tag profile.user.photo.key, class: "avatar-bordered" %>
+          <% end %>
         <% end %>
         <div class="stats-egor">
             <p><strong><%= profile.user.user_name %></strong></p>
@@ -33,14 +33,17 @@
     </div>
 <% end %>
 </div>
-<%#
-<h3>Others</h2> %>
+<br>
+<h3>Ranking</h3>
 
 <% @profiles.each_with_index do |profile, index| %>
+
     <% if index == 0 %>
       <div class="card-match" id="first">
         <div class="others-rank"><p><%= index + 1 %></p></div>
+        <%= link_to user_path(profile.user) do %>
         <div> <%= cl_image_tag profile.user.photo.key, class: "avatar-bordered-medium" %> </div>
+        <% end %>
         <div class="match">
             <p><strong>Name: </strong><%= profile.user.user_name %></p>
             <p><svg width="30" height="20" viewBox="0 0 93 108" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -60,7 +63,9 @@
     <% elsif index == 1 %>
       <div class="card-match" id="second">
         <div class="others-rank"><p><%= index + 1 %></p></div>
+        <%= link_to user_path(profile.user) do %>
         <div> <%= cl_image_tag profile.user.photo.key, class: "avatar-bordered-medium" %> </div>
+        <% end %>
         <div class="match">
           <p><strong>Name: </strong><%= profile.user.user_name %></p>
           <p><svg width="30" height="20" viewBox="0 0 93 108" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -80,7 +85,9 @@
     <% elsif index == 2 %>
       <div class="card-match" id="third">
         <div class="others-rank"><p><%= index + 1 %></p></div>
+        <%= link_to user_path(profile.user) do %>
         <div> <%= cl_image_tag profile.user.photo.key, class: "avatar-bordered-medium" %> </div>
+        <% end %>
         <div class="match">
           <p><strong>Name: </strong><%= profile.user.user_name %></p>
           <p><svg width="30" height="20" viewBox="0 0 93 108" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -100,7 +107,9 @@
     <% else %>
       <div class="card-match">
       <div class="others-rank"><p><%= index + 1 %></p></div>
+      <%= link_to user_path(profile.user) do %>
       <div> <%= cl_image_tag profile.user.photo.key, class: "avatar-bordered-medium" %> </div>
+      <% end %>
       <div class="match">
         <p><strong>Name: </strong><%= profile.user.user_name %></p>
         <p><svg width="30" height="20" viewBox="0 0 93 108" fill="none" xmlns="http://www.w3.org/2000/svg">
