@@ -2,16 +2,45 @@ class MatchesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home, :index, :show]
 
   def index
-    @matches = Match.where(full: false).order(created_at: :desc)
-    @markers = @matches.map do |match|
-      {
-        lat: match.venue.latitude,
-        lng: match.venue.longitude,
-        info_window: render_to_string(partial: "info_window", locals: { venue: match.venue }),
-        image_url: helpers.asset_url("map-icon.svg")
-      }
+    @search = params["search"]
+      if @search.present?
+        @address = @search["address"]
+        @date = @search["date"]
+        if
+          # not finished!
+          # if its empty, increase search radius by X km
+          # elseif show results
+          # else show all results
+          @matches = Match.joins(:venue).where("address ILIKE ?", "%#{@address}%").where(date: @date).empty?
+          @matches = Match.where(full: false).order(created_at: :desc)
+          map
+        elsif
+          @matches = Match.joins(:venue).where("address ILIKE ?", "%#{@address}%").where(date: @date).order(created_at: :desc)
+          map
+        else
+          @matches = Match.joins(:venue).where("address ILIKE ?", "%#{@address}%").where(date: @date)
+          map
+        end
+      else
+        @matches = Match.joins(:venue).where("address ILIKE ?", "%#{@address}%").where(date: @date)
+        @matches = Match.where(full: false).order(created_at: :desc)
+        map
+      end
     end
+
+    def map
+    @markers = @matches.map do |match|
+    {
+      lat: match.venue.latitude,
+      lng: match.venue.longitude,
+      info_window: render_to_string(partial: "info_window", locals: { venue: match.venue }),
+      image_url: helpers.asset_url("map-icon.svg")
+    }
+    end
+
   end
+
+
 
   def show
     @match = Match.find(params[:id])
@@ -49,6 +78,14 @@ class MatchesController < ApplicationController
     end
   end
 
+  def destroy
+    @match = Match.find(params[:id])
+    @match.reviews.delete_all
+    @match.participations.delete_all
+    @match.delete
+    redirect_to mymatches_path
+  end
+
   def mymatches
     @participations = Participation.where(user: current_user)
     @pendings = []
@@ -77,7 +114,7 @@ class MatchesController < ApplicationController
 
   def matchdone?(match)
     @done = false
-    if match.start_time.past? && match.user == current_user && match.score.nil?
+    if match.start_time.past? && match.date.past? && (match.user == current_user) && match.score.nil?
       @done = true
     end
   end

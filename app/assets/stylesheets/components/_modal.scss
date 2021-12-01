@@ -4,7 +4,7 @@
     z-index: 2; /* Sit on top */
     padding-top: 100px; /* Location of the box */
     left: 0;
-    top: 383px;
+    top: 0px;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
@@ -37,6 +37,8 @@
     width: 100%;
     margin: auto;
     border-top-right-radius: 255px;
+    position: absolute;
+    bottom: 0;
 }
 .match-modal-close {
     color: #F86175;
@@ -52,7 +54,6 @@
 }
 
 .animate-bottom {
-  position: relative;
   animation: animatebottom 0.5s;
 }
 

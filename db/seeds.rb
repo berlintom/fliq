@@ -253,3 +253,4 @@ review2.photo.attach(io: file = URI.open("https://source.unsplash.com/featured/?
 review2.save!
 
 puts "Success!"
+
