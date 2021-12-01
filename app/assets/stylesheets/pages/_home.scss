@@ -33,3 +33,19 @@
 .home-logo {
   margin-bottom: 25px;
 }
+
+.match-search-form #search_address {
+  display: none;
+}
+
+.home-cta {
+  border-radius: 18px;
+  width: 75%;
+  height: 40px;
+  padding: 5px 15px;
+  font-size: 16px;
+  border: 1px solid #F86175;
+  background-color: #F86175;
+  color:#F4F4F4;
+  font-weight: 700px;
+}
