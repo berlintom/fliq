@@ -40,8 +40,6 @@ class MatchesController < ApplicationController
 
   end
 
-
-
   def show
     @match = Match.find(params[:id])
     @participations = @match.participations
@@ -73,8 +71,7 @@ class MatchesController < ApplicationController
       @participation.save
       redirect_to matches_path, notice: '💯 Yeah - that worked! 🙌'
     else
-    puts
-      render :new, alert: 'Ooops 🙄- that didnt work - try again'
+      render :new, alert: 'Ooops 🙄 - that didnt work - try again'
     end
   end
 
