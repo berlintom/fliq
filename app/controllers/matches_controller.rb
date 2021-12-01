@@ -7,6 +7,7 @@ class MatchesController < ApplicationController
         @address = @search["address"]
         @date = @search["date"]
         if
+          # not finished!
           # if its empty, increase search radius by X km
           # elseif show results
           # else show all results

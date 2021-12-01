@@ -114,13 +114,13 @@
         <p>Rating ⭐⭐⭐⭐⭐ </p>
       <hr>
       <% end %>
-      <% if @done && review.present? == false %>
+      <% if @match.start_time.past? && review.present? == false %>
         <div class="btn btn-cta"><%= link_to 'Leave match review', new_match_review_path(@match) %></div>
       <% else %>
         <div class="btn btn-cta"><%= link_to "Delete Review", review_path(review), method: :delete, data: { confirm: "You really want to delete the review?"}  %></div>
       <% end %>
-      <div class="btn btn-cta"><%= link_to 'Back to all matches', matches_path %></div>
     <% end %>
+    <div class="btn btn-cta"><%= link_to 'Back to all matches', matches_path %></div>
   </div>
 
 <div data-controller="clickable">
