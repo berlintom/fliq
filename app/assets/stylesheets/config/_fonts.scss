@@ -3,13 +3,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;1,700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;1,700&family=Mukta:wght@300&display=swap");
-
-
-// Define fonts for body and headers
-// $body-font: "Work Sans", "Helvetica", "sans-serif";
-$body-font: "Mukta";
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&family=Zen+Maru+Gothic:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Zen+Kaku+Gothic+New:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@700&family=Indie+Flower&family=Manjari:wght@100;400;700&family=Raleway&family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&family=Zen+Kurenaido&family=Zen+Maru+Gothic:wght@500&display=swap');
+$body-font:'Raleway', sans-serif;
 // $headers-font: "Nunito", "Helvetica", "sans-serif";
-$headers-font: "Merriweather";
+$headers-font: 'Manjari', sans-serif;
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {

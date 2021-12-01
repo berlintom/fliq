@@ -119,23 +119,31 @@
         <p>Rating ⭐⭐⭐⭐⭐ </p>
       <hr>
       <% end %>
-      <% if @match.start_time.past? && review.present? == false %>
-        <div class="btn btn-cta"><%= link_to 'Leave match review', new_match_review_path(@match) %></div>
-      <% else %>
-        <div class="btn btn-cta"><%= link_to "Delete Review", review_path(review), method: :delete, data: { confirm: "You really want to delete the review?"}  %></div>
+        <% if @userparticipants.include?(current_user || match.user) && @match.start_time.past? && review.present? == false %>
+          <div class="btn btn-cta"><%= link_to 'Leave match review', new_match_review_path(@match) %></div>
+        <% elsif @userparticipants.include?(current_user || match.user) && @match.start_time.past? && review.present? == true %>
+          <div class="btn btn-cta"><%= link_to "Delete Review", review_path(review), method: :delete, data: { confirm: "You really want to delete the review?"}  %></div>
+        <% else %>
+          <div class="btn btn-inactive"><%= link_to "", "#" %></div>
+        <% end %>
       <% end %>
-    <% end %>
     <div class="btn btn-cta"><%= link_to 'Back to all matches', matches_path %></div>
   </div>
 
-<div data-controller="clickable">
+<div data-controller="clickable" data-clickable-open-value="<%= params.key?(:message_created)%>">
       <% if @userparticipants.include?(current_user) && @match.full %>
-        <button id="clickme" class="btn btn-primary btn-lg"  data-action="click->clickable#show" data-clickable-target="button">
-          Chat!
+        <button id="clickme" class="btn" data-action="click->clickable#show" data-clickable-target="button">
+          <svg width="88" height="101" viewBox="0 0 88 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19.2059 58.1521C27.9682 72.8699 40.2887 74.5611 53.8587 68.0404C67.4287 61.5197 73.6003 51.1743 66.1355 35.6014C57.3732 20.8836 39.2094 7.14819 26.7962 15.6459C14.3831 24.1435 10.4435 43.4343 19.2059 58.1521Z" fill="#5CA39C"/>
+          <rect width="9.82948" height="57.5464" rx="4.91474" transform="matrix(-0.891898 0.452237 0.450981 0.892534 41.9235 33.4605)" fill="#5CA39C"/>
+          <path d="M64.9323 30.6395C76.2294 54.2237 64.5994 56.5741 50.8523 63.1583C37.9135 69.3555 29.5127 76.9211 17.6213 55.2171C10.2736 39.8777 13.3786 20.0615 26.3174 13.8643C39.2562 7.6671 57.5845 15.3001 64.9323 30.6395Z" fill="#F5455C"/>
+          <path d="M25.7163 44.0209C23.2713 33.5629 26.6997 21.8776 24.8652 22.2787C23.0307 22.6798 19.4523 32.6295 20.9526 43.3214C22.4529 54.0134 31.885 60.5517 33.7195 60.1506C35.554 59.7495 28.1614 54.479 25.7163 44.0209Z" fill="white"/>
+          </svg>
         </button>
 
+
         <div id="chat-form" class="container chatroom d-none" data-clickable-target="chat" >
-          <div class="messages" data-controller="chatroom-subscription"
+          <div class="messages" data-controller="chatroom-subscription" data-clickable-target="messages"
           data-chatroom-subscription-match-id-value="<%= @match.id %>">
             <% @match.messages.each do |message| %>
               <p data-clickable-chatroom-target="item" class="hidden mt-4"><%= render "messages/message", message: message %></p>
@@ -144,6 +152,7 @@
           </div>
           <%= simple_form_for [@match, @message], remote: true do |f|%>
             <%= f.input :content, label: false, placeholder: "type something" %>
+            <%= f.button :submit, "send", class: "btn-message"  %>
           <% end %>
         </div>
 
