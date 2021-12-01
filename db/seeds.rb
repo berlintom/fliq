@@ -149,7 +149,7 @@ tprofile = Profile.new(
   point_sum: 130,
   venue: venue2,
   user: teo,
-  equipment: "+1 🏓"
+  equipment: "only my own racket"
 )
 tprofile.save!
 
@@ -157,7 +157,7 @@ toprofile = Profile.new(
   point_sum: 180,
   venue: venue1,
   user: tom,
-  equipment: "+1 🏓"
+  equipment: "i can bring +1 bat 🏓"
 )
 toprofile.save!
 
@@ -165,7 +165,7 @@ eprofile = Profile.new(
   point_sum: 250,
   venue: venue2,
   user: egor,
-  equipment: "+2 🏓"
+  equipment: "bringing 2 🏓"
 )
 eprofile.save!
 
@@ -178,7 +178,7 @@ match1 = Match.new(
   date: Date.today,
   start_time: Time.new(3),
   end_time: Time.new(5),
-  comment: "lets practice! I can bring a 2nd bat",
+  comment: "lets practice! I can bring a 2nd bat"
 )
 match1.save!
 
@@ -189,7 +189,7 @@ match2 = Match.new(
   date: Date.today + 2,
   start_time: Time.new(11),
   end_time: Time.new(12),
-  comment: "Just a relaxed lunch break match",
+  comment: "Just a relaxed lunch break match"
 )
 match2.save!
 
@@ -198,35 +198,35 @@ puts "Creating Participations"
 participation1 = Participation.new(
   user: vali,
   match: match1,
-  status: "pending",
+  status: "pending"
 )
 participation1.save!
 
 participation2 = Participation.new(
   user: teo,
   match: match2,
-  status: "pending",
+  status: "pending"
 )
 participation2.save!
 
 participation3 = Participation.new(
   user: tom,
   match: match2,
-  status: "pending",
+  status: "pending"
 )
 participation3.save!
 
 participation4 = Participation.new(
   user: tom,
   match: match1,
-  status: "accepted",
+  status: "accepted"
 )
 participation4.save!
 
 participation5 = Participation.new(
   user: egor,
   match: match2,
-  status: "accepted",
+  status: "accepted"
 )
 participation5.save!
 
@@ -253,4 +253,3 @@ review2.photo.attach(io: file = URI.open("https://source.unsplash.com/featured/?
 review2.save!
 
 puts "Success!"
-
