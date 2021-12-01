@@ -23,3 +23,19 @@
   border-radius: 0px 20px;
   box-shadow: 0px 0px 5px $blue;
 }
+
+.select2-selection {
+  height: 38px !important;
+  border-radius: 0px 20px !important;
+  box-shadow: 0px 0px 5px $blue;
+}
+
+.selection {
+  color: #495057;
+  border-radius: 0px 20px;
+  box-shadow: 0px 0px 5px $blue;
+}
+
+.select2-container {
+  display: block;
+}

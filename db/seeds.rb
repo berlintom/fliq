@@ -55,7 +55,7 @@ venue1.photos.attach(io: file = URI.open("https://source.unsplash.com/featured/?
 venue1.save!
 
 venue2 = Venue.new(
-  address: "Kurstraße 48, 10117 Berlin, Deutschland",
+  address: "Kurstraße 48, 10117 Berlin",
   outdoor: true,
   price: 0,
   table_type: "Classic Stone",
@@ -82,7 +82,7 @@ venue4.photos.attach(io: file = URI.open("https://source.unsplash.com/featured/?
 venue4.save!
 
 venue5 = Venue.new(
-  address: "Dickhardtstraße 19, 12161 Berlin, Deutschland",
+  address: "Dickhardtstraße 19, 12161 Berlin",
   outdoor: true,
   price: 0,
   table_type: "Classic Stone",
@@ -91,7 +91,7 @@ venue5.photos.attach(io: file = URI.open("https://source.unsplash.com/featured/?
 venue5.save!
 
 venue6 = Venue.new(
-  address: "Frobenstraße, 12249 Berlin, Germany",
+  address: "Frobenstraße, 12249 Berlin",
   outdoor: true,
   price: 0,
   table_type: "Classic Stone",
@@ -100,7 +100,7 @@ venue6.photos.attach(io: file = URI.open("https://source.unsplash.com/featured/?
 venue6.save!
 
 venue7 = Venue.new(
-  address: "Waitzstraße, 10629 Berlin, Berlin, Deutschland",
+  address: "Waitzstraße, 10629 Berlin, Berlin",
   outdoor: true,
   price: 0,
   table_type: "Classic Stone",
@@ -109,7 +109,7 @@ venue7.photos.attach(io: file = URI.open("https://source.unsplash.com/featured/?
 venue7.save!
 
 venue8 = Venue.new(
-  address: "Schützenstraße, 13127 Berlin, Berlin, Deutschland",
+  address: "Schützenstraße, 13127 Berlin",
   outdoor: true,
   price: 0,
   table_type: "Classic Stone",
@@ -118,7 +118,7 @@ venue8.photos.attach(io: file = URI.open("https://source.unsplash.com/featured/?
 venue8.save!
 
 venue9 = Venue.new(
-  address: "Marzahner Chaussee, 10315 Berlin, Germany",
+  address: "Marzahner Chaussee, 10315 Berlin",
   outdoor: true,
   price: 0,
   table_type: "Classic Stone",
@@ -127,7 +127,7 @@ venue9.photos.attach(io: file = URI.open("https://source.unsplash.com/featured/?
 venue9.save!
 
 venue10 = Venue.new(
-  address: "Trusetaler Str. 39, 12687 Berlin, Deutschland",
+  address: "Trusetaler Str. 39, 12687 Berlin",
   outdoor: false,
   price: 10,
   table_type: "Professional",

@@ -11,5 +11,5 @@ class Match < ApplicationRecord
   validates :end_time, presence: true
   validates :capacity, presence: true
   validates :venue_id, presence: true
-  validates :comment, length: { minimum: 10 }
+  validates :comment, length: { minimum: 5 }
 end
