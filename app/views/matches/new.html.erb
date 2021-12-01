@@ -9,7 +9,7 @@
             <%= f.input :start_time, as: :time, html5: true %>
             <%= f.input :end_time, as: :time, html5: true %>
             <%= f.input :capacity, collection: [2, 4], label: 'How many?' %>
-            <%= f.association :venue, collection: Venue.all.map { |venue| venue.address}, label: 'Where?' %>
+            <%= f.association :venue, collection: Venue.all.map { |venue| venue.address}, label: 'Where?', input_html: { data: { controller: "select2"}, class: "form-control"} %>  
             <%= f.input :comment, label: "Comments", placeholder: 'Tell us about yourself' %>
             <%= f.button :submit, "fliQ", class: "btn btn-primary" %>
           <% end %>
