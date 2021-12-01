@@ -52,7 +52,7 @@ class MatchesController < ApplicationController
     @current_userparticipation = @participations.find_by(user: current_user)
     assignteams(@participations)
     matchdone?(@match)
-    @score = Score.new(match: @match)
+    @score = Score.new
     @message = Message.new
   end
 
@@ -93,7 +93,7 @@ class MatchesController < ApplicationController
     @participations.each do |participation|
       if (participation.status == "pending") || (!participation.match.full? && participation.status == "accepted")
         @pendings << participation
-      elsif participation.match.full
+      elsif participation.match.full && (participation.match.score == nil)
         @booked << participation
       end
     end
@@ -114,7 +114,7 @@ class MatchesController < ApplicationController
 
   def matchdone?(match)
     @done = false
-    if match.start_time.past? && match.date.past? && (match.user == current_user) && match.score.nil?
+    if match.start_time.past? && (match.date.past? || match.date.today?) && (match.user == current_user) && (match.score == nil)
       @done = true
     end
   end
