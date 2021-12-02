@@ -1,246 +1,248 @@
 // Show-card
 
 .show-card {
-  box-shadow: 0px 0px 4px rgb(170, 169, 169);
-  padding: 20px;
-  background-color: white;
-  position: relative;
-  margin: 10px;
-    &:hover {
-    box-shadow: 0px 0px 8px rgb(170, 169, 169);
-  }
-  border-radius:  15px 150px 15px 15px;
+box-shadow: 0px 0px 4px rgb(170, 169, 169);
+padding: 20px;
+background-color: white;
+position: relative;
+margin: 10px;
+&:hover {
+box-shadow: 0px 0px 8px rgb(170, 169, 169);
+}
+border-radius: 15px 150px 15px 15px;
 }
 
 .show-card a {
-  color: black;
+color: black;
 }
 
 .host-img {
-  text-align: center;
+text-align: center;
 }
 
 
 // Match-Card
 .card-match {
-  background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  display: flex;
-  border-radius: 50px;
-  align-items: center;
-  margin: 20px 0px;
-  position: relative;
-  border: 2px solid $light-blue;
+background: white;
+box-shadow: 0 0 15px rgba(0,0,0,0.2);
+display: flex;
+border-radius: 50px;
+align-items: center;
+margin: 20px 0px;
+position: relative;
+border: 2px solid $light-blue;
 }
 #first {
-    box-shadow: inset 0 0 15px  rgb(255, 217, 0), 0 0 15px rgba(0,0,0,0.2);
-  }
+box-shadow: inset 0 0 15px rgb(255, 217, 0), 0 0 15px rgba(0,0,0,0.2);
+}
 
 #second {
-    box-shadow: inset 0 0 15px  rgb(153, 151, 151), 0 0 15px rgba(0,0,0,0.2);
-  }
+box-shadow: inset 0 0 15px rgb(153, 151, 151), 0 0 15px rgba(0,0,0,0.2);
+}
 
 #third {
-    box-shadow: inset 0 0 15px  #be8060, 0 0 15px rgba(0,0,0,0.2);
-  }
+box-shadow: inset 0 0 15px #be8060, 0 0 15px rgba(0,0,0,0.2);
+}
 .host-sign {
-  position: absolute;
-  right: 6px;
-  top: -13px;
+position: absolute;
+right: 6px;
+top: -13px;
 }
 
 .card-match h2 {
-  font-size: 15px;
-  font-weight: bold;
-  margin: 0;
+font-size: 15px;
+font-weight: bold;
+margin: 0;
 }
 
 .card-match p {
-  font-size: 12px;
-  line-height: 1.4;
-  margin-bottom: 0;
-  margin-top: 8px;
-  color: black;
+font-size: 12px;
+line-height: 1.4;
+margin-bottom: 0;
+margin-top: 8px;
+color: black;
 }
 
 #createdmatched {
-  flex-direction: column;
-  .match {
-    padding: 0px 49px 24px 0px;
-  }
-  .match-host {
-    padding-top: 6px;
-    margin: 0 auto;
-  }
+flex-direction: column;
+.match {
+padding: 0px 49px 24px 0px;
+}
+.match-host {
+padding-top: 6px;
+margin: 0 auto;
+}
 }
 
 .match-host {
-  width: 85px;
-  text-align: center;
-  padding: 0px 8px;
+width: 85px;
+text-align: center;
+padding: 0px 8px;
 }
 
 .match {
-  padding: 10px;
+padding: 10px;
 }
 
 .match-avatar {
-  height: 100%;
-  width: 120px;
-  object-fit: cover;
-  border-radius: 50px;
-  padding: 10px
+height: 100%;
+width: 120px;
+object-fit: cover;
+border-radius: 50px;
+padding: 10px
 }
 
 .card-match .btn a {
-  color: black;
-  font-size: 12px;
+color: black;
+font-size: 12px;
 }
 
 .card-match .btn {
-  border-radius: 10px;
-  padding: 2px;
+border-radius: 10px;
+padding: 2px;
 }
 
 .requests {
-  background-color: $light-blue;
-  border-radius: 24px;
-  padding: 5px;
-  margin-bottom: 4px;
-  position: relative;
+background-color: $light-blue;
+border-radius: 24px;
+padding: 5px;
+margin-bottom: 4px;
+position: relative;
 }
 
 .request {
-  background-color: $white;
-  border-radius: 20px;
-  padding: 5px;
-  margin: 5px 0px;
-  display: flex;
-  justify-content: space-between;
-  width: 220px;
+background-color: $white;
+border-radius: 20px;
+padding: 5px;
+margin: 5px 0px;
+display: flex;
+justify-content: space-between;
+width: 220px;
 }
 
 .request-buttons {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-self: center
+display: flex;
+flex-direction: column;
+justify-content: space-around;
+align-self: center
 }
 
 .match-status {
-  position: absolute;
-  bottom: 65px;
-  right: 15px;
+position: absolute;
+bottom: 65px;
+right: 15px;
 }
 
 // Score-Card
 // Top-3
 
 .top-3 {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  position: relative;
-  align-items: center;
+display: flex;
+flex-direction: row;
+justify-content: center;
+position: relative;
+align-items: center;
+top: 36px;
+justify-content: space-around;
 }
 
 .top-3 > div:nth-child(1) {
-  position: absolute;
-  top: -30px;
+position: absolute;
+top: -30px;
 }
 
 .top-3 > div:nth-child(2) {
-  margin-right: 8px;
-  margin-top: 7px;
+margin-right: 8px;
+margin-top: 7px;
 }
 
 .top-3 > div:nth-child(3) {
-  margin-left: 44px;
-  margin-top: 3px;
+margin-left: 44px;
+margin-top: 3px;
 }
 
 .rank-top-3 {
-  flex-direction: column;
-  margin: 10px;
-  text-align: center;
-  font-size: 40px;
-  font-weight: bold;
+flex-direction: column;
+margin: 10px;
+text-align: center;
+font-size: 40px;
+font-weight: bold;
 }
 
 .rank-top-3 > p {
-  margin-top: 10px;
-  margin-bottom: 0px;
+margin-top: 10px;
+margin-bottom: 0px;
 }
 
 .stats-egor {
-  flex-direction: column;
-  text-align: center;
-  line-height: 14px;
-  padding-top: 5px;
+flex-direction: column;
+text-align: center;
+line-height: 14px;
+padding-top: 5px;
 }
 
 .stats-egor > p {
-  flex-direction: column;
-  justify-content: center;
-  margin-top: 5px;
-  margin-bottom: 0px;
+flex-direction: column;
+justify-content: center;
+margin-top: 5px;
+margin-bottom: 0px;
 }
 
 .match-avatar-top-3 {
-  height: 120px;
-  width: 120px;
-  object-fit: cover;
-  border-radius: 50%;
-  display: flex;
-  flex-direction: column;
+height: 120px;
+width: 120px;
+object-fit: cover;
+border-radius: 50%;
+display: flex;
+flex-direction: column;
 }
 
 #img-profile {
-  border: 5px solid red;
+border: 5px solid red;
 }
 
 // Others
 .rest-players {
-  display: flex;
-  flex-direction: column;
+display: flex;
+flex-direction: column;
 }
 
 .profile-stats {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-left: 10px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+margin-left: 10px;
 }
 
 .profile-stats > p {
-  margin: 0px;
+margin: 0px;
 }
 
 .score-profile {
-  background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  display: flex;
-  margin: 10px;
-  border-radius: 50px;
-  flex-direction: row;
-  align-items: center;
-  padding-top: 10px;
-  padding-bottom: 10px;
+background: white;
+box-shadow: 0 0 15px rgba(0,0,0,0.2);
+display: flex;
+margin: 10px;
+border-radius: 50px;
+flex-direction: row;
+align-items: center;
+padding-top: 10px;
+padding-bottom: 10px;
 
 }
 
 .others-rank {
-  display: flex;
-  margin: 10px;
-  margin-left: 20px;
-  justify-content: center;
-  flex-direction: row;
+display: flex;
+margin: 10px;
+margin-left: 20px;
+justify-content: center;
+flex-direction: row;
 }
 
 .others-rank > p {
-  font-size: 60px;
-  margin-bottom: 0px;
-  margin-left: 10px;
-  margin-right: 10px;
-  text-align: center;
+font-size: 60px;
+margin-bottom: 0px;
+margin-left: 10px;
+margin-right: 10px;
+text-align: center;
 }

@@ -1,58 +1,100 @@
 .avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  object-fit: cover;
+width: 40px;
+height: 40px;
+border-radius: 50%;
+object-fit: cover;
 }
 .avatar-large {
-  width: 56px;
-  border-radius: 50%;
+width: 56px;
+border-radius: 50%;
 }
 .avatar-bordered {
-  height: 100px;
-  width: 100px;
-  object-fit: cover;
-  border-radius: 50%;
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.507);
-  border: $red 5px solid;
+height: 100px;
+width: 100px;
+object-fit: cover;
+border-radius: 50%;
+box-shadow: 0 1px 6px rgba(0, 0, 0, 0.507);
+border: $red 5px solid;
 }
 
 
 
 .avatar-bordered-small {
-  height: 40px;
-  width: 40px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: $red 3px solid;
+height: 40px;
+width: 40px;
+object-fit: cover;
+border-radius: 50%;
+border: $red 3px solid;
 }
 
 #avatar-won {
-  border: solid 4px gold;
+width: 115px;
+height: 115px;
+svg {
+position: absolute;
+right: 35px;
+top: 103px;
+}
+}
+
+.first-won {
+svg {
+position: absolute;
+right: 35px;
+top: 103px;
+}
+}
+
+.second-won {
+  svg {
+    position: absolute;
+    left: 59px;
+    top: 66px;
+  }
+}
+
+.third-won {
+  svg {
+    position: absolute;
+    right: 60px;
+    top: 65px;
+  }
+}
+
+#avatar-second {
+width: 80px;
+height: 80px;
+}
+
+#avatar-third {
+width: 70px;
+height: 70px;
 }
 
 .avatar-bordered-small-won {
-  height: 40px;
-  width: 40px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: solid 3px gold;
+height: 40px;
+width: 40px;
+object-fit: cover;
+border-radius: 50%;
+border: solid 3px gold;
 }
 
 .avatar-bordered-medium {
-  height: 80px;
-  width: 80px;
-  object-fit: cover;
-  border-radius: 50%;
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.507);
-  border: $red 4px solid;
+height: 80px;
+width: 80px;
+object-fit: cover;
+border-radius: 50%;
+box-shadow: 0 1px 6px rgba(0, 0, 0, 0.507);
+border: $red 4px solid;
 }
 
-
-
 .avatar-square {
-  width: 40px;
-  border-radius: 0px;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-  border: white 1px solid;
+width: 40px;
+border-radius: 0px;
+box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+border: white 1px solid;
+}
+
+.ranking {
+  padding-top: 59px;
 }
