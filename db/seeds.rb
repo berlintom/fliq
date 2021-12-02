@@ -242,7 +242,7 @@ andreprofile = Profile.new(
   andreprofile.save!
 
 teoprofile = Profile.new(
-  point_sum: 100,
+  point_sum: 205,
   venue: venue2,
   user: teo,
   equipment: "munich madness"
