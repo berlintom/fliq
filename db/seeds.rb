@@ -374,7 +374,7 @@ match6 = Match.new(
   capacity: 2,
   user: claire,
   venue: venue10,
-  date: Date.today + 1,
+  date: Date.today,
   start_time: Time.new(8),
   end_time: Time.new(11),
   comment: "imma take your points!"
@@ -407,7 +407,7 @@ match9 = Match.new(
   capacity: 2,
   user: teo,
   venue: venue4,
-  date: Date.today,
+  date: Date.today 5,
   start_time: Time.new(10),
   end_time: Time.new(17),
   comment: "bavarian powerplay"
