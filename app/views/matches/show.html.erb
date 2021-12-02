@@ -134,8 +134,8 @@
 
 <div data-controller="clickable" data-clickable-open-value="<%= params.key?(:message_created)%>">
       <% if @userparticipants.include?(current_user) && @match.full %>
-        <button id="clickme" class="btn" data-action="click->clickable#show" data-clickable-target="button">
-          <svg width="88" height="101" viewBox="0 0 88 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <button id="clickme" class="btn" data-action="click->clickable#show click->clickable#rotateBat" data-clickable-target="button">
+          <svg class="rotate-<%= params.key?(:message_created) ? "in" : "out"%>" data-clickable-target="svg" width="88" height="101" viewBox="0 0 88 101" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M19.2059 58.1521C27.9682 72.8699 40.2887 74.5611 53.8587 68.0404C67.4287 61.5197 73.6003 51.1743 66.1355 35.6014C57.3732 20.8836 39.2094 7.14819 26.7962 15.6459C14.3831 24.1435 10.4435 43.4343 19.2059 58.1521Z" fill="#5CA39C"/>
           <rect width="9.82948" height="57.5464" rx="4.91474" transform="matrix(-0.891898 0.452237 0.450981 0.892534 41.9235 33.4605)" fill="#5CA39C"/>
           <path d="M64.9323 30.6395C76.2294 54.2237 64.5994 56.5741 50.8523 63.1583C37.9135 69.3555 29.5127 76.9211 17.6213 55.2171C10.2736 39.8777 13.3786 20.0615 26.3174 13.8643C39.2562 7.6671 57.5845 15.3001 64.9323 30.6395Z" fill="#F5455C"/>
@@ -144,7 +144,7 @@
         </button>
 
 
-        <div id="chat-form" class="container chatroom d-none" data-clickable-target="chat" >
+        <div class="container chatroom d-none show-chat-<%= params.key?(:message_created) ? "no" : "with"%>-animation" data-clickable-target="chat" >
           <div class="messages" data-controller="chatroom-subscription" data-clickable-target="messages"
           data-chatroom-subscription-match-id-value="<%= @match.id %>">
             <% @match.messages.each do |message| %>
