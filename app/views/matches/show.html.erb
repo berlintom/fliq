@@ -61,8 +61,20 @@
       </div>
       <% if @userparticipants.include?(current_user) && (@match.user != current_user) && !@match.full%>
         <div class="show-text">
-          <div class="show-name"><p><strong>Status:</strong></p></div>
-          <p><%= @current_userparticipation.status %></p>
+          <div class="show-name">
+          <% if @current_userparticipation.status == "accepted"%>
+            <%= render"./shared/accepted.html.erb"%>
+          <% elsif @current_userparticipation.status == "declined"%>
+            <%= render"./shared/declined.html.erb"%>
+          <% elsif @current_userparticipation.status == "pending"%>
+            <%= render"./shared/pending.html.erb"%>
+          <% end %>
+          </div>
+          <% if @current_userparticipation.status == "pending" %>
+            <p>Wait for <%=@match.user.user_name%> to answer</p>
+          <% elsif %>
+            <%= @current_userparticipation.status %>
+          <% end %>
         </div>
       <% end %>
     </div>
@@ -71,7 +83,7 @@
         <% if @match.user != current_user%>
           <p><%= @match.user.user_name %> will now enter your score!</p>
         <% else %>
-          <p>Enter scores!</p>
+          <h2>Enter score!</h2>
         <% end %>
       <% end %>
       <div class="team-display">
@@ -101,13 +113,12 @@
             <%= f.input :score_a, label: false %>
             <%= f.input :score_b, label: false %>
           </div>
-          <%= f.submit class:"btn btn-cta" %>
+          <%= f.submit class:"btn btn-score", id: "btn-center" %>
         <% end %>
       <% end %>
     <% end %>
-     <% if @userparticipants.include?(current_user) && @match.user != current_user && !@match.full%>
-      <div class="btn btn-inactive"><%= link_to "Participate", "#" %></div>
-    <% elsif !@userparticipants.include?(current_user) && @match.user != current_user %>
+    <div class="showbuttons">
+    <% if !@userparticipants.include?(current_user) && @match.user != current_user %>
         <div class="btn btn-cta"><%= link_to "Participate", match_participations_path(@match), method: :post %></div>
     <% end %>
     <% if (@match.score == nil) && @userparticipants.include?(current_user) && (@match.user != current_user)%>
@@ -116,41 +127,21 @@
         <div class="btn btn-cta"><%= link_to "Cancel Match", match_path(@match), method: :delete %></div>
     <% end %>
     <br>
-
-    <% @match.reviews.each do |review|  %>
-      <% case %>
-      <% when review.rating === 1 %>
-        <p>Rating ⭐☆☆☆☆</p>
-      <% when review.rating === 2 %>
-        <p>Rating ⭐⭐☆☆☆</p>
-      <% when review.rating === 3 %>
-        <p>Rating ⭐⭐⭐☆☆</p>
-      <% when review.rating === 4 %>
-        <p>Rating ⭐⭐⭐⭐☆ </p>
-      <% when review.rating === 5 %>
-        <p>Rating ⭐⭐⭐⭐⭐ </p>
-      <hr>
-      <% end %>
-        <% if @userparticipants.include?(current_user || match.user) && @match.start_time.past? && review.present? == false %>
-          <div class="btn btn-cta"><%= link_to 'Leave match review', new_match_review_path(@match) %></div>
-        <% elsif @userparticipants.include?(current_user || match.user) && @match.start_time.past? && review.present? == true %>
-          <div class="btn btn-cta"><%= link_to "Delete Review", review_path(review), method: :delete, data: { confirm: "You really want to delete the review?"}  %></div>
-        <% else %>
-          <div class="btn btn-inactive"><%= link_to "Leave a review", "#" %></div>
-        <% end %>
-      <% end %>
     <div class="btn btn-cta"><%= link_to "Back", :back %></div>
+    </div>
   </div>
 
 <div data-controller="clickable" data-clickable-open-value="<%= params.key?(:message_created)%>">
       <% if @userparticipants.include?(current_user) && @match.full %>
         <button id="clickme" class="btn" data-action="click->clickable#show click->clickable#rotateBat" data-clickable-target="button">
           <svg class="rotate-<%= params.key?(:message_created) ? "in" : "out"%>" data-clickable-target="svg" width="88" height="101" viewBox="0 0 88 101" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M19.2059 58.1521C27.9682 72.8699 40.2887 74.5611 53.8587 68.0404C67.4287 61.5197 73.6003 51.1743 66.1355 35.6014C57.3732 20.8836 39.2094 7.14819 26.7962 15.6459C14.3831 24.1435 10.4435 43.4343 19.2059 58.1521Z" fill="#5CA39C"/>
-          <rect width="9.82948" height="57.5464" rx="4.91474" transform="matrix(-0.891898 0.452237 0.450981 0.892534 41.9235 33.4605)" fill="#5CA39C"/>
-          <path d="M64.9323 30.6395C76.2294 54.2237 64.5994 56.5741 50.8523 63.1583C37.9135 69.3555 29.5127 76.9211 17.6213 55.2171C10.2736 39.8777 13.3786 20.0615 26.3174 13.8643C39.2562 7.6671 57.5845 15.3001 64.9323 30.6395Z" fill="#F5455C"/>
+          <path d="M19.2058 58.1521C27.9682 72.8699 40.2887 74.5611 53.8587 68.0404C67.4287 61.5197 73.6002 51.1743 66.1355 35.6014C57.3731 20.8836 39.2093 7.14819 26.7962 15.6459C14.3831 24.1435 10.4435 43.4343 19.2058 58.1521Z" fill="#4B8B85"/>
+          <rect width="9.82948" height="57.5464" rx="4.91474" transform="matrix(-0.891898 0.452237 0.450981 0.892534 41.9235 33.4605)" fill="#4B8B85"/>
+          <path d="M64.9323 30.6395C76.2294 54.2237 64.5994 56.5741 50.8523 63.1584C37.9135 69.3555 29.5127 76.9211 17.6213 55.2171C10.2736 39.8777 13.3786 20.0615 26.3174 13.8643C39.2562 7.66711 57.5845 15.3001 64.9323 30.6395Z" fill="#F86175"/>
           <path d="M25.7163 44.0209C23.2713 33.5629 26.6997 21.8776 24.8652 22.2787C23.0307 22.6798 19.4523 32.6295 20.9526 43.3214C22.4529 54.0134 31.885 60.5517 33.7195 60.1506C35.554 59.7495 28.1614 54.479 25.7163 44.0209Z" fill="white"/>
+          <path d="M37.5337 44.5061C37.6542 45.5143 37.4694 46.3901 36.9795 47.1337C36.4855 47.8681 35.7817 48.4387 34.8682 48.8454C33.9729 49.244 33.113 49.4025 32.2885 49.3208C31.4731 49.235 30.7327 48.9243 30.0673 48.3886C29.4111 47.8489 28.8674 47.0948 28.4362 46.1265C28.0051 45.1581 27.8131 44.2475 27.8603 43.3946C27.9074 42.5416 28.1719 41.7835 28.6538 41.1202C29.1356 40.4568 29.8151 39.9299 30.6921 39.5395C31.6148 39.1287 32.4924 38.9732 33.3251 39.0732C34.1628 39.16 34.8799 39.5413 35.4763 40.2171L34.0868 41.706C33.6874 41.227 33.2771 40.9445 32.8556 40.8585C32.4301 40.7633 31.9662 40.8276 31.4637 41.0513C30.7146 41.3848 30.2362 41.9208 30.0286 42.659C29.826 43.3841 29.9484 44.2491 30.3958 45.254C30.8391 46.2498 31.3909 46.9236 32.0511 47.2755C32.7113 47.6274 33.4388 47.6264 34.2336 47.2726C34.7269 47.0529 35.0927 46.7313 35.3311 46.3078C35.5785 45.8802 35.6553 45.3643 35.5615 44.7602L37.5337 44.5061ZM40.064 46.3679L35.6773 36.5153L37.5546 35.6795L39.4094 39.8453C39.4334 39.3091 39.5905 38.8506 39.8806 38.4697C40.1667 38.0796 40.5518 37.7768 41.036 37.5612C41.7485 37.2439 42.4313 37.1917 43.0843 37.4045C43.7333 37.6082 44.2428 38.1257 44.6129 38.957L46.6141 43.4516L44.7367 44.2875L42.9796 40.341C42.7153 39.7472 42.4201 39.3915 42.0941 39.2739C41.764 39.1472 41.4208 39.1632 41.0645 39.3218C40.7996 39.4397 40.5769 39.6155 40.3963 39.8492C40.2116 40.0737 40.1047 40.3621 40.0755 40.7145C40.0422 41.0577 40.1273 41.4577 40.3306 41.9144L41.9413 45.5321L40.064 46.3679ZM50.5073 36.4804C50.3324 36.0876 50.082 35.8324 49.756 35.7148C49.4391 35.5932 49.098 35.6137 48.7326 35.7764C48.3945 35.9269 48.1363 36.1459 47.9578 36.4333C47.7793 36.7208 47.7201 37.0919 47.7803 37.5468L45.9574 37.7673C45.8442 37.0952 45.9667 36.4605 46.3247 35.8633C46.6919 35.262 47.3185 34.764 48.2047 34.3695C49.0999 33.9709 49.9172 33.8642 50.6565 34.0496C51.4009 34.2217 51.9602 34.728 52.3344 35.5684L53.5729 38.3502C53.7274 38.6973 53.9691 38.7977 54.298 38.6513C54.4533 38.5821 54.5893 38.4942 54.706 38.3875L55.115 39.6011C54.9303 39.8256 54.6599 40.0172 54.3036 40.1758C53.9108 40.3507 53.5316 40.421 53.166 40.3867C52.8096 40.3484 52.508 40.1871 52.261 39.903C52.1882 40.3295 51.9849 40.7211 51.6511 41.0777C51.3223 41.4211 50.9433 41.6883 50.5139 41.8795C49.8196 42.1886 49.1978 42.2794 48.6484 42.1518C48.1041 42.0111 47.6977 41.6392 47.4292 41.0363C47.2015 40.5247 47.1808 40.0358 47.3674 39.5696C47.5498 39.0943 47.9206 38.661 48.4798 38.2698L50.6232 36.7408L50.5073 36.4804ZM49.2273 40.0223C49.3289 40.2507 49.4884 40.3876 49.7058 40.4332C49.9322 40.4746 50.1642 40.4425 50.4017 40.3368C50.6666 40.2188 50.895 40.0679 51.0868 39.884C51.2786 39.7001 51.4048 39.4797 51.4656 39.2227C51.5223 38.9567 51.4774 38.6592 51.331 38.3303L51.1418 37.9055L49.8311 38.8339C49.549 39.0362 49.3501 39.2287 49.2345 39.4115C49.1239 39.5812 49.1215 39.7847 49.2273 40.0223ZM57.7166 30.2987L58.3389 31.6964L56.1464 32.6726L57.5801 35.8928C57.7266 36.2217 57.9166 36.4272 58.1501 36.5093C58.3888 36.5782 58.6543 36.5475 58.9466 36.4174C59.1841 36.3116 59.3709 36.1902 59.5069 36.053C59.6479 35.9027 59.7605 35.7376 59.8446 35.5578L60.7013 36.6706C60.5502 36.9458 60.3326 37.2069 60.0484 37.4538C59.7734 37.6967 59.4532 37.8995 59.0878 38.0622C58.4027 38.3672 57.7717 38.4621 57.1949 38.3467C56.6232 38.2181 56.1705 37.7793 55.837 37.0302L54.2691 33.5084L53.0084 34.0697L52.3861 32.672L53.6467 32.1107L52.9451 30.5348L54.5906 29.1783L55.5241 31.2749L57.7166 30.2987Z" fill="white"/>
           </svg>
+
         </button>
 
 

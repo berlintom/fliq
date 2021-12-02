@@ -15,7 +15,6 @@
   .joining {
     margin-right: 13px;
   }
-
 }
 
 .show-name {
@@ -99,4 +98,15 @@
     padding: 0px 7px;
     margin-top: 15px;
   }
+}
+
+#btn-center {
+  margin: 0px 26% 20px 26%;
+  color: $red;
+  font-weight: bold;
+}
+
+.showbuttons {
+  display: flex;
+  justify-content: space-between;
 }

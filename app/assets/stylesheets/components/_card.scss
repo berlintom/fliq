@@ -10,6 +10,13 @@ margin: 10px;
 box-shadow: 0px 0px 8px rgb(170, 169, 169);
 }
 border-radius: 15px 150px 15px 15px;
+h2 {
+    font-size: 22px;
+    color: $red;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px 0px 0px 0px;
+  }
 }
 
 .show-card a {
@@ -152,11 +159,11 @@ padding: 2px;
 }
 
 .requests {
-background-color: $light-blue;
-border-radius: 24px;
-padding: 5px;
-margin-bottom: 4px;
-position: relative;
+  background-color: $light-blue;
+  border-radius: 24px;
+  padding: 5px;
+  margin-bottom: 4px;
+  position: relative;
 }
 
 .request {
@@ -170,16 +177,15 @@ width: 220px;
 }
 
 .request-buttons {
-display: flex;
-flex-direction: column;
-justify-content: space-around;
-align-self: center
+  display: flex;
+  align-self: center;
+  flex-direction: row-reverse;
 }
 
 .match-status {
-position: absolute;
-bottom: 65px;
-right: 15px;
+  position: absolute;
+  top: -1px;
+  right: 9px;
 }
 
 // Score-Card
