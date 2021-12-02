@@ -2,7 +2,9 @@
   <div class="personal-info">
     <%= cl_image_tag @user.photo.key, class: "avatar-bordered"%>
     <h3><strong><%= @user.user_name %></strong></h3>
-    <%= render"./shared/point_sum"%>
+    <%= link_to users_path do %>
+      <%= render"./shared/point_sum"%>
+    <% end %>
   </div>
   <div class="user-infos">
     <div class="user-info">
