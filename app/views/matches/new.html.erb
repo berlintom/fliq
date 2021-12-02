@@ -7,7 +7,7 @@
             <%= f.input :date, as: :string, placeholder: 'Choose the date', html5: true, label: 'When?', input_html: {class: "datepicker"} %>
             <%= f.input :start_time, as: :time, html5: true, label: 'Pick a time' %>
             <%= f.input :end_time, as: :time, html5: true, label: 'Until' %>
-            <%= f.input :capacity, collection: ["single", "double"], label: 'Play single or double?' %>
+            <%= f.input :capacity, collection: [2, 4], label: 'Play single or double?' %>
             <%= f.association :venue, collection: Venue.all.map { |venue| venue.address}, label: 'Pick location:', input_html: { data: { controller: "select2" }, class: "form-control" } %>
             <%= f.input :comment, label: false, placeholder: 'Share some details about the match' %>
             <%= f.button :submit, "List Match now", class: "home-cta" %>
