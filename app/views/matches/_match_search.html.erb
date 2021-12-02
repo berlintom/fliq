@@ -3,6 +3,6 @@
       <%= f.input :address, input_html: { data: { geocoder_target: "address" }},
       wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'] }}, label: false, :placeholder => 'try "berlin"' %>
       <%= f.input :date, as: :date, html5: true, label: false, value: Time.now.strftime('%d-%m-%Y') %>
-      <%= f.submit "Find matches!", class: "home-cta" %>
+      <%= f.submit "Find a FliQ!", class: "home-cta" %>
     <% end %>
 </div>

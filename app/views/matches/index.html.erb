@@ -85,7 +85,7 @@
                 <% end %>
               </div>
               <div class="index-text">
-                <p><%= match.capacity %>/<%= userparticipants.length %>: <%=match.capacity - userparticipants.length%> <%= "player".pluralize(match.capacity - userparticipants.length)%> can join</p>
+                <p><%= userparticipants.length %>/<%= match.capacity %>: Just <%=match.capacity - userparticipants.length%> <%= "spot".pluralize(match.capacity - userparticipants.length)%> left - hurry!</p>
               </div>
             </div>
             <div class="index-info-modal">
