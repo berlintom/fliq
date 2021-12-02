@@ -33,18 +33,21 @@ border: $red 5px solid;
 width: 115px;
 height: 115px;
 svg {
-position: absolute;
-right: 35px;
-top: 103px;
+  position: absolute;
+  right: 38px;
+  top: 103px;
 }
 }
 
 .first-won {
-svg {
-position: absolute;
-right: 35px;
-top: 103px;
-}
+  svg {
+    position: absolute;
+    right: 35px;
+    top: 103px;
+    background-color: white;
+    border-radius: 50%;
+    padding: 1px;
+  }
 }
 
 .second-won {
@@ -52,6 +55,9 @@ top: 103px;
     position: absolute;
     left: 59px;
     top: 66px;
+    background-color: white;
+    border-radius: 50%;
+    padding: 1px;
   }
 }
 
@@ -60,6 +66,9 @@ top: 103px;
     position: absolute;
     right: 60px;
     top: 65px;
+    background-color: white;
+    border-radius: 50%;
+    padding: 1px;
   }
 }
 
