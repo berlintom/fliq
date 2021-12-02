@@ -407,7 +407,7 @@ match9 = Match.new(
   capacity: 2,
   user: teo,
   venue: venue4,
-  date: Date.today 5,
+  date: Date.today + 5,
   start_time: Time.new(10),
   end_time: Time.new(17),
   comment: "bavarian powerplay"
@@ -451,26 +451,26 @@ participation5 = Participation.new(
 )
 participation5.save!
 
-puts "Creating Reviews"
+# puts "Creating Reviews"
 
-review1 = Review.new(
-  comment: "Nice game",
-  rating: 5,
-  match: match2,
-  user: teo,
-  venue: match2.venue
-)
-review1.photo.attach(io: file = URI.open("https://source.unsplash.com/featured/?desk"), filename: "review", content_type: 'image/png')
-review1.save!
+# review1 = Review.new(
+#   comment: "Nice game",
+#   rating: 5,
+#   match: match2,
+#   user: teo,
+#   venue: match2.venue
+# )
+# review1.photo.attach(io: file = URI.open("https://source.unsplash.com/featured/?desk"), filename: "review", content_type: 'image/png')
+# review1.save!
 
-review2 = Review.new(
-  comment: "Bad game",
-  rating: 2,
-  match: match1,
-  user: vali,
-  venue: match1.venue
-)
-review2.photo.attach(io: file = URI.open("https://source.unsplash.com/featured/?desk"), filename: "review", content_type: 'image/png')
-review2.save!
+# review2 = Review.new(
+#   comment: "Bad game",
+#   rating: 2,
+#   match: match1,
+#   user: vali,
+#   venue: match1.venue
+# )
+# review2.photo.attach(io: file = URI.open("https://source.unsplash.com/featured/?desk"), filename: "review", content_type: 'image/png')
+# review2.save!
 
 puts "Success!"
