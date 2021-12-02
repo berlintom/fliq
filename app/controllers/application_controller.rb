@@ -10,4 +10,9 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:email, :password, :first_name, :phone_number, :user_name, :photo])
 
   end
+
+  def default_url_options
+  { host: ENV["fliq.community"] || "localhost:3000" }
+end
+
 end

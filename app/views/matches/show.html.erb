@@ -1,3 +1,7 @@
+<% content_for :meta_title, "#{@match.date} is on #{DEFAULT_META["meta_product_name"]}" %>
+<% content_for :meta_description, @match.venue.address %>
+<% content_for :meta_image, cl_image_path(@match.user.photo.key) %>
+
 <div class="container">
   <div class="show-card">
     <div class="host-img">

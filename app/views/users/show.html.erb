@@ -1,3 +1,7 @@
+<% content_for :meta_title, "#{@user.user_name} is on #{DEFAULT_META["meta_product_name"]}" %>
+<% content_for :meta_description, @user.first_name %>
+<% content_for :meta_image, cl_image_path(@user.user.photo.key) %>
+
 <div class="container">
   <div class="personal-info">
     <%= cl_image_tag @user.photo.key, class: "avatar-bordered"%>
