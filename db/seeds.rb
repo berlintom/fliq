@@ -49,7 +49,7 @@ venue1 = Venue.new(
   address: "Rathausstraße 5, 10178 Berlin, Deutschland",
   outdoor: false,
   price: 8,
-  table_type: "Professional",
+  table_type: "Professional"
 )
 venue1.photos.attach(io: file = URI.open("https://source.unsplash.com/featured/?gym"), filename: "venue", content_type: 'image/png')
 venue1.save!
@@ -58,25 +58,25 @@ venue2 = Venue.new(
   address: "Kurstraße 48, 10117 Berlin",
   outdoor: true,
   price: 0,
-  table_type: "Classic Stone",
+  table_type: "Classic Stone"
 )
 venue2.photos.attach(io: file = URI.open("https://source.unsplash.com/featured/?gym"), filename: "venue", content_type: 'image/png')
 venue2.save!
 
 venue3 = Venue.new(
-  address: "Hönower Straße, 12623 Berlin, Deutschland",
+  address: "Hönower Straße, 12623 Berlin",
   outdoor: true,
   price: 0,
-  table_type: "Stone",
+  table_type: "Stone"
 )
 venue3.photos.attach(io: file = URI.open("https://source.unsplash.com/featured/?gym"), filename: "venue", content_type: 'image/png')
 venue3.save!
 
 venue4 = Venue.new(
-  address: "Reglinstraße, 12105 Berlin, Berlin, Deutschland",
+  address: "Reglinstraße, 12105 Berlin",
   outdoor: true,
   price: 0,
-  table_type: "Professional",
+  table_type: "Professional"
 )
 venue4.photos.attach(io: file = URI.open("https://source.unsplash.com/featured/?gym"), filename: "venue", content_type: 'image/png')
 venue4.save!
@@ -85,7 +85,7 @@ venue5 = Venue.new(
   address: "Dickhardtstraße 19, 12161 Berlin",
   outdoor: true,
   price: 0,
-  table_type: "Classic Stone",
+  table_type: "Classic Stone"
 )
 venue5.photos.attach(io: file = URI.open("https://source.unsplash.com/featured/?gym"), filename: "venue", content_type: 'image/png')
 venue5.save!
@@ -94,13 +94,13 @@ venue6 = Venue.new(
   address: "Frobenstraße, 12249 Berlin",
   outdoor: true,
   price: 0,
-  table_type: "Classic Stone",
+  table_type: "Classic Stone"
 )
 venue6.photos.attach(io: file = URI.open("https://source.unsplash.com/featured/?gym"), filename: "venue", content_type: 'image/png')
 venue6.save!
 
 venue7 = Venue.new(
-  address: "Waitzstraße, 10629 Berlin, Berlin",
+  address: "Waitzstraße, 10629 Berlin",
   outdoor: true,
   price: 0,
   table_type: "Classic Stone",
@@ -112,7 +112,7 @@ venue8 = Venue.new(
   address: "Schützenstraße, 13127 Berlin",
   outdoor: true,
   price: 0,
-  table_type: "Classic Stone",
+  table_type: "Classic Stone"
 )
 venue8.photos.attach(io: file = URI.open("https://source.unsplash.com/featured/?gym"), filename: "venue", content_type: 'image/png')
 venue8.save!
@@ -130,7 +130,7 @@ venue10 = Venue.new(
   address: "Trusetaler Str. 39, 12687 Berlin",
   outdoor: false,
   price: 10,
-  table_type: "Professional",
+  table_type: "Professional"
 )
 venue10.photos.attach(io: file = URI.open("https://source.unsplash.com/featured/?gym"), filename: "venue", content_type: 'image/png')
 venue10.save!
@@ -165,7 +165,7 @@ eprofile = Profile.new(
   point_sum: 250,
   venue: venue2,
   user: egor,
-  equipment: "bringing 2 🏓"
+  equipment: "bringing 2 of these 🏓"
 )
 eprofile.save!
 
