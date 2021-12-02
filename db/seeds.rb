@@ -221,12 +221,12 @@ vprofile = Profile.new(
   point_sum: 90,
   venue: venue1,
   user: vali,
-  equipment: "no equipment"
+  equipment: "no equipment :/"
 )
   vprofile.save!
 
 aprofile = Profile.new(
-  point_sum: 100,
+  point_sum: 120,
   venue: venue5,
   user: ali,
   equipment: "No equipment 🏓 but 🍺"
@@ -234,7 +234,7 @@ aprofile = Profile.new(
   aprofile.save!
 
 andreprofile = Profile.new(
-  point_sum: 140,
+  point_sum: 150,
   venue: venue1,
   user: andre,
   equipment: "providing match playlist"
@@ -242,7 +242,7 @@ andreprofile = Profile.new(
   andreprofile.save!
 
 patoprofile = Profile.new(
-  point_sum: 200,
+  point_sum: 110,
   venue: venue3,
   user: pato,
   equipment: "bringing 🏓 & 🍺"
@@ -282,7 +282,7 @@ camprofile = Profile.new(
 camprofile.save!
 
 ninaprofile = Profile.new(
-  point_sum: 140,
+  point_sum: 240,
   venue: venue3,
   user: nina,
   equipment: "forget my 🏓 in BCN"
@@ -290,7 +290,7 @@ ninaprofile = Profile.new(
 camprofile.save!
 
 toprofile = Profile.new(
-  point_sum: 180,
+  point_sum: 210,
   venue: venue1,
   user: tom,
   equipment: "i can bring +1 bat 🏓"
@@ -314,7 +314,7 @@ match1 = Match.new(
   date: Date.today,
   start_time: Time.new(3),
   end_time: Time.new(5),
-  comment: "lets practice! Can bring a 2nd bat"
+  comment: "lets FliQ! wax on..wax off"
 )
 match1.save!
 
@@ -328,6 +328,72 @@ match2 = Match.new(
   comment: "Just a relaxed lunch break match"
 )
 match2.save!
+
+match3 = Match.new(
+  capacity: 2,
+  user: cam,
+  venue: venue5,
+  date: Date.today + 3,
+  start_time: Time.new(15),
+  end_time: Time.new(16),
+  comment: "Let me win!! #css"
+)
+match3.save!
+
+match4 = Match.new(
+  capacity: 2,
+  user: pato,
+  venue: venue6,
+  date: Date.today + 1,
+  start_time: Time.new(12),
+  end_time: Time.new(13),
+  comment: "some topspins & beer"
+)
+match4.save!
+
+match5 = Match.new(
+  capacity: 4,
+  user: max,
+  venue: venue7,
+  date: Date.today + 5,
+  start_time: Time.new(12),
+  end_time: Time.new(13),
+  comment: "open for a 2on2"
+)
+match5.save!
+
+match6 = Match.new(
+  capacity: 2,
+  user: claire,
+  venue: venue10,
+  date: Date.today + 1,
+  start_time: Time.new(8),
+  end_time: Time.new(11),
+  comment: "imma take your points!"
+)
+match6.save!
+
+match7 = Match.new(
+  capacity: 2,
+  user: vali,
+  venue: venue1,
+  date: Date.today + 10,
+  start_time: Time.new(9),
+  end_time: Time.new(13),
+  comment: "forecast looks good 🌞"
+)
+match7.save!
+
+match8 = Match.new(
+  capacity: 2,
+  user: dave,
+  venue: venue4,
+  date: Date.today + 5,
+  start_time: Time.new(15),
+  end_time: Time.new(17),
+  comment: "wax on - wax off"
+)
+match8.save!
 
 puts "Creating Participations"
 
