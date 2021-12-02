@@ -21,13 +21,12 @@
         document.getElementById(id).className="selected";
       }
     </script>
-    <script src="glider.js"></script>
   </head>
 
   <body>
 
     <% if params[:action] != "home" %>
-      <div class="container">
+      <div class="container bottom-white-fix">
         <%= render 'shared/navbar' %>
         <%= render 'shared/flashes' %>
         <%= yield %>
