@@ -38,6 +38,9 @@
   <br>
   <p>Last matches:</p>
   <div class="last-matches">
+    <% if @lastparticipations.length == 0 %>
+      <p class="index-info-empty">You have't played any matches yet</p>
+    <% end %>
     <% @lastparticipations.each do |participation| %>
       <% matchparticipations = participation.match.participations %>
       <% winners = []%>
