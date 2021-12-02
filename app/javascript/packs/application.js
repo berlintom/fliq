@@ -34,11 +34,8 @@ application.load(definitionsFromContext(context))
 
 // Internal imports, e.g:
 
-// import { initFlatpickr } from "../components/flatpickr";
+import { initFlatpickr } from "../components/flatpickr";
 
-
-
-
-// document.addEventListener('turbolinks:load', () => {
-//   initFlatpickr();
-//  });
+document.addEventListener('turbolinks:load', () => {
+  initFlatpickr();
+ });
