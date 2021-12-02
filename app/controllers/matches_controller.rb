@@ -12,10 +12,10 @@ class MatchesController < ApplicationController
           # elseif show results
           # else show all results
           @matches = Match.joins(:venue).where("address ILIKE ?", "%#{@address}%").where(date: @date).empty?
-          @matches = Match.where(full: false).order(created_at: :desc)
+          @matches = Match.where(full: false).order(date: :asc)
           map
         elsif
-          @matches = Match.joins(:venue).where("address ILIKE ?", "%#{@address}%").where(date: @date).order(created_at: :desc)
+          @matches = Match.joins(:venue).where("address ILIKE ?", "%#{@address}%").where(date: @date).order(date: :asc)
           map
         else
           @matches = Match.joins(:venue).where("address ILIKE ?", "%#{@address}%").where(date: @date)
@@ -23,7 +23,7 @@ class MatchesController < ApplicationController
         end
       else
         @matches = Match.joins(:venue).where("address ILIKE ?", "%#{@address}%").where(date: @date)
-        @matches = Match.where(full: false).order(created_at: :desc)
+        @matches = Match.where(full: false).order(date: :asc)
         map
       end
     end
