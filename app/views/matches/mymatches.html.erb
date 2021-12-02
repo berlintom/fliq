@@ -8,7 +8,9 @@
 
     <div class="hidden_desc" id="booked_desc">
       <% if @booked.length == 0 %>
+        <div class="index-info-empty">
           <p>No requested participations</p>
+        </div>
         <% else %>
           <% @booked.each do |participation| %>
             <%=link_to match_path(participation.match) do %>
@@ -60,7 +62,9 @@
 
     <div class='hidden_desc' id="pending_desc">
         <% if @pendings.length == 0 %>
-          <p>No requested participations</p>
+          <div class="index-info-empty">
+            <p>No requested participations</p>
+          </div>
         <% else %>
           <% @pendings.each do |participation| %>
             <%=link_to match_path(participation.match) do %>
@@ -105,11 +109,6 @@
                     <% end %>
                   </div>
                 <% end %>
-                <% if participation.match.user == current_user %>
-                  <div class="host-sign">
-                    <%= render"./shared/yourfliq.html.erb" %>
-                  </div>
-                <% end %>
               </div>
             <% end %>
           <% end %>
@@ -118,7 +117,9 @@
 
     <div class='hidden_desc' id="created_desc">
       <% if @matches.length == 0 %>
-        <p>No created matches</p>
+        <div class="index-info-empty">
+          <p>No created matches</p>
+        </div>
       <% else %>
         <% @matches.each do |match| %>
           <%=link_to match_path(match) do %>
@@ -127,7 +128,7 @@
                 <%= cl_image_tag match.user.photo.key, class: "avatar-bordered-medium"%>
               </div>
               <div class="match">
-                <div class="index-info">
+                <div class="index-info-created">
                   <div class="index-svg">
                     <%= render"./shared/calender.html.erb"%>
                   </div>
@@ -135,7 +136,7 @@
                     <p><%= match.date.strftime("%d.%m.%y") %></p>
                   </div>
                 </div>
-                <div class="index-info">
+                <div class="index-info-created">
                   <div class="index-svg">
                     <%= render"./shared/time.html.erb"%>
                   </div>
@@ -143,7 +144,7 @@
                     <p><%= match.start_time.time.to_s(:time) %> - <%= match.end_time.time.to_s(:time)%></p>
                   </div>
                 </div>
-                <div class="index-info">
+                <div class="index-info-created">
                   <div class="index-svg">
                     <%= render"./shared/location.html.erb"%>
                   </div>
@@ -151,7 +152,7 @@
                     <p><%= match.venue.address %></p>
                   </div>
                 </div>
-                <div class="index-info">
+                <div class="index-info-created">
                   <% actualparticipants = [] %>
                   <% match.participations.each do |participation| %>
                     <% if participation.status == "accepted" %>
@@ -216,7 +217,9 @@
 
     <div id="page_content">
       <% if @booked.length == 0 %>
-        <p>No requested participations</p>
+        <div class="index-info-empty">
+          <p>No requested participations</p>
+        </div>
       <% else %>
         <% @booked.each do |participation| %>
           <%=link_to match_path(participation.match) do %>
