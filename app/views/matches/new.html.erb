@@ -8,10 +8,13 @@
             <%= f.input :start_time, as: :time, html5: true, label: 'Pick a time' %>
             <%= f.input :end_time, as: :time, html5: true, label: 'Until' %>
             <%= f.input :capacity, collection: ["single", "double"], label: 'Play single or double?' %>
-            <%= f.association :venue, collection: Venue.all.map { |venue| venue.address}, label: 'Pick location:', input_html: { data: { controller: "select2"}, class: "form-control"} %>
+            <%= f.association :venue, collection: Venue.all.map { |venue| venue.address}, label: 'Pick location:'%>
             <%= f.input :comment, label: false, placeholder: 'Share some details about the match' %>
             <%= f.button :submit, "List Match now", class: "home-cta" %>
           <% end %>
       </div>
   </div>
 </div>
+
+
+<%# , input_html: { data: { controller: "select2"}, class: "form-control"}  %>
