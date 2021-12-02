@@ -241,14 +241,6 @@ andreprofile = Profile.new(
 )
   andreprofile.save!
 
-teoprofile = Profile.new(
-  point_sum: 205,
-  venue: venue2,
-  user: teo,
-  equipment: "munich madness"
-)
-  teoprofile.save!
-
 patoprofile = Profile.new(
   point_sum: 110,
   venue: venue3,
@@ -256,6 +248,14 @@ patoprofile = Profile.new(
   equipment: "bringing 🏓 & 🍺"
 )
   patoprofile.save!
+
+teoprofile = Profile.new(
+  point_sum: 205,
+  venue: venue3,
+  user: teo,
+  equipment: "munich madness"
+)
+  teoprofile.save!
 
 maxprofile = Profile.new(
   point_sum: 160,
