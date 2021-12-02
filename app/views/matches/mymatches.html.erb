@@ -1,15 +1,15 @@
 <div class="container">
   <div id="main_content">
     <div class="tab-header">
-      <li class="notselected" id="booked" onclick="change_tab(this.id);">Booked matches</li>
-      <li class="selected" id="pending" onclick="change_tab(this.id);">Pending matches</li>
-      <li class="notselected" id="created" onclick="change_tab(this.id);">Created matches</li>
+      <li class="notselected" id="booked" onclick="change_tab(this.id);">Booked FliQs</li>
+      <li class="selected" id="pending" onclick="change_tab(this.id);">Pending FliQs</li>
+      <li class="notselected" id="created" onclick="change_tab(this.id);">Created FliQs</li>
     </div>
 
     <div class="hidden_desc" id="booked_desc">
       <% if @booked.length == 0 %>
         <div class="index-info-empty">
-          <p>No upcoming matches</p>
+          <p>No upcoming FliQs</p>
         </div>
         <% else %>
           <% @booked.each do |participation| %>
@@ -122,7 +122,7 @@
     <div class='hidden_desc' id="created_desc">
       <% if @matches.length == 0 %>
         <div class="index-info-empty">
-          <p>No created matches</p>
+          <p>No created FliQs</p>
         </div>
       <% else %>
         <% @matches.each do |match| %>
