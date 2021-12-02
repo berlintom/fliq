@@ -4,7 +4,7 @@
           <%= simple_form_for [@match, @review] do |f| %>
             <%= f.input :comment, label: false, placeholder: '🗣️: "Great and friendly match"' %>
             <%= f.input :rating, collection: [1, 2, 3, 4, 5], label: '⭐⭐⭐⭐⭐' %>
-            <%= f.button :submit, "Submit review", class: "btn btn-primary" %>
+            <%= f.button :submit, "Submit review", class: "btn btn-cta" %>
           <% end %>
       </div>
   </div>
