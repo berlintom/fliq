@@ -36,9 +36,6 @@ application.load(definitionsFromContext(context))
 
 import { initFlatpickr } from "../components/flatpickr";
 
-
-
-
 document.addEventListener('turbolinks:load', () => {
   initFlatpickr();
  });

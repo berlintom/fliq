@@ -9,7 +9,7 @@
     <div class="hidden_desc" id="booked_desc">
       <% if @booked.length == 0 %>
         <div class="index-info-empty">
-          <p>No requested participations</p>
+          <p>No upcoming matches</p>
         </div>
         <% else %>
           <% @booked.each do |participation| %>
@@ -218,7 +218,7 @@
     <div id="page_content">
       <% if @booked.length == 0 %>
         <div class="index-info-empty">
-          <p>No requested participations</p>
+          <p>No upcoming matches</p>
         </div>
       <% else %>
         <% @booked.each do |participation| %>

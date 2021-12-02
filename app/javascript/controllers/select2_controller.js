@@ -5,8 +5,6 @@ import "select2"
 export default class extends Controller {
 
   connect(){
-
     $(this.element).select2();
-
    }
 }
