@@ -59,7 +59,7 @@
         <% end %></p>
         <p><%= @match.capacity -  actualparticipants.length%> can join!</p>
       </div>
-      <% if @userparticipants.include?(current_user) && @match.user != current_user && !@match.full%>
+      <% if @userparticipants.include?(current_user) && (@match.user != current_user) && !@match.full%>
         <div class="show-text">
           <div class="show-name"><p><strong>Status:</strong></p></div>
           <p><%= @current_userparticipation.status %></p>
@@ -71,13 +71,13 @@
     <% elsif !@userparticipants.include?(current_user) && @match.user != current_user %>
         <div class="btn btn-cta"><%= link_to "Participate", match_participations_path(@match), method: :post %></div>
     <% end %>
-    <% if @userparticipants.include?(current_user) && @match.user != current_user%>
-        <div class="btn btn-cta"><%= link_to "Can't make it", participation_path(@current_userparticipation), method: :delete %></div>
-    <% elsif @match.user == current_user%>
+    <% if (@match.score == nil) && @userparticipants.include?(current_user) && (@match.user != current_user)%>
+      <div class="btn btn-cta"><%= link_to "Can't make it", participation_path(@current_userparticipation), method: :delete %></div>
+    <% elsif (@match.user == current_user) & (@match.score == nil) %>
         <div class="btn btn-cta"><%= link_to "Cancel Match", match_path(@match), method: :delete %></div>
     <% end %>
     <% if @match.full? %>
-      <% if @match.start_time.past? && @match.score.nil?%>
+      <% if @match.start_time.past? && @match.date.today? && @match.score.nil?%>
       <p>Enter your score!</p>
       <% end %>
       <div class="team-display">
@@ -85,18 +85,20 @@
           <% @team1.each do |user| %>
             <%= cl_image_tag user.user.photo.key, class: "avatar-bordered-small" %>
           <% end %>
+          <%= @match.score.score_a if @match.score %>
         </div>
         <div class = "versus">
           <p> : </p>
         </div>
         <div class = "team">
+          <%= @match.score.score_b if @match.score %>
           <% @team2.each do |user| %>
             <%= cl_image_tag user.user.photo.key, class: "avatar-bordered-small" %>
           <% end %>
         </div>
       </div>
       <% if @done%>
-      <%= simple_form_for [@match, @score] do |f| %>
+        <%= simple_form_for [@match, @score] do |f| %>
           <%= f.input :score_a %>
           <%= f.input :score_b %>
           <%= f.submit class:"btn btn-cta" %>
@@ -127,7 +129,7 @@
           <div class="btn btn-inactive"><%= link_to "Leave a review", "#" %></div>
         <% end %>
       <% end %>
-    <div class="btn btn-cta"><%= link_to 'Back to all matches', matches_path %></div>
+    <div class="btn btn-cta"><%= link_to "Back", :back %></div>
   </div>
 
 <div data-controller="clickable" data-clickable-open-value="<%= params.key?(:message_created)%>">

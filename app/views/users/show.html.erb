@@ -49,96 +49,100 @@
       <% end %>
       <% if participation.outcome == "won" %>
         <div class="last-match won">
-          <div class="stats">
-            <div class="winners">
-              <% if winners.length == 1 %>
-                <div class="matchavatars-1">
-                  <% winners.each do |winner| %>
-                    <%= cl_image_tag winner.user.photo.key, class: "avatar-bordered-small-won" %>
-                  <% end %>
+          <%= link_to match_path(participation.match) do%>
+            <div class="stats">
+              <div class="winners">
+                <% if winners.length == 1 %>
+                  <div class="matchavatars-1">
+                    <% winners.each do |winner| %>
+                      <%= cl_image_tag winner.user.photo.key, class: "avatar-bordered-small-won" %>
+                    <% end %>
+                  </div>
+                <% else %>
+                <div class="matchavatars-2">
+                    <% winners.each do |winner| %>
+                      <%= cl_image_tag winner.user.photo.key, class: "avatar-bordered-small", id: "avatar-won" %>
+                    <% end %>
+                  </div>
+                <% end %>
+                <% if participation.match.score.score_a > participation.match.score.score_b %>
+                  <p><%= participation.match.score.score_a %></p>
+                <% else %>
+                  <p><%= participation.match.score.score_b %></p>
+                <% end %>
+                <div class="winner-frame">
+                  <%= render"./shared/winnerframe.html.erb" %>
                 </div>
-              <% else %>
-               <div class="matchavatars-2">
-                  <% winners.each do |winner| %>
-                    <%= cl_image_tag winner.user.photo.key, class: "avatar-bordered-small", id: "avatar-won" %>
-                  <% end %>
-                </div>
-              <% end %>
-              <% if participation.match.score.score_a > participation.match.score.score_b %>
-                <p><%= participation.match.score.score_a %></p>
-              <% else %>
-                <p><%= participation.match.score.score_b %></p>
-              <% end %>
-              <div class="winner-frame">
-                <%= render"./shared/winnerframe.html.erb" %>
+              </div>
+              <div class="losers">
+                <% if losers.length == 1 %>
+                  <div class="matchavatars-1">
+                    <% losers.each do |loser| %>
+                      <%= cl_image_tag loser.user.photo.key, class: "avatar-bordered-small" %>
+                    <% end %>
+                  </div>
+                <% else %>
+                <div class="matchavatars-2">
+                    <% losers.each do |loser| %>
+                      <%= cl_image_tag loser.user.photo.key, class: "avatar-bordered-small" %>
+                    <% end %>
+                  </div>
+                <% end %>
+                <% if participation.match.score.score_a < participation.match.score.score_b %>
+                  <p><%= participation.match.score.score_a %></p>
+                <% else %>
+                  <p><%= participation.match.score.score_b %></p>
+                <% end %>
               </div>
             </div>
-            <div class="losers">
-              <% if losers.length == 1 %>
-                <div class="matchavatars-1">
-                  <% losers.each do |loser| %>
-                    <%= cl_image_tag loser.user.photo.key, class: "avatar-bordered-small" %>
-                  <% end %>
-                </div>
-              <% else %>
-               <div class="matchavatars-2">
-                  <% losers.each do |loser| %>
-                    <%= cl_image_tag loser.user.photo.key, class: "avatar-bordered-small" %>
-                  <% end %>
-                </div>
-              <% end %>
-              <% if participation.match.score.score_a < participation.match.score.score_b %>
-                <p><%= participation.match.score.score_a %></p>
-              <% else %>
-                <p><%= participation.match.score.score_b %></p>
-              <% end %>
-            </div>
-          </div>
+          <% end %>
         </div>
       <% elsif participation.outcome == "lost" %>
         <div class="last-match lost">
-          <div class="stats">
-            <div class="winners">
-              <% if winners.length == 1 %>
-                <div class="matchavatars-1">
-                  <% winners.each do |winner| %>
-                    <%= cl_image_tag winner.user.photo.key, class: "avatar-bordered-small", id: "avatar-won" %>
-                  <% end %>
-                </div>
-              <% else %>
-               <div class="matchavatars-2">
-                  <% winners.each do |winner| %>
-                    <%= cl_image_tag winner.user.photo.key, class: "avatar-bordered-small", id: "avatar-won" %>
-                  <% end %>
-                </div>
-              <% end %>
-              <% if participation.match.score.score_a > participation.match.score.score_b %>
-                <p><%= participation.match.score.score_a %></p>
-              <% else %>
-                <p><%= participation.match.score.score_b %></p>
-              <% end %>
+          <%= link_to match_path(participation.match) do%>
+            <div class="stats">
+              <div class="winners">
+                <% if winners.length == 1 %>
+                  <div class="matchavatars-1">
+                    <% winners.each do |winner| %>
+                      <%= cl_image_tag winner.user.photo.key, class: "avatar-bordered-small", id: "avatar-won" %>
+                    <% end %>
+                  </div>
+                <% else %>
+                <div class="matchavatars-2">
+                    <% winners.each do |winner| %>
+                      <%= cl_image_tag winner.user.photo.key, class: "avatar-bordered-small", id: "avatar-won" %>
+                    <% end %>
+                  </div>
+                <% end %>
+                <% if participation.match.score.score_a > participation.match.score.score_b %>
+                  <p><%= participation.match.score.score_a %></p>
+                <% else %>
+                  <p><%= participation.match.score.score_b %></p>
+                <% end %>
+              </div>
+              <div class="losers">
+                <% if losers.length == 1 %>
+                  <div class="matchavatars-1">
+                    <% losers.each do |loser| %>
+                      <%= cl_image_tag loser.user.photo.key, class: "avatar-bordered-small" %>
+                    <% end %>
+                  </div>
+                <% else %>
+                <div class="matchavatars-2">
+                    <% losers.each do |loser| %>
+                      <%= cl_image_tag loser.user.photo.key, class: "avatar-bordered-small" %>
+                    <% end %>
+                  </div>
+                <% end %>
+                <% if participation.match.score.score_a < participation.match.score.score_b %>
+                  <p><%= participation.match.score.score_a %></p>
+                <% else %>
+                  <p><%= participation.match.score.score_b %></p>
+                <% end %>
+              </div>
             </div>
-            <div class="losers">
-              <% if losers.length == 1 %>
-                <div class="matchavatars-1">
-                  <% losers.each do |loser| %>
-                    <%= cl_image_tag loser.user.photo.key, class: "avatar-bordered-small" %>
-                  <% end %>
-                </div>
-              <% else %>
-               <div class="matchavatars-2">
-                  <% losers.each do |loser| %>
-                    <%= cl_image_tag loser.user.photo.key, class: "avatar-bordered-small" %>
-                  <% end %>
-                </div>
-              <% end %>
-              <% if participation.match.score.score_a < participation.match.score.score_b %>
-                <p><%= participation.match.score.score_a %></p>
-              <% else %>
-                <p><%= participation.match.score.score_b %></p>
-              <% end %>
-            </div>
-          </div>
+          <% end %>
         </div>
       <% end %>
     <% end %>
