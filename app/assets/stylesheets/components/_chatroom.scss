@@ -1,7 +1,7 @@
 .chatroom {
   background: white;
   margin-top: 8px;
-  height: calc(100vh - 72px);
+  height: calc(100vh - 325px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -41,7 +41,7 @@
   }
 }
 
-#chat-form {
+.show-chat-with-animation {
   position: absolute;
   top: 65px;
   left: 39px;
@@ -53,12 +53,45 @@
   animation: slidein 1s;
 }
 
+.show-chat-no-animation {
+  position: absolute;
+  top: 65px;
+  left: 39px;
+  right: 39px;
+  border-radius: 15px 150px 15px 15px;
+  box-shadow: 0px 0px 4px #aaa9a9;
+  padding: 13px;
+  overflow: hidden;
+  transform: translate(0, 0);
+  opacity: 1;
+}
+
+@keyframes slidein {
+  from {
+    transform: translate(0px, -860px);
+    opacity: 0;
+  }
+  to {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
 #clickme {
   position: absolute;
   top: 51px;
   right: 0px;
   transform: rotate(74deg);
+  .rotate-in {
+    transition: all 1s;
+    transform:rotate(83deg);
+  }
+  .rotate-out {
+    transition: all 1s;
+    transform: rotate(-9deg);
+  }
 }
+
 
 
 .speech-bubble {
@@ -71,17 +104,6 @@
 }
 .message-info-container {
   color: grey;
-}
-
-@keyframes slidein {
-  from {
-    transform: translate(0px, -860px);
-    opacity: 0;
-  }
-  to {
-    transform: translate(0, 0);
-    opacity: 1;
-  }
 }
 
 .btn-message {
