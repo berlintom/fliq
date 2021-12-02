@@ -241,6 +241,14 @@ andreprofile = Profile.new(
 )
   andreprofile.save!
 
+teoprofile = Profile.new(
+  point_sum: 100,
+  venue: venue2,
+  user: teo,
+  equipment: "munich madness"
+)
+  teoprofile.save!
+
 patoprofile = Profile.new(
   point_sum: 110,
   venue: venue3,
@@ -394,6 +402,17 @@ match8 = Match.new(
   comment: "friendly dude stealing your points"
 )
 match8.save!
+
+match9 = Match.new(
+  capacity: 2,
+  user: teo,
+  venue: venue4,
+  date: Date.today,
+  start_time: Time.new(10),
+  end_time: Time.new(17),
+  comment: "bavarian powerplay"
+)
+match9.save!
 
 puts "Creating Participations"
 
