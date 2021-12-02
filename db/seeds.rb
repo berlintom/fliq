@@ -241,6 +241,14 @@ andreprofile = Profile.new(
 )
   andreprofile.save!
 
+teoprofile = Profile.new(
+  point_sum: 205,
+  venue: venue2,
+  user: teo,
+  equipment: "munich madness"
+)
+  teoprofile.save!
+
 patoprofile = Profile.new(
   point_sum: 110,
   venue: venue3,
@@ -366,7 +374,7 @@ match6 = Match.new(
   capacity: 2,
   user: claire,
   venue: venue10,
-  date: Date.today + 1,
+  date: Date.today,
   start_time: Time.new(8),
   end_time: Time.new(11),
   comment: "imma take your points!"
@@ -394,6 +402,17 @@ match8 = Match.new(
   comment: "friendly dude stealing your points"
 )
 match8.save!
+
+match9 = Match.new(
+  capacity: 2,
+  user: teo,
+  venue: venue4,
+  date: Date.today + 5,
+  start_time: Time.new(10),
+  end_time: Time.new(17),
+  comment: "bavarian powerplay"
+)
+match9.save!
 
 puts "Creating Participations"
 
@@ -432,26 +451,26 @@ participation5 = Participation.new(
 )
 participation5.save!
 
-puts "Creating Reviews"
+# puts "Creating Reviews"
 
-review1 = Review.new(
-  comment: "Nice game",
-  rating: 5,
-  match: match2,
-  user: teo,
-  venue: match2.venue
-)
-review1.photo.attach(io: file = URI.open("https://source.unsplash.com/featured/?desk"), filename: "review", content_type: 'image/png')
-review1.save!
+# review1 = Review.new(
+#   comment: "Nice game",
+#   rating: 5,
+#   match: match2,
+#   user: teo,
+#   venue: match2.venue
+# )
+# review1.photo.attach(io: file = URI.open("https://source.unsplash.com/featured/?desk"), filename: "review", content_type: 'image/png')
+# review1.save!
 
-review2 = Review.new(
-  comment: "Bad game",
-  rating: 2,
-  match: match1,
-  user: vali,
-  venue: match1.venue
-)
-review2.photo.attach(io: file = URI.open("https://source.unsplash.com/featured/?desk"), filename: "review", content_type: 'image/png')
-review2.save!
+# review2 = Review.new(
+#   comment: "Bad game",
+#   rating: 2,
+#   match: match1,
+#   user: vali,
+#   venue: match1.venue
+# )
+# review2.photo.attach(io: file = URI.open("https://source.unsplash.com/featured/?desk"), filename: "review", content_type: 'image/png')
+# review2.save!
 
 puts "Success!"
