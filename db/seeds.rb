@@ -13,6 +13,26 @@ vali = User.new(
 vali.photo.attach(io: file = URI.open("https://ca.slack-edge.com/T02NE0241-U02FW5W7TRD-a3c876362075-512"), filename: "profile", content_type: 'image/png')
 vali.save!
 
+ali = User.new(
+  first_name: "ali",
+  user_name: "ali-star",
+  email: "ali@fliq.de",
+  password: "123456",
+  phone_number: 115
+  )
+ali.photo.attach(io: file = URI.open("https://ca.slack-edge.com/T02NE0241-U02G4887HQE-6103d2b52a0c-512"), filename: "profile", content_type: 'image/png')
+ali.save!
+
+ali = User.new(
+  first_name: "ali",
+  user_name: "ali-star",
+  email: "ali@fliq.de",
+  password: "123456",
+  phone_number: 115
+  )
+ali.photo.attach(io: file = URI.open("https://ca.slack-edge.com/T02NE0241-U02G4887HQE-6103d2b52a0c-512"), filename: "profile", content_type: 'image/png')
+ali.save!
+
 tom = User.new(
   first_name: "Tom",
   user_name: "topspin667",
@@ -46,7 +66,7 @@ egor.save!
 puts "Creating Venues"
 
 venue1 = Venue.new(
-  address: "Rathausstraße 5, 10178 Berlin, Deutschland",
+  address: "Rathausstraße 5, 10178 Berlin",
   outdoor: false,
   price: 8,
   table_type: "Professional"
@@ -178,7 +198,7 @@ match1 = Match.new(
   date: Date.today,
   start_time: Time.new(3),
   end_time: Time.new(5),
-  comment: "lets practice! I can bring a 2nd bat"
+  comment: "lets practice! Can bring a 2nd bat"
 )
 match1.save!
 
