@@ -382,7 +382,7 @@ match6 = Match.new(
 match6.save!
 
 match7 = Match.new(
-  capacity: 2,
+  capacity: 4,
   user: vali,
   venue: venue1,
   date: Date.today + 10,
@@ -507,12 +507,26 @@ participation12 = Participation.new(
 )
 participation12.save!
 
-participation12 = Participation.new(
-  user: teo,
+participation13 = Participation.new(
+  user: cam,
   match: match9,
   status: "accepted"
 )
-participation12.save!
+participation13.save!
+
+participation14 = Participation.new(
+  user: tom,
+  match: match7,
+  status: "accepted"
+)
+participation14.save!
+
+participation15 = Participation.new(
+  user: claire,
+  match: match7,
+  status: "accepted"
+)
+participation15.save!
 
 # puts "Creating Reviews"
 
