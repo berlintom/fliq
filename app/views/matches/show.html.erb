@@ -113,10 +113,11 @@
             <%= f.input :score_a, label: false %>
             <%= f.input :score_b, label: false %>
           </div>
-          <%= f.submit class:"btn btn-cta" %>
+          <%= f.submit class:"btn btn-score", id: "btn-center" %>
         <% end %>
       <% end %>
     <% end %>
+    <div class="showbuttons">
     <% if !@userparticipants.include?(current_user) && @match.user != current_user %>
         <div class="btn btn-cta"><%= link_to "Participate", match_participations_path(@match), method: :post %></div>
     <% end %>
@@ -126,30 +127,8 @@
         <div class="btn btn-cta"><%= link_to "Cancel Match", match_path(@match), method: :delete %></div>
     <% end %>
     <br>
-
-    <% @match.reviews.each do |review|  %>
-      <% case %>
-      <% when review.rating === 1 %>
-        <p>Rating ⭐☆☆☆☆</p>
-      <% when review.rating === 2 %>
-        <p>Rating ⭐⭐☆☆☆</p>
-      <% when review.rating === 3 %>
-        <p>Rating ⭐⭐⭐☆☆</p>
-      <% when review.rating === 4 %>
-        <p>Rating ⭐⭐⭐⭐☆ </p>
-      <% when review.rating === 5 %>
-        <p>Rating ⭐⭐⭐⭐⭐ </p>
-      <hr>
-      <% end %>
-        <% if @userparticipants.include?(current_user || match.user) && @match.start_time.past? && review.present? == false %>
-          <div class="btn btn-cta"><%= link_to 'Leave match review', new_match_review_path(@match) %></div>
-        <% elsif @userparticipants.include?(current_user || match.user) && @match.start_time.past? && review.present? == true %>
-          <div class="btn btn-cta"><%= link_to "Delete Review", review_path(review), method: :delete, data: { confirm: "You really want to delete the review?"}  %></div>
-        <% else %>
-          <div class="btn btn-inactive"><%= link_to "Leave a review", "#" %></div>
-        <% end %>
-      <% end %>
     <div class="btn btn-cta"><%= link_to "Back", :back %></div>
+    </div>
   </div>
 
 <div data-controller="clickable" data-clickable-open-value="<%= params.key?(:message_created)%>">

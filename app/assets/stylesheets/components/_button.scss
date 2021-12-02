@@ -13,6 +13,20 @@
   }
 }
 
+.btn-score {
+  border-radius: 18px;
+  transition-duration: 0.4s;
+  padding: 5px 15px;
+  font-size: 16px;
+  border: 1.5px solid $red;
+  background-color: white;
+  margin: 3px;
+  a {
+    color: white;
+    font-weight: 700px;
+  }
+}
+
 .btn {
   color: white;
 }
