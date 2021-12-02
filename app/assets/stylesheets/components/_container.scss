@@ -4,3 +4,16 @@
   width: auto;
   height: 110vh;
 }
+
+.bottom-white-fix {
+  &:after {
+    position: absolute;
+    content: '';
+    width: 100vw;
+    height: 50px;
+    background-color: $light-blue;
+    bottom: -120px;
+    left: 0px;
+    z-index: -1;
+  }
+}

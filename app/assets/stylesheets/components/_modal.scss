@@ -31,7 +31,7 @@
 }
 
 .match-modal-content {
-    background-color: #DCF2F0;
+    background-color: $light-blue;
     padding: 20px;
     width: 100%;
     margin: auto;
@@ -57,9 +57,6 @@
     font-size: 35px;
     font-weight: bold;
     float: left;
-    // position: absolute;
-    // bottom: 282px;
-    // left: 19px;
 }
 .match-modal-close:hover,
 .match-modal-close:focus {
