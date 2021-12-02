@@ -1,3 +1,4 @@
+<div class="container-search-home">
 <div class="form match-search-form">
     <%= simple_form_for :search, url: matches_path, method: "GET", html: { class: 'form-inline' } do |f| %>
     <%= f.input :address, input_html: { data: { geocoder_target: "address" }},
@@ -5,4 +6,5 @@
     <%= f.input :date, as: :date, html5: true, label: "Pick a date to play!",  value: Time.new.strftime('%Y-%m-%d') %>
     <%= f.submit "Find a FliQ!", class: "home-cta" %>
     <% end %>
+</div>
 </div>
