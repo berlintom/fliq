@@ -60,13 +60,13 @@
                 <% if winners.length == 1 %>
                   <div class="matchavatars-1">
                     <% winners.each do |winner| %>
-                      <%= cl_image_tag winner.user.photo.key, class: "avatar-bordered-small-won" %>
+                      <%= cl_image_tag winner.user.photo.key, class: "avatar-bordered-small", id: "show-avatar-won" %>
                     <% end %>
                   </div>
                 <% else %>
                 <div class="matchavatars-2">
                     <% winners.each do |winner| %>
-                      <%= cl_image_tag winner.user.photo.key, class: "avatar-bordered-small", id: "avatar-won" %>
+                      <%= cl_image_tag winner.user.photo.key, class: "avatar-bordered-small", id: "show-avatar-won" %>
                     <% end %>
                   </div>
                 <% end %>
@@ -141,13 +141,13 @@
                 <% if winners.length == 1 %>
                   <div class="matchavatars-1">
                     <% winners.each do |winner| %>
-                      <%= cl_image_tag winner.user.photo.key, class: "avatar-bordered-small", id: "avatar-won" %>
+                      <%= cl_image_tag winner.user.photo.key, class: "avatar-bordered-small", id: "show-avatar-won" %>
                     <% end %>
                   </div>
                 <% else %>
                   <div class="matchavatars-2">
                     <% winners.each do |winner| %>
-                      <%= cl_image_tag winner.user.photo.key, class: "avatar-bordered-small", id: "avatar-won" %>
+                      <%= cl_image_tag winner.user.photo.key, class: "avatar-bordered-small", id: "show-avatar-won" %>
                     <% end %>
                   </div>
                 <% end %>

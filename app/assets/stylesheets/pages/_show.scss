@@ -9,6 +9,13 @@
   p {
     margin: 0px;
   }
+  :nth-child(2) {
+    flex-grow: 1;
+  }
+  .joining {
+    margin-right: 13px;
+  }
+
 }
 
 .show-name {
@@ -30,18 +37,42 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: $light-blue;
+  padding: 10px;
+  border-radius: 24px;
+  width: 70%;
+  margin: 0 auto;
 }
 
 .team {
-  background-color: $light-blue;
-  padding: 10px;
-  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  img {
+    margin: 0 10px;
+  }
+}
+
+.teammembersone {
+  position: relative;
+  :nth-child(2) {
+      position: absolute;
+      top: 0px;
+      right: 23px;
+    }
+}
+
+.teammemberstwo {
+  position: relative;
+  :nth-child(2) {
+      position: absolute;
+      top: 0px;
+      right: -23px;
+    }
 }
 
 .versus {
-  background-color: $light-red;
   padding: 10px;
-  margin: 0 9px;
+  margin: 0 -2px;
   border-radius: 12px;
   height: 25px;
   justify-content: center;
@@ -53,5 +84,19 @@
     position: absolute;
     right: 8px;
     top: 0px
+  }
+}
+.joining {
+  background-color: white;
+  margin-left: 5px;
+  padding: 5px;
+  border-radius: 12px;
+}
+
+.scoreform {
+  display: flex;
+  .form-group {
+    padding: 0px 7px;
+    margin-top: 15px;
   }
 }
