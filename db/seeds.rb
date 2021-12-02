@@ -274,7 +274,7 @@ daveprofile = Profile.new(
 daveprofile.save!
 
 camprofile = Profile.new(
-  point_sum: 140,
+  point_sum: 250,
   venue: venue5,
   user: cam,
   equipment: "forget my 🏓 in BCN"
@@ -285,7 +285,7 @@ ninaprofile = Profile.new(
   point_sum: 240,
   venue: venue3,
   user: nina,
-  equipment: "forget my 🏓 in BCN"
+  equipment: "my van has no space"
 )
 camprofile.save!
 
@@ -301,7 +301,7 @@ eprofile = Profile.new(
   point_sum: 220,
   venue: venue2,
   user: egor,
-  equipment: "bringing 2 of these 🏓"
+  equipment: "bringing 2 of these: 🏓"
 )
 eprofile.save!
 
@@ -391,7 +391,7 @@ match8 = Match.new(
   date: Date.today + 5,
   start_time: Time.new(15),
   end_time: Time.new(17),
-  comment: "wax on - wax off"
+  comment: "friendly dude stealing your points"
 )
 match8.save!
 
