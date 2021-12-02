@@ -36,11 +36,9 @@ application.load(definitionsFromContext(context))
 
 import { initFlatpickr } from "../components/flatpickr";
 
-initFlatpickr();
-
-// import { timePicker } from '../components/timepicker.js';
 
 
-// document.addEventListener('turbolinks:load', () => {
-//   timePicker();
-// });
+
+document.addEventListener('turbolinks:load', () => {
+  initFlatpickr();
+ });
