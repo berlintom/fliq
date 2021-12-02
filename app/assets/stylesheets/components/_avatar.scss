@@ -45,14 +45,28 @@ top: 103px;
 }
 }
 
-#avatar-second {
+.second-won {
+  svg {
+    position: absolute;
+    left: 59px;
+    top: 66px;
+  }
+}
 
+.third-won {
+  svg {
+    position: absolute;
+    right: 60px;
+    top: 65px;
+  }
+}
+
+#avatar-second {
 width: 80px;
 height: 80px;
 }
 
 #avatar-third {
-
 width: 70px;
 height: 70px;
 }
@@ -74,11 +88,13 @@ box-shadow: 0 1px 6px rgba(0, 0, 0, 0.507);
 border: $red 4px solid;
 }
 
-
-
 .avatar-square {
 width: 40px;
 border-radius: 0px;
 box-shadow: 0 1px 2px rgba(0,0,0,0.2);
 border: white 1px solid;
+}
+
+.ranking {
+  padding-top: 59px;
 }
