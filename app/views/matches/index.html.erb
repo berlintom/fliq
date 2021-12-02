@@ -56,7 +56,7 @@
               <div class="index-svg">
                 <%= render"./shared/calender.html.erb"%>
               </div>
-              <div class="index-text">
+              <div class="index-text-modal">
                 <p><%= match.date.strftime("%d.%m.%y") %><p>
               </div>
             </div>
@@ -64,7 +64,7 @@
               <div class="index-svg">
                 <%= render"./shared/time.html.erb"%>
               </div>
-              <div class="index-text">
+              <div class="index-text-modal">
                 <p><%= match.start_time.time.to_s(:time) %> - <%= match.end_time.time.to_s(:time)%> </p>
               </div>
             </div>
@@ -72,7 +72,7 @@
               <div class="index-svg">
                 <%= render"./shared/location.html.erb"%>
               </div>
-              <div class="index-text">
+              <div class="index-text-modal">
                 <p><%= match.venue.address %><p>
               </div>
             </div>
@@ -84,7 +84,7 @@
                   <%= render"./shared/capacity2.html.erb"%>
                 <% end %>
               </div>
-              <div class="index-text">
+              <div class="index-text-modal">
                 <p><%= userparticipants.length %>/<%= match.capacity %>: Just <%=match.capacity - userparticipants.length%> <%= "spot".pluralize(match.capacity - userparticipants.length)%> left - hurry!</p>
               </div>
             </div>
@@ -92,7 +92,7 @@
               <div class="index-svg">
                 <%= render"./shared/speaker.html.erb"%>
               </div>
-              <div class="index-text">
+              <div class="index-text-modal">
                 <p><%= match.comment %><p>
               </div>
             </div>

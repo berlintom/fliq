@@ -92,8 +92,11 @@
   margin: 10px;
   border-radius:  20px;
   display: flex;
-  align-items: center;
+  padding: 2px;
 }
+ .index-info-modal .index-svg {
+  width: 35px;
+ }
 
 .modal-name {
   text-align: center;
@@ -101,4 +104,8 @@
   position: relative;
   bottom: 36px;
   right: 51px;
+}
+
+.index-text-modal {
+  padding-left: 10px;
 }
