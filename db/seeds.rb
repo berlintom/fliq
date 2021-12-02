@@ -317,7 +317,7 @@ puts "Creating Matches"
 
 match1 = Match.new(
   capacity: 2,
-  user: tom,
+  user: ali,
   venue: venue1,
   date: Date.today,
   start_time: Time.new(3),
@@ -382,7 +382,7 @@ match6 = Match.new(
 match6.save!
 
 match7 = Match.new(
-  capacity: 2,
+  capacity: 4,
   user: vali,
   venue: venue1,
   date: Date.today + 10,
@@ -404,7 +404,7 @@ match8 = Match.new(
 match8.save!
 
 match9 = Match.new(
-  capacity: 2,
+  capacity: 4,
   user: teo,
   venue: venue4,
   date: Date.today + 5,
@@ -431,7 +431,7 @@ participation2 = Participation.new(
 participation2.save!
 
 participation3 = Participation.new(
-  user: tom,
+  user: cam,
   match: match2,
   status: "pending"
 )
@@ -446,10 +446,87 @@ participation4.save!
 
 participation5 = Participation.new(
   user: egor,
-  match: match2,
+  match: match4,
   status: "accepted"
 )
 participation5.save!
+
+participation6 = Participation.new(
+  user: max,
+  match: match4,
+  status: "accepted"
+)
+participation5.save!
+
+participation7 = Participation.new(
+  user: pato,
+  match: match5,
+  status: "accepted"
+)
+participation5.save!
+
+participation7 = Participation.new(
+  user: claire,
+  match: match6,
+  status: "accepted"
+)
+participation7.save!
+
+participation8 = Participation.new(
+  user: dave,
+  match: match7,
+  status: "accepted"
+)
+participation8.save!
+
+participation9 = Participation.new(
+  user: dave,
+  match: match8,
+  status: "accepted"
+)
+participation9.save!
+
+participation10 = Participation.new(
+  user: teo,
+  match: match8,
+  status: "accepted"
+)
+participation10.save!
+
+participation11 = Participation.new(
+  user: teo,
+  match: match9,
+  status: "accepted"
+)
+participation11.save!
+
+participation12 = Participation.new(
+  user: claire,
+  match: match9,
+  status: "accepted"
+)
+participation12.save!
+
+participation13 = Participation.new(
+  user: cam,
+  match: match9,
+  status: "accepted"
+)
+participation13.save!
+
+participation14 = Participation.new(
+  user: tom,
+  match: match7,
+  status: "accepted"
+)
+participation14.save!
+
+participation15 = Participation.new(
+  user: claire,
+  match: match7,
+  status: "accepted"
+)
+participation15.save!
 
 # puts "Creating Reviews"
 
