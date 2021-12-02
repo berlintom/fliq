@@ -1,8 +1,8 @@
 <div class="container">
   <div id="main_content">
     <div class="tab-header">
-      <li class="selected" id="booked" onclick="change_tab(this.id);">Booked matches</li>
-      <li class="notselected" id="pending" onclick="change_tab(this.id);">Pending matches</li>
+      <li class="notselected" id="booked" onclick="change_tab(this.id);">Booked matches</li>
+      <li class="selected" id="pending" onclick="change_tab(this.id);">Pending matches</li>
       <li class="notselected" id="created" onclick="change_tab(this.id);">Created matches</li>
     </div>
 
@@ -220,57 +220,58 @@
     </div>
 
     <div id="page_content">
-      <% if @booked.length == 0 %>
-        <div class="index-info-empty">
-          <p>No upcoming matches</p>
-        </div>
-      <% else %>
-        <% @booked.each do |participation| %>
-          <%=link_to match_path(participation.match) do %>
-            <div class="card-match">
-              <div class="match-host">
-                <%= cl_image_tag participation.match.user.photo.key, class: "avatar-bordered-medium"%>
+      <% if @pendings.length == 0 %>
+          <div class="index-info-empty">
+            <p>No requested participations</p>
+          </div>
+        <% else %>
+          <% @pendings.each do |participation| %>
+            <%=link_to match_path(participation.match) do %>
+              <div class="card-match">
+                <div class="match-host">
+                  <%= cl_image_tag participation.match.user.photo.key, class: "avatar-bordered-medium"%>
+                </div>
+                <div class="match">
+                  <div class="index-info">
+                    <div class="index-svg">
+                      <%= render"./shared/calender.html.erb"%>
+                    </div>
+                    <div class="index-text">
+                      <p><%= participation.match.date.strftime("%d.%m.%y") %></p>
+                    </div>
+                  </div>
+                  <div class="index-info">
+                    <div class="index-svg">
+                      <%= render"./shared/time.html.erb"%>
+                    </div>
+                    <div class="index-text">
+                      <p><%= participation.match.start_time.time.to_s(:time) %> - <%= participation.match.end_time.time.to_s(:time)%></p>
+                    </div>
+                  </div>
+                  <div class="index-info">
+                    <div class="index-svg">
+                      <%= render"./shared/location.html.erb"%>
+                    </div>
+                    <div class="index-text">
+                      <p><%= participation.match.venue.address %></p>
+                    </div>
+                  </div>
+                </div>
+                <% if participation.match.user != current_user %>
+                  <div class="match-status">
+                    <% if participation.status == "accepted" %>
+                      <%= render"./shared/accepted.html.erb"%>
+                    <% elsif participation.status == "declined" %>
+                      <%= render"./shared/declined.html.erb"%>
+                    <% elsif participation.status == "declined" %>
+                      <%= render"./shared/pending.html.erb"%>
+                    <% end %>
+                  </div>
+                <% end %>
               </div>
-              <div class="match">
-                <div class="index-info">
-                  <div class="index-svg">
-                    <%= render"./shared/calender.html.erb"%>
-                  </div>
-                  <div class="index-text">
-                    <p><%= participation.match.date.strftime("%d.%m.%y") %></p>
-                  </div>
-                </div>
-                <div class="index-info">
-                  <div class="index-svg">
-                    <%= render"./shared/time.html.erb"%>
-                  </div>
-                  <div class="index-text">
-                    <p><%= participation.match.start_time.time.to_s(:time) %> - <%= participation.match.end_time.time.to_s(:time)%></p>
-                  </div>
-                </div>
-                <div class="index-info">
-                  <div class="index-svg">
-                    <%= render"./shared/location.html.erb" %>
-                  </div>
-                  <div class="index-text">
-                    <p><%= participation.match.venue.address %></p>
-                  </div>
-                </div>
-              </div>
-              <% if participation.match.user != current_user %>
-                <div class="match-status">
-                  <%= render"./shared/accepted.html.erb"%>
-                </div>
-              <% end %>
-              <% if participation.match.user == current_user %>
-                <div class="host-sign">
-                  <%= render"./shared/speaker.html.erb" %>
-                </div>
-              <% end %>
-            </div>
+            <% end %>
           <% end %>
         <% end %>
-      <% end %>
     </div>
 
   </div>
