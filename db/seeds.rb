@@ -14,7 +14,7 @@ vali.photo.attach(io: file = URI.open("https://ca.slack-edge.com/T02NE0241-U02FW
 vali.save!
 
 ali = User.new(
-  first_name: "ali",
+  first_name: "Ali",
   user_name: "ali-star",
   email: "ali@fliq.de",
   password: "123456",
@@ -23,19 +23,79 @@ ali = User.new(
 ali.photo.attach(io: file = URI.open("https://ca.slack-edge.com/T02NE0241-U02G4887HQE-6103d2b52a0c-512"), filename: "profile", content_type: 'image/png')
 ali.save!
 
-ali = User.new(
-  first_name: "ali",
-  user_name: "ali-star",
-  email: "ali@fliq.de",
+andre = User.new(
+  first_name: "Andre",
+  user_name: "Mr. NoMFU",
+  email: "andre@fliq.de",
   password: "123456",
-  phone_number: 115
+  phone_number: 116
   )
-ali.photo.attach(io: file = URI.open("https://ca.slack-edge.com/T02NE0241-U02G4887HQE-6103d2b52a0c-512"), filename: "profile", content_type: 'image/png')
-ali.save!
+andre.photo.attach(io: file = URI.open("https://ca.slack-edge.com/T02NE0241-ULHT7RUTU-25f6e4344376-512"), filename: "profile", content_type: 'image/png')
+andre.save!
+
+pato = User.new(
+  first_name: "Pato",
+  user_name: "Pato110",
+  email: "pato@fliq.de",
+  password: "123456",
+  phone_number: 117
+  )
+pato.photo.attach(io: file = URI.open("https://ca.slack-edge.com/T02NE0241-U01BHAWKMDZ-4e8ddd640b7f-512"), filename: "profile", content_type: 'image/png')
+pato.save!
+
+max = User.new(
+  first_name: "Max",
+  user_name: "MagicalMax",
+  email: "max@fliq.de",
+  password: "123456",
+  phone_number: 118
+  )
+max.photo.attach(io: file = URI.open("https://ca.slack-edge.com/T02NE0241-U016D9Z8EH2-0fa9d5174210-512"), filename: "profile", content_type: 'image/png')
+max.save!
+
+claire = User.new(
+  first_name: "Claire",
+  user_name: "fair_claire",
+  email: "claire@fliq.de",
+  password: "123456",
+  phone_number: 119
+  )
+claire.photo.attach(io: file = URI.open("https://ca.slack-edge.com/T02NE0241-UF7Q23ULC-4c73eeca13a7-512"), filename: "profile", content_type: 'image/png')
+claire.save!
+
+dave = User.new(
+  first_name: "David",
+  user_name: "d-dynamite",
+  email: "dave@fliq.de",
+  password: "123456",
+  phone_number: 120
+  )
+dave.photo.attach(io: file = URI.open("https://ca.slack-edge.com/T02NE0241-U01TBQ75U87-8c79dffcb36b-512"), filename: "profile", content_type: 'image/png')
+dave.save!
+
+cam = User.new(
+  first_name: "Camila",
+  user_name: "CSS-mila",
+  email: "cam@fliq.de",
+  password: "123456",
+  phone_number: 121
+  )
+cam.photo.attach(io: file = URI.open("https://ca.slack-edge.com/T02NE0241-U01C7G2BND9-4f528e2b5bb7-512"), filename: "profile", content_type: 'image/png')
+cam.save!
+
+nina = User.new(
+  first_name: "Nina",
+  user_name: "trick-shot🥃",
+  email: "nina@fliq.de",
+  password: "123456",
+  phone_number: 122
+  )
+nina.photo.attach(io: file = URI.open("https://ca.slack-edge.com/T02NE0241-U0160CHLQ14-c8e3ee5c6d61-512"), filename: "profile", content_type: 'image/png')
+nina.save!
 
 tom = User.new(
   first_name: "Tom",
-  user_name: "topspin667",
+  user_name: "teekay",
   email: "tom@fliq.de",
   password: "123456",
   phone_number: 222
@@ -123,7 +183,7 @@ venue7 = Venue.new(
   address: "Waitzstraße, 10629 Berlin",
   outdoor: true,
   price: 0,
-  table_type: "Classic Stone",
+  table_type: "Classic Stone"
 )
 venue7.photos.attach(io: file = URI.open("https://source.unsplash.com/featured/?gym"), filename: "venue", content_type: 'image/png')
 venue7.save!
@@ -141,7 +201,7 @@ venue9 = Venue.new(
   address: "Marzahner Chaussee, 10315 Berlin",
   outdoor: true,
   price: 0,
-  table_type: "Classic Stone",
+  table_type: "Classic Stone"
 )
 venue9.photos.attach(io: file = URI.open("https://source.unsplash.com/featured/?gym"), filename: "venue", content_type: 'image/png')
 venue9.save!
@@ -165,13 +225,69 @@ vprofile = Profile.new(
 )
   vprofile.save!
 
-tprofile = Profile.new(
-  point_sum: 130,
-  venue: venue2,
-  user: teo,
-  equipment: "only my own racket"
+aprofile = Profile.new(
+  point_sum: 100,
+  venue: venue5,
+  user: ali,
+  equipment: "No equipment 🏓 but 🍺"
 )
-tprofile.save!
+  aprofile.save!
+
+andreprofile = Profile.new(
+  point_sum: 140,
+  venue: venue1,
+  user: andre,
+  equipment: "providing match playlist"
+)
+  andreprofile.save!
+
+patoprofile = Profile.new(
+  point_sum: 200,
+  venue: venue3,
+  user: pato,
+  equipment: "bringing 🏓 & 🍺"
+)
+  patoprofile.save!
+
+maxprofile = Profile.new(
+  point_sum: 160,
+  venue: venue3,
+  user: max,
+  equipment: "i have 2 extra bats"
+)
+  maxprofile.save!
+
+cprofile = Profile.new(
+  point_sum: 280,
+  venue: venue9,
+  user: claire,
+  equipment: "Pro/ Only ⭐⭐⭐ balls"
+)
+cprofile.save!
+
+daveprofile = Profile.new(
+  point_sum: 170,
+  venue: venue8,
+  user: dave,
+  equipment: "can bring outdoor balls!"
+)
+daveprofile.save!
+
+camprofile = Profile.new(
+  point_sum: 140,
+  venue: venue5,
+  user: cam,
+  equipment: "forget my 🏓 in BCN"
+)
+camprofile.save!
+
+ninaprofile = Profile.new(
+  point_sum: 140,
+  venue: venue3,
+  user: nina,
+  equipment: "forget my 🏓 in BCN"
+)
+camprofile.save!
 
 toprofile = Profile.new(
   point_sum: 180,
@@ -182,7 +298,7 @@ toprofile = Profile.new(
 toprofile.save!
 
 eprofile = Profile.new(
-  point_sum: 250,
+  point_sum: 220,
   venue: venue2,
   user: egor,
   equipment: "bringing 2 of these 🏓"
