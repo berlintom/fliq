@@ -102,7 +102,7 @@
             <div class="btn btn-inactive"><%= link_to "Its your match", "#" %></div>
           <% elsif match.user != current_user && match.full == true %>
             <div class="btn btn-inactive"><%= link_to "Match is full", "#" %></div>
-          <% elsif match.user != current_user && !match.date.past? &&%>
+          <% elsif match.user != current_user && !match.date.past?%>
             <div class="btn btn-cta"><%=link_to "Ask to Play", match_path(match) %></div></p>
           <% elsif match.user != current_user && match.start_time.past? %>
             <div class="btn btn-inactive"><%= link_to "Match date in the past", "#" %></div>

@@ -66,6 +66,7 @@
             <p>No requested participations</p>
           </div>
         <% else %>
+        <% raise %>
           <% @pendings.each do |participation| %>
             <%=link_to match_path(participation.match) do %>
               <div class="card-match">
