@@ -104,9 +104,13 @@
                       <%= render"./shared/accepted.html.erb"%>
                     <% elsif participation.status == "declined" %>
                       <%= render"./shared/declined.html.erb"%>
-                    <% elsif participation.status == "declined" %>
+                    <% elsif participation.status == "pending" %>
                       <%= render"./shared/pending.html.erb"%>
                     <% end %>
+                  </div>
+                <% elsif participation.match.user == current_user %>
+                  <div class="match-status">
+                    <%= render"./shared/yourfliq.html.erb"%>
                   </div>
                 <% end %>
               </div>
