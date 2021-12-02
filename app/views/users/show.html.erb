@@ -36,10 +36,10 @@
     </div>
   </div>
   <br>
-  <p>Last matches:</p>
+  <p>Last FliQs:</p>
   <div class="last-matches">
     <% if @lastparticipations.length == 0 %>
-      <p class="index-info-empty">You have't played any matches yet</p>
+      <p class="index-info-empty">You haven't played any FliQs yet</p>
     <% end %>
     <% @lastparticipations.each do |participation| %>
       <% matchparticipations = participation.match.participations %>
