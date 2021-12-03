@@ -417,116 +417,165 @@ match9.save!
 puts "Creating Participations"
 
 participation1 = Participation.new(
-  user: vali,
+  user: ali,
   match: match1,
-  status: "pending"
+  status: "accepted"
 )
 participation1.save!
 
 participation2 = Participation.new(
-  user: teo,
-  match: match2,
+  user: vali,
+  match: match1,
   status: "pending"
 )
 participation2.save!
 
 participation3 = Participation.new(
-  user: cam,
+  user: egor,
   match: match2,
-  status: "pending"
+  status: "accepted"
 )
 participation3.save!
 
 participation4 = Participation.new(
-  user: tom,
-  match: match1,
-  status: "accepted"
+  user: vali,
+  match: match2,
+  status: "pending"
 )
 participation4.save!
 
 participation5 = Participation.new(
-  user: egor,
-  match: match4,
+  user: cam,
+  match: match3,
   status: "accepted"
 )
 participation5.save!
 
 participation6 = Participation.new(
-  user: max,
-  match: match4,
-  status: "accepted"
+  user: tom,
+  match: match3,
+  status: "pending"
 )
-participation5.save!
+participation6.save!
 
 participation7 = Participation.new(
   user: pato,
-  match: match5,
-  status: "accepted"
-)
-participation5.save!
-
-participation7 = Participation.new(
-  user: claire,
-  match: match6,
+  match: match4,
   status: "accepted"
 )
 participation7.save!
 
 participation8 = Participation.new(
-  user: dave,
-  match: match7,
-  status: "accepted"
+  user: max,
+  match: match4,
+  status: "pending"
 )
 participation8.save!
 
 participation9 = Participation.new(
-  user: dave,
-  match: match8,
+  user: claire,
+  match: match5,
   status: "accepted"
 )
 participation9.save!
 
 participation10 = Participation.new(
-  user: teo,
-  match: match8,
-  status: "accepted"
+  user: dave,
+  match: match5,
+  status: "pending"
 )
 participation10.save!
 
 participation11 = Participation.new(
-  user: teo,
-  match: match9,
+  user: claire,
+  match: match2,
   status: "accepted"
 )
 participation11.save!
 
 participation12 = Participation.new(
-  user: claire,
-  match: match9,
-  status: "accepted"
+  user: teo,
+  match: match2,
+  status: "pending"
 )
 participation12.save!
 
 participation13 = Participation.new(
-  user: cam,
-  match: match9,
+  user: claire,
+  match: match6,
   status: "accepted"
 )
 participation13.save!
 
 participation14 = Participation.new(
-  user: tom,
-  match: match7,
-  status: "accepted"
+  user: cam,
+  match: match6,
+  status: "pending"
 )
 participation14.save!
 
 participation15 = Participation.new(
-  user: claire,
+  user: vali,
   match: match7,
   status: "accepted"
 )
 participation15.save!
+
+participation16 = Participation.new(
+  user: cam,
+  match: match7,
+  status: "accepted"
+)
+participation16.save!
+
+participation17 = Participation.new(
+  user: dave,
+  match: match8,
+  status: "accepted"
+)
+participation17.save!
+
+participation18 = Participation.new(
+  user: tom,
+  match: match8,
+  status: "pending"
+)
+participation18.save!
+
+participation19 = Participation.new(
+  user: teo,
+  match: match9,
+  status: "accepted"
+)
+participation19.save!
+
+participation20 = Participation.new(
+  user: egor,
+  match: match9,
+  status: "accepted"
+)
+participation20.save!
+
+participation21 = Participation.new(
+  user: claire,
+  match: match9,
+  status: "pending"
+)
+participation21.save!
+
+participation22 = Participation.new(
+  user: tom,
+  match: match7,
+  status: "accepted"
+)
+participation22.save!
+
+participation23 = Participation.new(
+  user: andre,
+  match: match7,
+  status: "accepted"
+)
+participation23.save!
 
 # puts "Creating Reviews"
 
