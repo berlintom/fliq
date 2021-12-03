@@ -192,7 +192,7 @@
             <% end %>
             <% if match.participations.where(status: "pending").length != 0%>
               <details>
-              <summary class="btn-cta"><%= match.participations.where(status: "pending").length %> <%= "Request".pluralize(match.participations.where(status: "pending").length)%> </summary>
+              <summary class="btn-cta"><%= match.participations.where(status: "pending").length %> <%= "Fliqer".pluralize(match.participations.where(status: "pending").length)%> </summary>
               <div class="requests">
                 <% match.participations.each do |participation|%>
                   <% if participation.user != match.user %>
