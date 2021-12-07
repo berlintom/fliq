@@ -7,6 +7,7 @@ Part of the Team:
 - https://github.com/ValerieFinsterwald/
 - https://github.com/TeresaFinsterwald/
 - https://github.com/egordranev
+- https://github.com/berlintom
     
 
 <h3 align="left">Languages and Tools that we've used:</h3>
