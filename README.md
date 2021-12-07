@@ -1,7 +1,7 @@
 <h1 align="center">Welcome to FLiQ 👋</h1>
 <h3 align="center">wherever, whenever, whoever - play a table tennis match with FLIQ!</h3>
 
-<p> 🏓 [FLiQ](https://www.fliq.community) is your inclusive mobile Rails App for finding a PingPong Match in your Area. We developed it from scratch within 2 weeks as a part of project weeks during a 9 week Full-Time Web Dev Bootcamp @ Le Wagon in Berlin. 
+<p> 🏓 [FLiQ](https://www.fliq.community) is your inclusive mobile Rails App for finding a PingPong Match in your Area. We've developed it from scratch within 2 weeks as a part of project weeks during a 9 week Full-Time WebDev Bootcamp @ Le Wagon in Berlin. Pull requests are welcome - Enjoy the App!</p>
 
 Part of the Team: 
 - https://github.com/ValerieFinsterwald/
